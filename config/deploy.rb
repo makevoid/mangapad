@@ -17,7 +17,7 @@ set :user,        "www-data"
 set :scm_username, "makevoid"
 set :scm_password, "MKV_PASSWORD"
 # set :deploy_via, :copy
-# set :copy_exclude, [".git", "db", "nbproject", "public/images/cars"]
+# set :copy_exclude, [".git", "db", "nbproject", "public/images/cars"] # much value
 
 
 role :app, domain
