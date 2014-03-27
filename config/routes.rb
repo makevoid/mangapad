@@ -65,6 +65,8 @@ Mangapad::Application.routes.draw do |map|
   #   end
   # end
 
+  # much interest
+
 
   resources :sitemap
   resources :sites
