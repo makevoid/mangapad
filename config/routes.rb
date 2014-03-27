@@ -50,22 +50,22 @@ Mangapad::Application.routes.draw do |map|
   get "mangas/our_favourites" => "mangas#our_favourites"
 
   get "mangas" => "mangas#index"
-  get "mangas/(:id)" => "mangas#redirect", constraints: { id: /\d+/ }
-  resources :mangas, constraints: { id: /.+/ } do
-    resources :chapters, constraints: { id: /.+/ } do
-      member do
-        get :jq
-      end
-    end
-  end
-  resources :chapters
-  resources :pages do
-    member do
-      get :next, :prev
-    end
-  end
+  # get "mangas/(:id)" => "mangas#redirect", constraints: { id: /\d+/ }
+  # resources :mangas, constraints: { id: /.+/ } do
+  #   resources :chapters, constraints: { id: /.+/ } do
+  #     member do
+  #       get :jq
+  #     end
+  #   end
+  # end
+  # resources :chapters
+  # resources :pages do
+  #   member do
+  #     get :next, :prev
+  #   end
+  # end
 
-  
+
   resources :sitemap
   resources :sites
   resources :submissions
