@@ -1,0 +1,175 @@
+// mixins
+
+=border-radius($radius)
+  border-radius: $radius
+  -moz-border-radius: $radius
+  -webkit-border-radius: $radius
+  
+=border-radius-bottom($radius)
+  -moz-border-radius-bottomleft: $radius
+  -moz-border-radius-bottomright: $radius
+  -webkit-border-bottom-left-radius: $radius
+  -webkit-border-bottom-right-radius: $radius
+
+
+// clearfix
+
+*, html, body
+  margin: 0
+  padding: 0
+
+html, body 
+  height: 100%     
+  max-height: 100%
+
+img
+  border: 0
+
+ul 
+  list-style-type: none
+
+li
+
+.clear
+  clear: both
+
+a 
+  text-decoration: none
+  color: #E25151
+a:hover
+  background: #FFC4C4
+  color: #111
+  text-shadow: #DDD 1px 1px 0px
+
+// style
+
+body
+  font-size: 110%
+  background: #000000
+  color: #EEE
+  font-family: 'Cardo', arial, serif
+  text-shadow: #CCC 1px 1px 0px
+
+
+h1
+  margin-top: 43px
+  text-shadow: #333 1px 1px 0px
+  a
+    color: #FF5100
+  a:hover
+    color: #FF0000
+    background: none
+    text-shadow: #FFF 1px 1px 0px
+h1, h2
+  font-family: 'Lobster', arial, serif
+  
+h1 span
+  display: block
+  font-size: 0.6em
+  color: #DDD
+
+#icon
+  float: left
+
+$padding-left-main: 1.5%
+  
+h2
+  color: #333
+  background: #CCC
+  background: -webkit-gradient(linear, left top, left bottom, from(#FFF), to(#AAA)) 
+  background: -moz-linear-gradient(#FFF, #AAA)
+  padding: 10px $padding-left-main
+
+h3   
+  background: #DDD
+  background: -webkit-gradient(linear, left top, left bottom, from(#FAFAFA), to(#BBB)) 
+  background: -moz-linear-gradient(#FAFAFA, #BBB)
+  padding: 8px $padding-left-main
+  
+.inset
+  //width: 85%
+  margin: 0 auto
+  padding: 1px $padding-left-main
+
+#header
+  //background: #00CE82
+  background: #00AD6E
+  background: -webkit-gradient(linear, left top, left bottom, from(#00CE82), to(#036419))         
+  background: -moz-linear-gradient(#00CE82, #036419)
+  
+  
+  color: #111111
+  
+  
+#container  
+  background: #EEE
+  color: #222
+  +border-radius-bottom(15px)
+  
+#footer
+  margin-top: 15px
+  font-size: 0.85em
+  padding: 0 $padding-left-main 10px
+  p 
+    font-size: 0.9em
+  p.makevoid_copy
+    margin-top: 10px
+
+// uls
+ul#mangas, ul#chapters
+  li
+    background: #FAFAFA
+    padding: 10px $padding-left-main
+    border-bottom: 1px solid #999
+    a
+      font-weight: bold
+      color: #485249 - #333
+    a:visited
+      color: #505F51
+    a:hover
+      color: #485249
+    a:active
+      color: #485249 + #333
+      
+// components
+
+.readbox
+  margin: 10px 10px 15px
+  padding: 7px 10px
+  background: #fff
+  p
+    margin: 5px 0 
+    
+form
+  input 
+    width: 100%
+    height: 45px
+    font-size: 1.8em
+    padding: 5px 20px
+  
+#flashes
+  background: #46FF46
+  background: -webkit-gradient(linear, left top, left bottom, from(#46FF46), to(#FFF))
+  background: -moz-linear-gradient(#46FF46, #FFF)
+  padding: 8px $padding-left-main
+
+// index
+#icon2
+  float: right
+  position: relative
+  top: -42px
+
+@import "reeder"
+
+// page
+#read
+  background: #666
+  
+.pagination
+  margin: 10px 20px
+  a
+    padding: 3px 6px
+    background: #DDD
+  a:hover
+    
+    background: #FFF

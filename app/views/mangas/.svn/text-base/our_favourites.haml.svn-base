@@ -1,0 +1,16 @@
+%h3 Our Favourites Manga:
+.readbox
+  %ul.favs
+    - manga_link "Liar Game"
+    - manga_link "20th Century Boys"
+    - manga_link "City Hunter"
+    - manga_link "Family Compo"
+    - manga_link "Monster"
+    - manga_link "Vagabond"
+    - manga_link "Team medical Dragon"
+    - manga_link "Tenjou Tenge"
+    %li= link_to "Berserk", "http://manga.animea.net/berserk.html?skip=1"
+    - manga_link "Ikigami"
+ 
+
+  %p Also we like Akira Toryiama, Oh Great, Tatsuya Egawa and Rumiko Takahashi.

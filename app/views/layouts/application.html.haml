@@ -1,0 +1,52 @@
+!!! Strict
+%html{ html_attrs("en_EN") }
+  %head
+    - subtitle = yield(:title).blank? ? site_slogan : yield(:title).strip
+    %title= site_title + subtitle
+    %meta{ :content => "text/html; charset=utf-8", "http-equiv" => "content-type" }/    
+    %meta{ :content => meta_description, :name => "description"}/
+    %meta{ :content => meta_keywords, :name => "keywords"}/
+    %meta{ :content => meta_author, :name => "author"}/     
+    %meta{:name => 'csrf-token', :content => form_authenticity_token}/
+    %meta{:name => 'csrf-param', :content => 'authenticity_token'}/  
+    = yield :head
+    = stylesheet_link_tag "main"#, :cache =>  "cache/all"                
+    %link{ href: "http://fonts.googleapis.com/css?family=Lobster", rel: "stylesheet", type:"text/css"}            
+    %link{ href: "http://fonts.googleapis.com/css?family=Cardo", rel: "stylesheet", type:"text/css"}               
+    = javascript_include_tag "jquery", "rails", "master"#, :cache => "cache/all"  
+    = javascript_include_tag "jquery", "rails", "master"#, :cache => "cache/all"   
+    :javascript
+      $(function(){
+        #{yield :jquery}
+      });
+    = yield :headtwo
+    :javascript
+      #{gauges("4e4de444f5a1f50505000001")}
+    - if Rails.env == "production" && !analytics_tracker.blank?
+      = render partial: "layouts/analytics"
+  %body{ :class => "#{controller.controller_name} #{controller.action_name}"}
+    - unless controller.controller_name == "chapters" && controller.action_name == "show"
+      #header
+        .inset
+          = link_to image_tag("mangapad_icon.png", id: "icon"), root_path
+          %h1
+            = link_to "MangaPad", root_path
+            %span 
+              = site_slogan
+        .clear
+        %ul#nav
+          - nav []
+    #container
+
+      #content
+        - unless flash == {} || flash.nil?
+          #flashes
+            - flash.map do |key, value|
+              - unless value.blank?
+                %div{ :class => key }= value
+            
+        = yield
+        
+      #footer
+        = footer_text
+      

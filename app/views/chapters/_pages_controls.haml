@@ -1,0 +1,7 @@
+- pag = params[:page].to_i
+
+
+pages:
+= link_to "prev", "#{chapter_path(@chapter)}?page=#{params[:page].blank? ? 1 : pag-1}", class: "prev" unless no_prev_page
+#{pag+1} / #{@pages.count}
+= link_to "next", "#{chapter_path(@chapter)}?page=#{params[:page].blank? ? 1 : pag+1}", class: "next" unless no_next_page

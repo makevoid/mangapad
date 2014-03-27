@@ -1,0 +1,1 @@
+%li= link_to "#{chapter.manga.name} #{chapter.name}", [chapter.manga, chapter]

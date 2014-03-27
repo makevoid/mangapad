@@ -1,0 +1,10 @@
+- content_for(:title) do 
+  = @manga.name
+
+%h2= @manga.name
+
+%h3 Chapters
+
+%ul#chapters
+  = render @chapters
+

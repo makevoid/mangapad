@@ -1,0 +1,143 @@
+<html>
+<head>
+  <style type="text/css"> 
+    * {
+      margin:0;
+      padding:0;
+    }
+    #box {
+      background: #55CACE;
+      display: block;
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      -webkit-transition-property: width;
+      -webkit-transition-duration: 0.5s;
+      -webkit-transition-timing-function: default;
+    }
+    
+    #box:active {
+        background-color: #2BC5CA;
+    }
+  </style>
+  <script type="text/javascript">
+    function Box(inElement)
+    {
+      var self = this;
+
+      this.element = inElement;
+      this.position = '0,0';
+      this.element.addEventListener('touchstart', function(e) { return self.onTouchStart(e) }, false);
+      
+    }
+    Box.prototype = {
+      get position()
+      {
+          return this._position;
+      },
+      // position strings are "x,y" with no units
+      set position(pos)
+      {
+          this._position = pos;
+
+          var components = pos.split(',')
+          var x = components[0];
+          var y = components[1];
+
+          const kUseTransform = true;
+          if (kUseTransform) {
+              this.element.style.webkitTransform = 'translate(' + x + 'px, ' + y + 'px)';
+          }
+          else {
+              this.element.style.left = x + 'px';
+              this.element.style.top = y + 'px';
+          }
+      },
+      // position strings are "x,y" with no units
+      get x()
+      {
+          return parseInt(this._position.split(',')[0]);
+      },
+
+      set x(inX)
+      {
+          var comps = this._position.split(',');
+          comps[0] = inX;
+          this.position = comps.join(',');
+      },
+
+      get y()
+      {
+          return parseInt(this._position.split(',')[1]);
+      },
+
+      set y(inY)
+      {
+          var comps = this._position.split(',');
+          comps[1] = inY;
+          this.position = comps.join(',');
+      },
+      onTouchStart: function(e)
+      {
+          // Start tracking when the first finger comes down in this element
+          if (e.targetTouches.length != 1)
+              return false;
+
+          this.startX = e.targetTouches[0].clientX;
+          this.startY = e.targetTouches[0].clientY;
+
+          var self = this;
+          this.element.addEventListener('touchmove', function(e) { return self.onTouchMove(e) }, false);
+          this.element.addEventListener('touchend', function(e) { return self.onTouchEnd(e) }, false);
+
+          return false;
+      },
+      onTouchMove: function(e)
+      {
+          // Prevent the browser from doing its default thing (scroll, zoom)
+          e.preventDefault();
+
+          // Don't track motion when multiple touches are down in this element (that's a gesture)
+          if (e.targetTouches.length != 1)
+              return false;
+
+          var leftDelta = e.targetTouches[0].clientX - this.startX;
+          var topDelta = e.targetTouches[0].clientY - this.startY;
+
+          var newLeft = (this.x) + leftDelta;
+          var newTop = (this.y) + topDelta;
+
+          this.position = newLeft + ',' + newTop;
+
+          this.startX = e.targetTouches[0].clientX;
+          this.startY = e.targetTouches[0].clientY;
+
+          return false;
+      },
+      onTouchEnd: function(e)
+      {
+          // Prevent the browser from doing its default thing (scroll, zoom)
+          e.preventDefault();
+
+          // Stop tracking when the last finger is removed from this element
+          if (e.targetTouches.length > 0)
+              return false;
+
+
+          this.element.removeEventListener('touchmove', function(e) { return self.onTouchMove(e) }, false);
+          this.element.removeEventListener('touchend', function(e) { return self.onTouchEnd(e) }, false);
+
+          return false;
+      },
+    }
+    function loaded(){
+      var box = new Box(document.getElementById("box"));
+    }
+    window.addEventListener('load', loaded, true);
+  </script>
+</head>
+<body>
+    <div id="box"></div>
+    <h1>Click box to grow</h1>
+</body>
+</html>

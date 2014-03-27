@@ -1,0 +1,79 @@
+- content_for :title do
+  - pages = "- page: #{@page.name}" if @page
+  = "#{@manga.name} - chapter: #{@chapter.name} #{pages}"
+
+- content_for :head do 
+
+  %meta{ name: "viewport", content: "width=device-width, initial-scale=1, user-scalable=no" }/
+
+
+- content_for :headtwo do
+  :javascript
+    var page_id = #{@page.id};
+    var root_url = "#{root_url}";
+    var no_next_page = #{no_next_page.to_s};
+    var is_iOS = #{iOS?.to_s};
+    var app_name = "#{APP_NAME}";
+  = javascript_include_tag "reepad/loadPage.js", "reepad/imgg.js", "reepad/reepad.js", "reepad/utils.js", "reepad/orientation.js", "reepad/keyboard.js"
+/
+  %h2 #{@manga.name}
+
+- if iOS?
+  - controls = false
+  - debug = true
+- else
+  - controls = true
+  - debug = false
+- debug = false if Rails.env == "production"
+
+- if controls
+  #debug
+    %a{ href: "#", id: "next_image" } next_image
+  #chapters
+    chapters:
+    = link_to "prev", @chapter.previous, class: "prev"
+    #{@chapter.position+1} / #{@chapters.count}
+    = link_to "next", @chapter.next, class: "next"
+
+  #controls.controls
+    = render partial: "pages_controls"
+
+
+#menu
+  #tab_bar
+    - style_prev = "display: none;" if no_prev_page
+    %a.left{ href: "#", id: "prev_image", style: "#{style_prev}" } <
+    %a{ href: manga_path(@manga) } #{@manga.name} [ch. #{@chapter.name}] 
+    \pag.
+    %span#page= @page.good_name
+    - style_next = "display: none;" if no_next_page
+    %a.right{ href: "#", id: "next_image", style: "#{style_next}" } >
+  - if debug
+    #konsole
+  
+
+- attrs = iOS? ? {} : { class: "desktop" }
+#over{ attrs }
+  #imgg
+    %img#prev
+    %img#first.first{ :src => root_url + @page.image_url, :"data-page_id" => @page.id, :"data-page_name" => @page.name }
+    %img#next
+  
+- if controls  
+  .controls
+    = render partial: "pages_controls"
+
+
+
+
+  
+-# %img#image{ name: "imagg", src: "" }
+
+-#- content_for :jquery do 
+-#  :plain
+-#    heavyImage = new Image(); 
+-#    heavyImage.src = "#{img_url}";
+-#    document.imagg.src='#{img_url}';
+  
+-# http://img-a.onemanga.com/mangas/00000550/000027749/00-cover.jpg
+-# http://img-a.onemanga.com/mangas/00000550/000027749/00-cover.jpg

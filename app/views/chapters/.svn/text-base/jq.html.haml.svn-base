@@ -1,0 +1,167 @@
+%html
+  %head
+    %meta{:charset => "UTF-8"}/
+    %title MangaPad
+    %style{:media => "screen", :type => "text/css"} @import "/stylesheets/jqtouch.css";
+    %style{:media => "screen", :type => "text/css"} @import "/stylesheets/jqt.theme.css";
+    %style{:media => "screen", :type => "text/css"} @import "/stylesheets/jqt.photo.css";
+    %script{:charset => "utf-8", :src => "/javascripts/jquery.js", :type => "text/javascript"}
+    %script{:charset => "utf-8", :src => "/javascripts/jqtouch/jqtouch.js", :type => "application/x-javascript"}
+    %script{:charset => "utf-8", :src => "/javascripts/jqtouch/jqt.photo.js", :type => "application/x-javascript"}
+    %script{ charset: "utf-8", type: "text/javascript", src: "/javascripts/jq_show.js"}
+      
+  %body
+    #jqt
+      #horizontal-slide-example
+        .toolbar
+          %h1 Horizontal Slide Example
+          %a.back{:href => "#home"} Home
+        .horizontal-scroll
+          %table.with-scrollbar
+            %tr
+              %td
+                .slide-container.current
+                  %img{:alt => "CSS Is Awesome", :src => "http://rlv.zcache.com/css_is_awesome_mug-p1687164350719819282objs_210.jpg"}/
+              %td
+                .slide-container
+                  %img{:alt => "CSS Is Awesome", :src => "http://rlv.zcache.com/css_is_awesome_mug-p1687164350719819282objs_210.jpg"}/
+              %td
+                .slide-container
+                  %img{:alt => "CSS Is Awesome", :src => "http://rlv.zcache.com/css_is_awesome_mug-p1687164350719819282objs_210.jpg"}/
+              %td
+                .slide-container
+                  %img{:alt => "CSS Is Awesome", :src => "http://rlv.zcache.com/css_is_awesome_mug-p1687164350719819282objs_210.jpg"}/
+              %td
+                .slide-container
+                  %img{:alt => "CSS Is Awesome", :src => "http://rlv.zcache.com/css_is_awesome_mug-p1687164350719819282objs_210.jpg"}/
+              %td
+                .slide-container
+                  %img{:alt => "CSS Is Awesome", :src => "http://rlv.zcache.com/css_is_awesome_mug-p1687164350719819282objs_210.jpg"}/
+              %td
+                .slide-container
+                  %img{:alt => "CSS Is Awesome", :src => "http://rlv.zcache.com/css_is_awesome_mug-p1687164350719819282objs_210.jpg"}/
+      #home.current
+        .toolbar
+          %h1 jQTouch
+          %a#infoButton.button.slideup{:href => "#about"} About
+        .vertical-scroll
+          .with-scrollbar
+            %ul.rounded
+              %li.arrow
+                %a{:href => "#photo"} Photo Gallery
+                %small.counter 4
+              %li.arrow
+                %a{:href => "#photo2"} Photo Gallery 2
+                %small.counter 4
+            .info
+              %p Add this page to your home screen to view the custom icon, startup screen, and full screen mode.
+      #debug
+        .toolbar
+          %h1
+            %input{:type => "search"}/
+          %a.back{:href => "#home"} Home
+          %a.button{:href => "#firebug"}
+            / image of firebug triggers dropdown with panel links        #panels
+          #console.current
+            / list of console messages            .message-entry
+              
+            .message-error
+              ReferenceError: adlkjhadkjlads is not defined {  message="adlkjhadkjlads is not defined",  more...}
+          #console-editor
+            %div
+              %button Run
+              %button Clear
+            %textarea
+          #html
+            .doctype &lt;!DOCTYPE html&gt;
+            / 
+              tree list of dom elements            %ul.tree-menu
+              %li
+                .html-item
+                  %span.expander>
+                  \&lt;html&gt;
+                %ul
+                  %li
+                    .html-item
+                      %span.expander>
+                      \&lt;head&gt;
+                  %li
+                    .html-item
+                      %span.expander
+                      \&lt;body
+                      - succeed "=\"" do
+                        %input.attribute-name/
+                      - succeed "&amp;gt;" do
+                        %input.attribute-value/
+                %span.html-item-close &lt;/html&gt;
+          #computed-style
+            %table
+              %tr
+                %td height
+                %td
+                  %input.computed-style-value{:value => "400px"}/
+              %tr
+                %td width
+                %td
+                  %input.computed-style-value{:value => "320px"}/
+          %table#layout{:align => "center"}
+            %tr{:valign => "middle"}
+              %td.margin-top{:colspan => "3"} 0
+            %tr.margin-middle{:valign => "middle"}
+              %td.margin-left
+              %td
+                %table.border{:align => "center"}
+                  %tr{:valign => "middle"}
+                    %td.border-top{:colspan => "3"} 0
+                  %tr.border-middle{:valign => "middle"}
+                    %td.border-left 0
+                    %td
+                      %table.padding{:align => "center"}
+                        %tr{:valign => "middle"}
+                          %td.padding-top{:colspan => "3"} 0
+                        %tr.padding-middle{:valign => "middle"}
+                          %td.padding-left 0
+                          %td.dimensions 320 X 480
+                          %td.padding-right 0
+                        %tr{:valign => "middle"}
+                          %td.padding-bottom{:colspan => "3"} 0
+                    %td.border-right 0
+                  %tr{:valign => "middle"}
+                    %td.border-bottom{:colspan => "3"} 0
+              %td.margin-right 0
+            %tr{:valign => "middle"}
+              %td.margin-bottom{:colspan => "3"} 0
+          #dom
+            %div
+              window
+            / 
+              a tree list of window.*            %ul.tree-menu
+              %li
+                %a.dom-link
+                  %span.expander
+                  %span.dom-name Location
+                %span.dom-value [object Location]
+                %ul
+                  %li
+                    %a.dom-link
+                      %span.expander
+                      %span.dom-name hash
+                    %input.dom-value{:value => "#home"}/
+                    / nested - dynamically added cells          #css
+            %select
+              / list of stylesheet in dom            / list of css rules for a given sheet            .cssrule
+              %input.cssselector{:type => "text", :value => "#jqt"}>/
+              {
+              %br/
+              %p
+                %input.cssproperty{:value => "height"}>/
+                \:
+                %input.cssproperty-value{:value => "410px"}>/
+                ;
+                %br/
+              }
+              %br/
+          #script
+            %select
+              / list of script tags on page            / text src or html of a given script tag            %div
+              \//text

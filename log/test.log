@@ -1,0 +1,2196 @@
+[datamapper] Setting up the "test" environment:
+[datamapper] Setting up :default repository: 'mangapad_test' on mysql
+[datamapper] Setting up the "test" environment:
+[datamapper] Setting up :default repository: 'mangapad_test' on mysql
+
+
+Started GET "/" for 127.0.0.1 at 2011-03-29 23:18:48 +0200
+  Processing by MangasController#index as HTML
+  [1m[36mSQL (0.082ms)[0m  [1mSET sql_auto_is_null = 0[0m
+  [1m[35mSQL (0.083ms)[0m  SET SESSION sql_mode = 'ANSI,NO_BACKSLASH_ESCAPES,NO_DIR_IN_CREATE,NO_ENGINE_SUBSTITUTION,NO_UNSIGNED_SUBTRACTION,TRADITIONAL'
+Table 'mangapad_test.mangas' doesn't exist (code: 1146, sql state: 42S02, query: SELECT COUNT(*) FROM `mangas`, uri: mysql://root@localhostmangapad_test)
+Rendered mangas/index.html.haml within layouts/application (51.4ms)
+Completed   in 58ms
+
+
+Started GET "/" for 127.0.0.1 at 2011-03-29 23:18:49 +0200
+  Processing by MangasController#index as HTML
+Table 'mangapad_test.mangas' doesn't exist (code: 1146, sql state: 42S02, query: SELECT COUNT(*) FROM `mangas`, uri: mysql://root@localhostmangapad_test)
+Completed   in 3ms
+[datamapper] Setting up the "test" environment:
+[datamapper] Setting up :default repository: 'mangapad_test' on mysql
+  [1m[36mSQL (0.177ms)[0m  [1mSET sql_auto_is_null = 0[0m
+(0.000177) SET sql_auto_is_null = 0
+  [1m[35mSQL (0.089ms)[0m  SET SESSION sql_mode = 'ANSI,NO_BACKSLASH_ESCAPES,NO_DIR_IN_CREATE,NO_ENGINE_SUBSTITUTION,NO_UNSIGNED_SUBTRACTION,TRADITIONAL'
+(0.000089) SET SESSION sql_mode = 'ANSI,NO_BACKSLASH_ESCAPES,NO_DIR_IN_CREATE,NO_ENGINE_SUBSTITUTION,NO_UNSIGNED_SUBTRACTION,TRADITIONAL'
+  [1m[36mSQL (1.080ms)[0m  [1mDROP TABLE IF EXISTS `chapters`[0m
+(0.001080) DROP TABLE IF EXISTS `chapters`
+  [1m[35mSQL (1.978ms)[0m  SHOW TABLES LIKE 'chapters'
+(0.001978) SHOW TABLES LIKE 'chapters'
+  [1m[36mSQL (0.052ms)[0m  [1mSET sql_auto_is_null = 0[0m
+(0.000052) SET sql_auto_is_null = 0
+  [1m[35mSQL (0.058ms)[0m  SET SESSION sql_mode = 'ANSI,NO_BACKSLASH_ESCAPES,NO_DIR_IN_CREATE,NO_ENGINE_SUBSTITUTION,NO_UNSIGNED_SUBTRACTION,TRADITIONAL'
+(0.000058) SET SESSION sql_mode = 'ANSI,NO_BACKSLASH_ESCAPES,NO_DIR_IN_CREATE,NO_ENGINE_SUBSTITUTION,NO_UNSIGNED_SUBTRACTION,TRADITIONAL'
+  [1m[36mSQL (3.091ms)[0m  [1mSELECT variable_value FROM information_schema.session_variables WHERE LOWER(variable_name) = 'character_set_connection'[0m
+(0.003091) SELECT variable_value FROM information_schema.session_variables WHERE LOWER(variable_name) = 'character_set_connection'
+  [1m[35mSQL (0.377ms)[0m  SELECT variable_value FROM information_schema.session_variables WHERE LOWER(variable_name) = 'collation_connection'
+(0.000377) SELECT variable_value FROM information_schema.session_variables WHERE LOWER(variable_name) = 'collation_connection'
+  [1m[36mSQL (14.625ms)[0m  [1mCREATE TABLE `chapters` (`id` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT, `name` VARCHAR(100), `name_url` VARCHAR(100), `first_page` VARCHAR(50), `image_id` VARCHAR(50), `position` INTEGER, `manga_id` INT(10) UNSIGNED NOT NULL, PRIMARY KEY(`id`)) ENGINE = InnoDB CHARACTER SET utf8 COLLATE utf8_general_ci[0m
+(0.014625) CREATE TABLE `chapters` (`id` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT, `name` VARCHAR(100), `name_url` VARCHAR(100), `first_page` VARCHAR(50), `image_id` VARCHAR(50), `position` INTEGER, `manga_id` INT(10) UNSIGNED NOT NULL, PRIMARY KEY(`id`)) ENGINE = InnoDB CHARACTER SET utf8 COLLATE utf8_general_ci
+  [1m[35mSQL (7.731ms)[0m  CREATE INDEX `index_chapters_name_url` ON `chapters` (`name_url`)
+(0.007731) CREATE INDEX `index_chapters_name_url` ON `chapters` (`name_url`)
+  [1m[36mSQL (8.333ms)[0m  [1mCREATE INDEX `index_chapters_manga` ON `chapters` (`manga_id`)[0m
+(0.008333) CREATE INDEX `index_chapters_manga` ON `chapters` (`manga_id`)
+  [1m[35mSQL (0.137ms)[0m  DROP TABLE IF EXISTS `genres`
+(0.000137) DROP TABLE IF EXISTS `genres`
+  [1m[36mSQL (0.467ms)[0m  [1mSHOW TABLES LIKE 'genres'[0m
+(0.000467) SHOW TABLES LIKE 'genres'
+  [1m[35mSQL (6.601ms)[0m  CREATE TABLE `genres` (`id` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT, `name` VARCHAR(50), PRIMARY KEY(`id`)) ENGINE = InnoDB CHARACTER SET utf8 COLLATE utf8_general_ci
+(0.006601) CREATE TABLE `genres` (`id` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT, `name` VARCHAR(50), PRIMARY KEY(`id`)) ENGINE = InnoDB CHARACTER SET utf8 COLLATE utf8_general_ci
+  [1m[36mSQL (0.134ms)[0m  [1mDROP TABLE IF EXISTS `mangas`[0m
+(0.000134) DROP TABLE IF EXISTS `mangas`
+  [1m[35mSQL (0.237ms)[0m  SHOW TABLES LIKE 'mangas'
+(0.000237) SHOW TABLES LIKE 'mangas'
+  [1m[36mSQL (5.275ms)[0m  [1mCREATE TABLE `mangas` (`id` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT, `name` VARCHAR(150), `name_url` VARCHAR(150), `latest_chapter` INTEGER, `status_id` INTEGER, `last_update` DATETIME, `rank_om` INTEGER, `image_id` VARCHAR(50), `scraped` BOOLEAN, `published` BOOLEAN DEFAULT TRUE, `site_id` INT(10) UNSIGNED NOT NULL, PRIMARY KEY(`id`)) ENGINE = InnoDB CHARACTER SET utf8 COLLATE utf8_general_ci[0m
+(0.005275) CREATE TABLE `mangas` (`id` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT, `name` VARCHAR(150), `name_url` VARCHAR(150), `latest_chapter` INTEGER, `status_id` INTEGER, `last_update` DATETIME, `rank_om` INTEGER, `image_id` VARCHAR(50), `scraped` BOOLEAN, `published` BOOLEAN DEFAULT TRUE, `site_id` INT(10) UNSIGNED NOT NULL, PRIMARY KEY(`id`)) ENGINE = InnoDB CHARACTER SET utf8 COLLATE utf8_general_ci
+  [1m[35mSQL (5.834ms)[0m  CREATE INDEX `index_mangas_name_url` ON `mangas` (`name_url`)
+(0.005834) CREATE INDEX `index_mangas_name_url` ON `mangas` (`name_url`)
+  [1m[36mSQL (5.398ms)[0m  [1mCREATE INDEX `index_mangas_status_id` ON `mangas` (`status_id`)[0m
+(0.005398) CREATE INDEX `index_mangas_status_id` ON `mangas` (`status_id`)
+  [1m[35mSQL (10.711ms)[0m  CREATE INDEX `index_mangas_published` ON `mangas` (`published`)
+(0.010711) CREATE INDEX `index_mangas_published` ON `mangas` (`published`)
+  [1m[36mSQL (7.902ms)[0m  [1mCREATE INDEX `index_mangas_site` ON `mangas` (`site_id`)[0m
+(0.007902) CREATE INDEX `index_mangas_site` ON `mangas` (`site_id`)
+  [1m[35mSQL (0.120ms)[0m  DROP TABLE IF EXISTS `manga_genres`
+(0.000120) DROP TABLE IF EXISTS `manga_genres`
+  [1m[36mSQL (0.213ms)[0m  [1mSHOW TABLES LIKE 'manga_genres'[0m
+(0.000213) SHOW TABLES LIKE 'manga_genres'
+  [1m[35mSQL (4.923ms)[0m  CREATE TABLE `manga_genres` (`id` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT, `genre_id` INT(10) UNSIGNED NOT NULL, `manga_id` INT(10) UNSIGNED NOT NULL, PRIMARY KEY(`id`)) ENGINE = InnoDB CHARACTER SET utf8 COLLATE utf8_general_ci
+(0.004923) CREATE TABLE `manga_genres` (`id` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT, `genre_id` INT(10) UNSIGNED NOT NULL, `manga_id` INT(10) UNSIGNED NOT NULL, PRIMARY KEY(`id`)) ENGINE = InnoDB CHARACTER SET utf8 COLLATE utf8_general_ci
+  [1m[36mSQL (5.151ms)[0m  [1mCREATE INDEX `index_manga_genres_genre` ON `manga_genres` (`genre_id`)[0m
+(0.005151) CREATE INDEX `index_manga_genres_genre` ON `manga_genres` (`genre_id`)
+  [1m[35mSQL (7.402ms)[0m  CREATE INDEX `index_manga_genres_manga` ON `manga_genres` (`manga_id`)
+(0.007402) CREATE INDEX `index_manga_genres_manga` ON `manga_genres` (`manga_id`)
+  [1m[36mSQL (0.114ms)[0m  [1mDROP TABLE IF EXISTS `pages`[0m
+(0.000114) DROP TABLE IF EXISTS `pages`
+  [1m[35mSQL (0.212ms)[0m  SHOW TABLES LIKE 'pages'
+(0.000212) SHOW TABLES LIKE 'pages'
+  [1m[36mSQL (5.361ms)[0m  [1mCREATE TABLE `pages` (`id` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT, `name` VARCHAR(50), `chapter_id` INT(10) UNSIGNED NOT NULL, PRIMARY KEY(`id`)) ENGINE = InnoDB CHARACTER SET utf8 COLLATE utf8_general_ci[0m
+(0.005361) CREATE TABLE `pages` (`id` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT, `name` VARCHAR(50), `chapter_id` INT(10) UNSIGNED NOT NULL, PRIMARY KEY(`id`)) ENGINE = InnoDB CHARACTER SET utf8 COLLATE utf8_general_ci
+  [1m[35mSQL (7.634ms)[0m  CREATE INDEX `index_pages_chapter` ON `pages` (`chapter_id`)
+(0.007634) CREATE INDEX `index_pages_chapter` ON `pages` (`chapter_id`)
+  [1m[36mSQL (0.130ms)[0m  [1mDROP TABLE IF EXISTS `sites`[0m
+(0.000130) DROP TABLE IF EXISTS `sites`
+  [1m[35mSQL (0.243ms)[0m  SHOW TABLES LIKE 'sites'
+(0.000243) SHOW TABLES LIKE 'sites'
+  [1m[36mSQL (3.081ms)[0m  [1mCREATE TABLE `sites` (`id` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT, `name` VARCHAR(50), `url` VARCHAR(50), `format` VARCHAR(255), `directory` VARCHAR(50), `js_url_stub` VARCHAR(50), PRIMARY KEY(`id`)) ENGINE = InnoDB CHARACTER SET utf8 COLLATE utf8_general_ci[0m
+(0.003081) CREATE TABLE `sites` (`id` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT, `name` VARCHAR(50), `url` VARCHAR(50), `format` VARCHAR(255), `directory` VARCHAR(50), `js_url_stub` VARCHAR(50), PRIMARY KEY(`id`)) ENGINE = InnoDB CHARACTER SET utf8 COLLATE utf8_general_ci
+  [1m[35mSQL (0.121ms)[0m  DROP TABLE IF EXISTS `submissions`
+(0.000121) DROP TABLE IF EXISTS `submissions`
+  [1m[36mSQL (0.213ms)[0m  [1mSHOW TABLES LIKE 'submissions'[0m
+(0.000213) SHOW TABLES LIKE 'submissions'
+  [1m[35mSQL (3.237ms)[0m  CREATE TABLE `submissions` (`id` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT, `name` VARCHAR(50), `chapters_url` VARCHAR(50), `first_page_url` VARCHAR(50), `email` VARCHAR(50), PRIMARY KEY(`id`)) ENGINE = InnoDB CHARACTER SET utf8 COLLATE utf8_general_ci
+(0.003237) CREATE TABLE `submissions` (`id` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT, `name` VARCHAR(50), `chapters_url` VARCHAR(50), `first_page_url` VARCHAR(50), `email` VARCHAR(50), PRIMARY KEY(`id`)) ENGINE = InnoDB CHARACTER SET utf8 COLLATE utf8_general_ci
+[datamapper] Setting up the "test" environment:
+[datamapper] Setting up :default repository: 'mangapad_test' on mysql
+
+
+Started GET "/" for 127.0.0.1 at 2011-03-29 23:19:32 +0200
+  Processing by MangasController#index as HTML
+  [1m[36mSQL (0.088ms)[0m  [1mSET sql_auto_is_null = 0[0m
+  [1m[35mSQL (0.058ms)[0m  SET SESSION sql_mode = 'ANSI,NO_BACKSLASH_ESCAPES,NO_DIR_IN_CREATE,NO_ENGINE_SUBSTITUTION,NO_UNSIGNED_SUBTRACTION,TRADITIONAL'
+  [1m[36mSQL (0.308ms)[0m  [1mSELECT COUNT(*) FROM `mangas`[0m
+  [1m[35mSQL (0.230ms)[0m  SELECT `id`, `name`, `name_url`, `latest_chapter`, `status_id`, `last_update`, `rank_om`, `image_id`, `scraped`, `published`, `site_id` FROM `mangas` WHERE `published` = TRUE ORDER BY `id` LIMIT 70
+Rendered collection (0.0ms)
+  [1m[36mSQL (0.124ms)[0m  [1mSELECT COUNT(*) FROM `mangas`[0m
+Rendered mangas/index.html.haml within layouts/application (34.0ms)
+Completed 200 OK in 39ms (Views: 37.5ms | Models: 0.808ms)
+
+
+Started GET "/" for 127.0.0.1 at 2011-03-29 23:19:32 +0200
+  Processing by MangasController#index as HTML
+  [1m[35mSQL (0.148ms)[0m  SELECT COUNT(*) FROM `mangas`
+  [1m[36mSQL (0.202ms)[0m  [1mSELECT `id`, `name`, `name_url`, `latest_chapter`, `status_id`, `last_update`, `rank_om`, `image_id`, `scraped`, `published`, `site_id` FROM `mangas` WHERE `published` = TRUE ORDER BY `id` LIMIT 70[0m
+Rendered collection (0.0ms)
+  [1m[35mSQL (0.234ms)[0m  SELECT COUNT(*) FROM `mangas`
+Completed 200 OK in 8ms (Views: 7.1ms | Models: 0.584ms)
+[datamapper] Setting up the "test" environment:
+[datamapper] Setting up :default repository: 'mangapad_test' on mysql
+
+
+Started GET "/" for 127.0.0.1 at 2011-03-29 23:20:02 +0200
+  Processing by MangasController#index as HTML
+  [1m[36mSQL (0.075ms)[0m  [1mSET sql_auto_is_null = 0[0m
+  [1m[35mSQL (0.108ms)[0m  SET SESSION sql_mode = 'ANSI,NO_BACKSLASH_ESCAPES,NO_DIR_IN_CREATE,NO_ENGINE_SUBSTITUTION,NO_UNSIGNED_SUBTRACTION,TRADITIONAL'
+  [1m[36mSQL (0.255ms)[0m  [1mSELECT COUNT(*) FROM `mangas`[0m
+  [1m[35mSQL (0.225ms)[0m  SELECT `id`, `name`, `name_url`, `latest_chapter`, `status_id`, `last_update`, `rank_om`, `image_id`, `scraped`, `published`, `site_id` FROM `mangas` WHERE `published` = TRUE ORDER BY `id` LIMIT 70
+Rendered collection (0.0ms)
+  [1m[36mSQL (0.097ms)[0m  [1mSELECT COUNT(*) FROM `mangas`[0m
+Rendered mangas/index.html.haml within layouts/application (33.3ms)
+Completed 200 OK in 39ms (Views: 37.0ms | Models: 0.760ms)
+
+
+Started GET "/" for 127.0.0.1 at 2011-03-29 23:20:03 +0200
+  Processing by MangasController#index as HTML
+  [1m[35mSQL (0.146ms)[0m  SELECT COUNT(*) FROM `mangas`
+  [1m[36mSQL (0.210ms)[0m  [1mSELECT `id`, `name`, `name_url`, `latest_chapter`, `status_id`, `last_update`, `rank_om`, `image_id`, `scraped`, `published`, `site_id` FROM `mangas` WHERE `published` = TRUE ORDER BY `id` LIMIT 70[0m
+Rendered collection (0.0ms)
+  [1m[35mSQL (0.124ms)[0m  SELECT COUNT(*) FROM `mangas`
+Completed 200 OK in 8ms (Views: 7.2ms | Models: 0.480ms)
+[datamapper] Setting up the "test" environment:
+[datamapper] Setting up :default repository: 'mangapad_test' on mysql
+[datamapper] Setting up the "test" environment:
+[datamapper] Setting up :default repository: 'mangapad_test' on mysql
+
+
+Started GET "/" for 127.0.0.1 at 2011-03-29 23:21:48 +0200
+  Processing by MangasController#index as HTML
+  [1m[36mSQL (0.099ms)[0m  [1mSET sql_auto_is_null = 0[0m
+  [1m[35mSQL (0.071ms)[0m  SET SESSION sql_mode = 'ANSI,NO_BACKSLASH_ESCAPES,NO_DIR_IN_CREATE,NO_ENGINE_SUBSTITUTION,NO_UNSIGNED_SUBTRACTION,TRADITIONAL'
+  [1m[36mSQL (0.209ms)[0m  [1mSELECT COUNT(*) FROM `mangas`[0m
+  [1m[35mSQL (0.235ms)[0m  SELECT `id`, `name`, `name_url`, `latest_chapter`, `status_id`, `last_update`, `rank_om`, `image_id`, `scraped`, `published`, `site_id` FROM `mangas` WHERE `published` = TRUE ORDER BY `id` LIMIT 70
+Rendered collection (0.0ms)
+  [1m[36mSQL (0.126ms)[0m  [1mSELECT COUNT(*) FROM `mangas`[0m
+Rendered mangas/index.html.haml within layouts/application (34.4ms)
+Completed 200 OK in 40ms (Views: 38.2ms | Models: 0.740ms)
+
+
+Started GET "/" for 127.0.0.1 at 2011-03-29 23:21:48 +0200
+  Processing by MangasController#index as HTML
+  [1m[35mSQL (0.154ms)[0m  SELECT COUNT(*) FROM `mangas`
+  [1m[36mSQL (0.197ms)[0m  [1mSELECT `id`, `name`, `name_url`, `latest_chapter`, `status_id`, `last_update`, `rank_om`, `image_id`, `scraped`, `published`, `site_id` FROM `mangas` WHERE `published` = TRUE ORDER BY `id` LIMIT 70[0m
+Rendered collection (0.0ms)
+  [1m[35mSQL (0.122ms)[0m  SELECT COUNT(*) FROM `mangas`
+Completed 200 OK in 8ms (Views: 7.1ms | Models: 0.473ms)
+[datamapper] Setting up the "test" environment:
+[datamapper] Setting up :default repository: 'mangapad_test' on mysql
+
+
+Started GET "/" for 127.0.0.1 at 2011-03-29 23:24:40 +0200
+  Processing by MangasController#index as HTML
+  [1m[36mSQL (0.088ms)[0m  [1mSET sql_auto_is_null = 0[0m
+  [1m[35mSQL (0.077ms)[0m  SET SESSION sql_mode = 'ANSI,NO_BACKSLASH_ESCAPES,NO_DIR_IN_CREATE,NO_ENGINE_SUBSTITUTION,NO_UNSIGNED_SUBTRACTION,TRADITIONAL'
+  [1m[36mSQL (0.188ms)[0m  [1mSELECT COUNT(*) FROM `mangas`[0m
+  [1m[35mSQL (0.205ms)[0m  SELECT `id`, `name`, `name_url`, `latest_chapter`, `status_id`, `last_update`, `rank_om`, `image_id`, `scraped`, `published`, `site_id` FROM `mangas` WHERE `published` = TRUE ORDER BY `id` LIMIT 70
+Rendered collection (0.0ms)
+  [1m[36mSQL (0.100ms)[0m  [1mSELECT COUNT(*) FROM `mangas`[0m
+Rendered mangas/index.html.haml within layouts/application (33.9ms)
+Completed 200 OK in 39ms (Views: 37.7ms | Models: 0.658ms)
+
+
+Started GET "/" for 127.0.0.1 at 2011-03-29 23:24:40 +0200
+  Processing by MangasController#index as HTML
+  [1m[35mSQL (0.149ms)[0m  SELECT COUNT(*) FROM `mangas`
+  [1m[36mSQL (0.200ms)[0m  [1mSELECT `id`, `name`, `name_url`, `latest_chapter`, `status_id`, `last_update`, `rank_om`, `image_id`, `scraped`, `published`, `site_id` FROM `mangas` WHERE `published` = TRUE ORDER BY `id` LIMIT 70[0m
+Rendered collection (0.0ms)
+  [1m[35mSQL (0.109ms)[0m  SELECT COUNT(*) FROM `mangas`
+Completed 200 OK in 8ms (Views: 6.8ms | Models: 0.458ms)
+[datamapper] Setting up the "test" environment:
+[datamapper] Setting up :default repository: 'mangapad_test' on mysql
+
+
+Started GET "/" for 127.0.0.1 at 2011-03-29 23:48:18 +0200
+  Processing by MangasController#index as HTML
+  [1m[36mSQL (0.065ms)[0m  [1mSET sql_auto_is_null = 0[0m
+  [1m[35mSQL (0.057ms)[0m  SET SESSION sql_mode = 'ANSI,NO_BACKSLASH_ESCAPES,NO_DIR_IN_CREATE,NO_ENGINE_SUBSTITUTION,NO_UNSIGNED_SUBTRACTION,TRADITIONAL'
+  [1m[36mSQL (0.167ms)[0m  [1mSELECT COUNT(*) FROM `mangas`[0m
+  [1m[35mSQL (0.263ms)[0m  SELECT `id`, `name`, `name_url`, `latest_chapter`, `status_id`, `last_update`, `rank_om`, `image_id`, `scraped`, `published`, `site_id` FROM `mangas` WHERE `published` = TRUE ORDER BY `id` LIMIT 70
+Rendered collection (0.0ms)
+  [1m[36mSQL (0.127ms)[0m  [1mSELECT COUNT(*) FROM `mangas`[0m
+Rendered mangas/index.html.haml within layouts/application (32.0ms)
+Completed 200 OK in 39ms (Views: 37.4ms | Models: 0.679ms)
+
+
+Started GET "/" for 127.0.0.1 at 2011-03-29 23:48:18 +0200
+  Processing by MangasController#index as HTML
+  [1m[35mSQL (0.157ms)[0m  SELECT COUNT(*) FROM `mangas`
+  [1m[36mSQL (0.199ms)[0m  [1mSELECT `id`, `name`, `name_url`, `latest_chapter`, `status_id`, `last_update`, `rank_om`, `image_id`, `scraped`, `published`, `site_id` FROM `mangas` WHERE `published` = TRUE ORDER BY `id` LIMIT 70[0m
+Rendered collection (0.0ms)
+  [1m[35mSQL (0.116ms)[0m  SELECT COUNT(*) FROM `mangas`
+Completed 200 OK in 8ms (Views: 6.7ms | Models: 0.472ms)
+[datamapper] Setting up the "test" environment:
+[datamapper] Setting up :default repository: 'mangapad_test' on mysql
+
+
+Started GET "/mangas/316/chapters/17199" for 127.0.0.1 at 2011-03-29 23:51:23 +0200
+  Processing by ChaptersController#show as HTML
+  Parameters: {"manga_id"=>"316", "id"=>"17199"}
+  [1m[36mSQL (0.065ms)[0m  [1mSET sql_auto_is_null = 0[0m
+  [1m[35mSQL (0.057ms)[0m  SET SESSION sql_mode = 'ANSI,NO_BACKSLASH_ESCAPES,NO_DIR_IN_CREATE,NO_ENGINE_SUBSTITUTION,NO_UNSIGNED_SUBTRACTION,TRADITIONAL'
+  [1m[36mSQL (0.595ms)[0m  [1mSELECT `id`, `name`, `name_url`, `first_page`, `image_id`, `position`, `manga_id` FROM `chapters` WHERE `id` = 17199 LIMIT 1[0m
+Rendered public/404.html (0.5ms)
+Completed 404 Not Found in 10ms (Views: 4.7ms | Models: 0.717ms)
+[datamapper] Setting up the "test" environment:
+[datamapper] Setting up :default repository: 'mangapad_test' on mysql
+
+
+Started GET "/mangas/316/chapters/17199" for 127.0.0.1 at 2011-03-29 23:51:57 +0200
+  Processing by ChaptersController#show as HTML
+  Parameters: {"manga_id"=>"316", "id"=>"17199"}
+  [1m[36mSQL (0.074ms)[0m  [1mSET sql_auto_is_null = 0[0m
+  [1m[35mSQL (0.062ms)[0m  SET SESSION sql_mode = 'ANSI,NO_BACKSLASH_ESCAPES,NO_DIR_IN_CREATE,NO_ENGINE_SUBSTITUTION,NO_UNSIGNED_SUBTRACTION,TRADITIONAL'
+  [1m[36mSQL (0.191ms)[0m  [1mSELECT `id`, `name`, `name_url`, `first_page`, `image_id`, `position`, `manga_id` FROM `chapters` WHERE `id` = 17199 LIMIT 1[0m
+Rendered public/404.html (0.5ms)
+Completed 404 Not Found in 10ms (Views: 4.2ms | Models: 0.327ms)
+[datamapper] Setting up the "test" environment:
+[datamapper] Setting up :default repository: 'mangapad_test' on mysql
+
+
+Started GET "/mangas/316/chapters/17199" for 127.0.0.1 at 2011-03-29 23:52:12 +0200
+  Processing by ChaptersController#show as HTML
+  Parameters: {"manga_id"=>"316", "id"=>"17199"}
+  [1m[36mSQL (0.088ms)[0m  [1mSET sql_auto_is_null = 0[0m
+  [1m[35mSQL (0.062ms)[0m  SET SESSION sql_mode = 'ANSI,NO_BACKSLASH_ESCAPES,NO_DIR_IN_CREATE,NO_ENGINE_SUBSTITUTION,NO_UNSIGNED_SUBTRACTION,TRADITIONAL'
+  [1m[36mSQL (0.211ms)[0m  [1mSELECT `id`, `name`, `name_url`, `first_page`, `image_id`, `position`, `manga_id` FROM `chapters` WHERE `id` = 17199 LIMIT 1[0m
+Rendered public/404.html (0.5ms)
+Completed 404 Not Found in 11ms (Views: 4.6ms | Models: 0.361ms)
+[datamapper] Setting up the "test" environment:
+[datamapper] Setting up :default repository: 'mangapad_test' on mysql
+
+
+Started GET "/mangas/316/chapters/17199" for 127.0.0.1 at 2011-03-29 23:52:50 +0200
+  Processing by ChaptersController#show as HTML
+  Parameters: {"manga_id"=>"316", "id"=>"17199"}
+  [1m[36mSQL (0.064ms)[0m  [1mSET sql_auto_is_null = 0[0m
+  [1m[35mSQL (0.066ms)[0m  SET SESSION sql_mode = 'ANSI,NO_BACKSLASH_ESCAPES,NO_DIR_IN_CREATE,NO_ENGINE_SUBSTITUTION,NO_UNSIGNED_SUBTRACTION,TRADITIONAL'
+  [1m[36mSQL (0.198ms)[0m  [1mSELECT `id`, `name`, `name_url`, `first_page`, `image_id`, `position`, `manga_id` FROM `chapters` WHERE `id` = 17199 LIMIT 1[0m
+Rendered public/404.html (0.5ms)
+Completed 404 Not Found in 10ms (Views: 4.2ms | Models: 0.328ms)
+[datamapper] Setting up the "test" environment:
+[datamapper] Setting up :default repository: 'mangapad_test' on mysql
+
+
+Started GET "/mangas/316/chapters/17199" for 127.0.0.1 at 2011-03-29 23:52:59 +0200
+  Processing by ChaptersController#show as HTML
+  Parameters: {"manga_id"=>"316", "id"=>"17199"}
+  [1m[36mSQL (0.105ms)[0m  [1mSET sql_auto_is_null = 0[0m
+  [1m[35mSQL (0.058ms)[0m  SET SESSION sql_mode = 'ANSI,NO_BACKSLASH_ESCAPES,NO_DIR_IN_CREATE,NO_ENGINE_SUBSTITUTION,NO_UNSIGNED_SUBTRACTION,TRADITIONAL'
+  [1m[36mSQL (0.191ms)[0m  [1mSELECT `id`, `name`, `name_url`, `first_page`, `image_id`, `position`, `manga_id` FROM `chapters` WHERE `id` = 17199 LIMIT 1[0m
+Rendered public/404.html (0.5ms)
+Completed 404 Not Found in 10ms (Views: 4.3ms | Models: 0.354ms)
+[datamapper] Setting up the "test" environment:
+[datamapper] Setting up :default repository: 'mangapad_test' on mysql
+
+
+Started GET "/mangas/316/chapters/17199" for 127.0.0.1 at 2011-03-29 23:53:09 +0200
+  Processing by ChaptersController#show as HTML
+  Parameters: {"manga_id"=>"316", "id"=>"17199"}
+  [1m[36mSQL (0.091ms)[0m  [1mSET sql_auto_is_null = 0[0m
+  [1m[35mSQL (0.087ms)[0m  SET SESSION sql_mode = 'ANSI,NO_BACKSLASH_ESCAPES,NO_DIR_IN_CREATE,NO_ENGINE_SUBSTITUTION,NO_UNSIGNED_SUBTRACTION,TRADITIONAL'
+  [1m[36mSQL (0.209ms)[0m  [1mSELECT `id`, `name`, `name_url`, `first_page`, `image_id`, `position`, `manga_id` FROM `chapters` WHERE `id` = 17199 LIMIT 1[0m
+Rendered public/404.html (0.5ms)
+Completed 404 Not Found in 10ms (Views: 4.3ms | Models: 0.387ms)
+[datamapper] Setting up the "test" environment:
+[datamapper] Setting up :default repository: 'mangapad_test' on mysql
+
+
+Started GET "/mangas/316/chapters/17199" for 127.0.0.1 at 2011-03-29 23:54:00 +0200
+  Processing by ChaptersController#show as HTML
+  Parameters: {"manga_id"=>"316", "id"=>"17199"}
+  [1m[36mSQL (0.107ms)[0m  [1mSET sql_auto_is_null = 0[0m
+  [1m[35mSQL (0.092ms)[0m  SET SESSION sql_mode = 'ANSI,NO_BACKSLASH_ESCAPES,NO_DIR_IN_CREATE,NO_ENGINE_SUBSTITUTION,NO_UNSIGNED_SUBTRACTION,TRADITIONAL'
+  [1m[36mSQL (0.212ms)[0m  [1mSELECT `id`, `name`, `name_url`, `first_page`, `image_id`, `position`, `manga_id` FROM `chapters` WHERE `id` = 17199 LIMIT 1[0m
+Rendered public/404.html (0.5ms)
+Completed 404 Not Found in 10ms (Views: 4.3ms | Models: 0.411ms)
+
+
+Started GET "/" for 127.0.0.1 at 2011-03-29 23:54:00 +0200
+  Processing by MangasController#index as HTML
+  [1m[35mSQL (0.183ms)[0m  SELECT COUNT(*) FROM `mangas`
+  [1m[36mSQL (0.220ms)[0m  [1mSELECT `id`, `name`, `name_url`, `latest_chapter`, `status_id`, `last_update`, `rank_om`, `image_id`, `scraped`, `published`, `site_id` FROM `mangas` WHERE `published` = TRUE ORDER BY `id` LIMIT 70[0m
+Rendered collection (0.0ms)
+  [1m[35mSQL (0.102ms)[0m  SELECT COUNT(*) FROM `mangas`
+Completed 200 OK in 35ms (Views: 33.2ms | Models: 0.505ms)
+[datamapper] Setting up the "test" environment:
+[datamapper] Setting up :default repository: 'mangapad_test' on mysql
+
+
+Started GET "/mangas/316/chapters/17199" for 127.0.0.1 at 2011-03-29 23:54:30 +0200
+  Processing by ChaptersController#show as HTML
+  Parameters: {"manga_id"=>"316", "id"=>"17199"}
+  [1m[36mSQL (0.111ms)[0m  [1mSET sql_auto_is_null = 0[0m
+  [1m[35mSQL (0.064ms)[0m  SET SESSION sql_mode = 'ANSI,NO_BACKSLASH_ESCAPES,NO_DIR_IN_CREATE,NO_ENGINE_SUBSTITUTION,NO_UNSIGNED_SUBTRACTION,TRADITIONAL'
+  [1m[36mSQL (0.191ms)[0m  [1mSELECT `id`, `name`, `name_url`, `first_page`, `image_id`, `position`, `manga_id` FROM `chapters` WHERE `id` = 17199 LIMIT 1[0m
+Rendered public/404.html (0.5ms)
+Completed 404 Not Found in 10ms (Views: 4.4ms | Models: 0.366ms)
+
+
+Started GET "/img/img-a.onemanga.com/mangas/00000006/000052552/01.jpg" for 127.0.0.1 at 2011-03-29 23:54:31 +0200
+  Processing by ChaptersController#test as HTML
+  Parameters: {"id"=>"img-a.onemanga.com/mangas/00000006/000052552/01.jpg"}
+Completed   in 1ms
+[datamapper] Setting up the "test" environment:
+[datamapper] Setting up :default repository: 'mangapad_test' on mysql
+
+
+Started GET "/mangas/316/chapters/17199" for 127.0.0.1 at 2011-03-30 00:02:27 +0200
+  Processing by ChaptersController#show as HTML
+  Parameters: {"manga_id"=>"316", "id"=>"17199"}
+  [1m[36mSQL (0.079ms)[0m  [1mSET sql_auto_is_null = 0[0m
+  [1m[35mSQL (0.099ms)[0m  SET SESSION sql_mode = 'ANSI,NO_BACKSLASH_ESCAPES,NO_DIR_IN_CREATE,NO_ENGINE_SUBSTITUTION,NO_UNSIGNED_SUBTRACTION,TRADITIONAL'
+  [1m[36mSQL (0.228ms)[0m  [1mSELECT `id`, `name`, `name_url`, `first_page`, `image_id`, `position`, `manga_id` FROM `chapters` WHERE `id` = 17199 LIMIT 1[0m
+Rendered public/404.html (0.5ms)
+Completed 404 Not Found in 10ms (Views: 4.5ms | Models: 0.406ms)
+
+
+Started GET "/img/img-a.onemanga.com/mangas/00000006/000052552/01.jpg" for 127.0.0.1 at 2011-03-30 00:02:27 +0200
+  Processing by ChaptersController#test as HTML
+  Parameters: {"id"=>"img-a.onemanga.com/mangas/00000006/000052552/01.jpg"}
+Completed   in 1ms
+[datamapper] Setting up the "test" environment:
+[datamapper] Setting up :default repository: 'mangapad_test' on mysql
+
+
+Started GET "/mangas/316/chapters/17199" for 127.0.0.1 at 2011-03-30 00:14:39 +0200
+  Processing by ChaptersController#show as HTML
+  Parameters: {"manga_id"=>"316", "id"=>"17199"}
+  [1m[36mSQL (0.111ms)[0m  [1mSET sql_auto_is_null = 0[0m
+  [1m[35mSQL (0.082ms)[0m  SET SESSION sql_mode = 'ANSI,NO_BACKSLASH_ESCAPES,NO_DIR_IN_CREATE,NO_ENGINE_SUBSTITUTION,NO_UNSIGNED_SUBTRACTION,TRADITIONAL'
+  [1m[36mSQL (0.251ms)[0m  [1mSELECT `id`, `name`, `name_url`, `first_page`, `image_id`, `position`, `manga_id` FROM `chapters` WHERE `id` = 17199 LIMIT 1[0m
+Rendered public/404.html (0.5ms)
+Completed 404 Not Found in 10ms (Views: 4.3ms | Models: 0.444ms)
+
+
+Started GET "/img/img-a.onemanga.com/mangas/00000006/000052552/01.jpg" for 127.0.0.1 at 2011-03-30 00:14:39 +0200
+  Processing by ChaptersController#test as HTML
+  Parameters: {"id"=>"img-a.onemanga.com/mangas/00000006/000052552/01.jpg"}
+Completed   in 3ms
+
+
+Started GET "/" for 127.0.0.1 at 2011-03-30 00:14:39 +0200
+  Processing by MangasController#index as HTML
+  [1m[35mSQL (0.182ms)[0m  SELECT COUNT(*) FROM `mangas`
+  [1m[36mSQL (0.251ms)[0m  [1mSELECT `id`, `name`, `name_url`, `latest_chapter`, `status_id`, `last_update`, `rank_om`, `image_id`, `scraped`, `published`, `site_id` FROM `mangas` WHERE `published` = TRUE ORDER BY `id` LIMIT 70[0m
+Rendered collection (0.0ms)
+  [1m[35mSQL (0.131ms)[0m  SELECT COUNT(*) FROM `mangas`
+Completed 200 OK in 36ms (Views: 34.0ms | Models: 0.564ms)
+[datamapper] Setting up the "test" environment:
+[datamapper] Setting up :default repository: 'mangapad_test' on mysql
+
+
+Started GET "/mangas/316/chapters/17199" for 127.0.0.1 at 2011-03-30 00:15:43 +0200
+  Processing by ChaptersController#show as HTML
+  Parameters: {"manga_id"=>"316", "id"=>"17199"}
+  [1m[36mSQL (0.081ms)[0m  [1mSET sql_auto_is_null = 0[0m
+  [1m[35mSQL (0.112ms)[0m  SET SESSION sql_mode = 'ANSI,NO_BACKSLASH_ESCAPES,NO_DIR_IN_CREATE,NO_ENGINE_SUBSTITUTION,NO_UNSIGNED_SUBTRACTION,TRADITIONAL'
+  [1m[36mSQL (0.218ms)[0m  [1mSELECT `id`, `name`, `name_url`, `first_page`, `image_id`, `position`, `manga_id` FROM `chapters` WHERE `id` = 17199 LIMIT 1[0m
+Rendered public/404.html (0.5ms)
+Completed 404 Not Found in 10ms (Views: 4.5ms | Models: 0.411ms)
+
+
+Started GET "/img/img-a.onemanga.com/mangas/00000006/000052552/01.jpg" for 127.0.0.1 at 2011-03-30 00:15:43 +0200
+  Processing by ChaptersController#test as HTML
+  Parameters: {"id"=>"img-a.onemanga.com/mangas/00000006/000052552/01.jpg"}
+Completed   in 3ms
+[datamapper] Setting up the "test" environment:
+[datamapper] Setting up :default repository: 'mangapad_test' on mysql
+
+
+Started GET "/mangas/316/chapters/17199" for 127.0.0.1 at 2011-03-30 00:16:30 +0200
+  Processing by ChaptersController#show as HTML
+  Parameters: {"manga_id"=>"316", "id"=>"17199"}
+  [1m[36mSQL (0.078ms)[0m  [1mSET sql_auto_is_null = 0[0m
+  [1m[35mSQL (0.075ms)[0m  SET SESSION sql_mode = 'ANSI,NO_BACKSLASH_ESCAPES,NO_DIR_IN_CREATE,NO_ENGINE_SUBSTITUTION,NO_UNSIGNED_SUBTRACTION,TRADITIONAL'
+  [1m[36mSQL (0.209ms)[0m  [1mSELECT `id`, `name`, `name_url`, `first_page`, `image_id`, `position`, `manga_id` FROM `chapters` WHERE `id` = 17199 LIMIT 1[0m
+Rendered public/404.html (0.6ms)
+Completed 404 Not Found in 10ms (Views: 4.7ms | Models: 0.362ms)
+
+
+Started GET "/img/img-a.onemanga.com/mangas/00000006/000052552/01.jpg" for 127.0.0.1 at 2011-03-30 00:16:30 +0200
+  Processing by ChaptersController#test as HTML
+  Parameters: {"id"=>"img-a.onemanga.com/mangas/00000006/000052552/01.jpg"}
+Sent data image.jpg (0.3ms)
+Completed   in 1410ms
+[datamapper] Setting up the "test" environment:
+[datamapper] Setting up :default repository: 'mangapad_test' on mysql
+
+
+Started GET "/mangas/316/chapters/17199" for 127.0.0.1 at 2011-03-30 00:16:44 +0200
+  Processing by ChaptersController#show as HTML
+  Parameters: {"manga_id"=>"316", "id"=>"17199"}
+  [1m[36mSQL (0.079ms)[0m  [1mSET sql_auto_is_null = 0[0m
+  [1m[35mSQL (0.080ms)[0m  SET SESSION sql_mode = 'ANSI,NO_BACKSLASH_ESCAPES,NO_DIR_IN_CREATE,NO_ENGINE_SUBSTITUTION,NO_UNSIGNED_SUBTRACTION,TRADITIONAL'
+  [1m[36mSQL (0.235ms)[0m  [1mSELECT `id`, `name`, `name_url`, `first_page`, `image_id`, `position`, `manga_id` FROM `chapters` WHERE `id` = 17199 LIMIT 1[0m
+Rendered public/404.html (0.5ms)
+Completed 404 Not Found in 10ms (Views: 4.5ms | Models: 0.394ms)
+
+
+Started GET "/img/img-a.onemanga.com/mangas/00000006/000052552/01.jpg" for 127.0.0.1 at 2011-03-30 00:16:44 +0200
+  Processing by ChaptersController#test as HTML
+  Parameters: {"id"=>"img-a.onemanga.com/mangas/00000006/000052552/01.jpg"}
+Completed 200 OK in 13ms (Views: 12.1ms | Models: 0.000ms)
+[datamapper] Setting up the "test" environment:
+[datamapper] Setting up :default repository: 'mangapad_test' on mysql
+
+
+Started GET "/mangas/316/chapters/17199" for 127.0.0.1 at 2011-03-30 00:16:55 +0200
+  Processing by ChaptersController#show as HTML
+  Parameters: {"manga_id"=>"316", "id"=>"17199"}
+  [1m[36mSQL (0.097ms)[0m  [1mSET sql_auto_is_null = 0[0m
+  [1m[35mSQL (0.082ms)[0m  SET SESSION sql_mode = 'ANSI,NO_BACKSLASH_ESCAPES,NO_DIR_IN_CREATE,NO_ENGINE_SUBSTITUTION,NO_UNSIGNED_SUBTRACTION,TRADITIONAL'
+  [1m[36mSQL (0.196ms)[0m  [1mSELECT `id`, `name`, `name_url`, `first_page`, `image_id`, `position`, `manga_id` FROM `chapters` WHERE `id` = 17199 LIMIT 1[0m
+Rendered public/404.html (0.5ms)
+Completed 404 Not Found in 10ms (Views: 4.4ms | Models: 0.375ms)
+
+
+Started GET "/img/img-a.onemanga.com/mangas/00000006/000052552/01.jpg" for 127.0.0.1 at 2011-03-30 00:16:55 +0200
+  Processing by ChaptersController#test as HTML
+  Parameters: {"id"=>"img-a.onemanga.com/mangas/00000006/000052552/01.jpg"}
+Sent data image.jpg (12.6ms)
+Completed 200 OK in 1305ms (Views: 12.5ms | Models: 0.000ms)
+[datamapper] Setting up the "test" environment:
+[datamapper] Setting up :default repository: 'mangapad_test' on mysql
+
+
+Started GET "/mangas/316/chapters/17199" for 127.0.0.1 at 2011-03-30 00:17:11 +0200
+  Processing by ChaptersController#show as HTML
+  Parameters: {"manga_id"=>"316", "id"=>"17199"}
+  [1m[36mSQL (0.079ms)[0m  [1mSET sql_auto_is_null = 0[0m
+  [1m[35mSQL (0.075ms)[0m  SET SESSION sql_mode = 'ANSI,NO_BACKSLASH_ESCAPES,NO_DIR_IN_CREATE,NO_ENGINE_SUBSTITUTION,NO_UNSIGNED_SUBTRACTION,TRADITIONAL'
+  [1m[36mSQL (0.259ms)[0m  [1mSELECT `id`, `name`, `name_url`, `first_page`, `image_id`, `position`, `manga_id` FROM `chapters` WHERE `id` = 17199 LIMIT 1[0m
+Rendered public/404.html (0.5ms)
+Completed 404 Not Found in 10ms (Views: 4.4ms | Models: 0.413ms)
+
+
+Started GET "/img/img-a.onemanga.com/mangas/00000006/000052552/01.jpg" for 127.0.0.1 at 2011-03-30 00:17:11 +0200
+  Processing by ChaptersController#test as HTML
+  Parameters: {"id"=>"img-a.onemanga.com/mangas/00000006/000052552/01.jpg"}
+Sent data image.jpg (12.5ms)
+Completed 200 OK in 1374ms (Views: 12.4ms | Models: 0.000ms)
+[datamapper] Setting up the "test" environment:
+[datamapper] Setting up :default repository: 'mangapad_test' on mysql
+  [1m[36mSQL (0.112ms)[0m  [1mSET sql_auto_is_null = 0[0m
+  [1m[35mSQL (0.072ms)[0m  SET SESSION sql_mode = 'ANSI,NO_BACKSLASH_ESCAPES,NO_DIR_IN_CREATE,NO_ENGINE_SUBSTITUTION,NO_UNSIGNED_SUBTRACTION,TRADITIONAL'
+  [1m[36mSQL (0.471ms)[0m  [1mINSERT INTO `sites` (`name`, `url`, `format`, `directory`, `js_url_stub`) VALUES ('onemanga', 'www.onemanga.com', '%s/%d/%s/', 'directory/', 'http://content.s-onemanga.com/manga-%d.js')[0m
+  [1m[35mSQL (0.322ms)[0m  INSERT INTO `mangas` (`name`, `published`, `site_id`) VALUES ('Eyeshield 21', TRUE, 1)
+
+
+Started GET "/mangas/1/chapters/1" for 127.0.0.1 at 2011-03-30 00:20:48 +0200
+  Processing by ChaptersController#show as HTML
+  Parameters: {"manga_id"=>"1", "id"=>"1"}
+  [1m[36mSQL (0.241ms)[0m  [1mSELECT `id`, `name`, `name_url`, `first_page`, `image_id`, `position`, `manga_id` FROM `chapters` WHERE `id` = 1 LIMIT 1[0m
+Rendered public/404.html (0.5ms)
+Completed 404 Not Found in 6ms (Views: 4.3ms | Models: 1.218ms)
+
+
+Started GET "/img/img-a.onemanga.com/mangas/00000006/000052552/01.jpg" for 127.0.0.1 at 2011-03-30 00:20:48 +0200
+  Processing by ChaptersController#test as HTML
+  Parameters: {"id"=>"img-a.onemanga.com/mangas/00000006/000052552/01.jpg"}
+Sent data image.jpg (12.6ms)
+Completed 200 OK in 1327ms (Views: 12.4ms | Models: 0.000ms)
+[datamapper] Setting up the "test" environment:
+[datamapper] Setting up :default repository: 'mangapad_test' on mysql
+  [1m[36mSQL (0.097ms)[0m  [1mSET sql_auto_is_null = 0[0m
+  [1m[35mSQL (0.059ms)[0m  SET SESSION sql_mode = 'ANSI,NO_BACKSLASH_ESCAPES,NO_DIR_IN_CREATE,NO_ENGINE_SUBSTITUTION,NO_UNSIGNED_SUBTRACTION,TRADITIONAL'
+  [1m[36mSQL (0.543ms)[0m  [1mINSERT INTO `sites` (`name`, `url`, `format`, `directory`, `js_url_stub`) VALUES ('onemanga', 'www.onemanga.com', '%s/%d/%s/', 'directory/', 'http://content.s-onemanga.com/manga-%d.js')[0m
+  [1m[35mSQL (0.349ms)[0m  INSERT INTO `mangas` (`name`, `published`, `site_id`) VALUES ('Eyeshield 21', TRUE, 2)
+  [1m[36mSQL (0.228ms)[0m  [1mINSERT INTO `chapters` (`name`, `manga_id`) VALUES ('1', 2)[0m
+  [1m[35mSQL (0.355ms)[0m  INSERT INTO `pages` (`name`, `chapter_id`) VALUES ('1', 1)
+
+
+Started GET "/mangas/1/chapters/1" for 127.0.0.1 at 2011-03-30 00:22:30 +0200
+  Processing by ChaptersController#show as HTML
+  Parameters: {"manga_id"=>"1", "id"=>"1"}
+  [1m[36mSQL (0.303ms)[0m  [1mSELECT `id`, `name`, `name_url`, `first_page`, `image_id`, `position`, `manga_id` FROM `chapters` WHERE `id` = 1 LIMIT 1[0m
+  [1m[35mSQL (0.155ms)[0m  SELECT `id`, `name`, `name_url`, `latest_chapter`, `status_id`, `last_update`, `rank_om`, `image_id`, `scraped`, `published`, `site_id` FROM `mangas` WHERE `id` = 2 LIMIT 1
+  [1m[36mSQL (0.280ms)[0m  [1mSELECT `id`, `chapter_id` FROM `pages` WHERE `chapter_id` = 1 ORDER BY `id` LIMIT 1[0m
+  [1m[35mSQL (0.222ms)[0m  SELECT `id`, `name` FROM `pages` WHERE `id` = 1 ORDER BY `id`
+  [1m[36mSQL (0.267ms)[0m  [1mSELECT `id`, `name`, `name_url`, `first_page`, `image_id`, `position`, `manga_id` FROM `chapters` WHERE `manga_id` = 2 ORDER BY `id`[0m
+Rendered chapters/show.html.haml within layouts/read (20.2ms)
+Completed   in 33ms
+
+
+Started GET "/img/img-a.onemanga.com/mangas/00000006/000052552/01.jpg" for 127.0.0.1 at 2011-03-30 00:22:31 +0200
+  Processing by ChaptersController#test as HTML
+  Parameters: {"id"=>"img-a.onemanga.com/mangas/00000006/000052552/01.jpg"}
+Sent data image.jpg (12.3ms)
+Completed 200 OK in 1327ms (Views: 12.2ms | Models: 0.489ms)
+[datamapper] Setting up the "test" environment:
+[datamapper] Setting up :default repository: 'mangapad_test' on mysql
+  [1m[36mSQL (0.096ms)[0m  [1mSET sql_auto_is_null = 0[0m
+  [1m[35mSQL (0.062ms)[0m  SET SESSION sql_mode = 'ANSI,NO_BACKSLASH_ESCAPES,NO_DIR_IN_CREATE,NO_ENGINE_SUBSTITUTION,NO_UNSIGNED_SUBTRACTION,TRADITIONAL'
+  [1m[36mSQL (0.349ms)[0m  [1mINSERT INTO `sites` (`name`, `url`, `format`, `directory`, `js_url_stub`) VALUES ('onemanga', 'www.onemanga.com', '%s/%d/%s/', 'directory/', 'http://content.s-onemanga.com/manga-%d.js')[0m
+  [1m[35mSQL (0.320ms)[0m  INSERT INTO `mangas` (`name`, `published`, `site_id`) VALUES ('Eyeshield 21', TRUE, 3)
+
+
+Started GET "/img/img-a.onemanga.com/mangas/00000006/000052552/01.jpg" for 127.0.0.1 at 2011-03-30 00:24:06 +0200
+  Processing by ChaptersController#test as HTML
+  Parameters: {"id"=>"img-a.onemanga.com/mangas/00000006/000052552/01.jpg"}
+Sent data image.jpg (13.0ms)
+Completed 200 OK in 1334ms (Views: 12.9ms | Models: 0.827ms)
+[datamapper] Setting up the "test" environment:
+[datamapper] Setting up :default repository: 'mangapad_test' on mysql
+  [1m[36mSQL (0.079ms)[0m  [1mSET sql_auto_is_null = 0[0m
+  [1m[35mSQL (0.078ms)[0m  SET SESSION sql_mode = 'ANSI,NO_BACKSLASH_ESCAPES,NO_DIR_IN_CREATE,NO_ENGINE_SUBSTITUTION,NO_UNSIGNED_SUBTRACTION,TRADITIONAL'
+  [1m[36mSQL (0.294ms)[0m  [1mINSERT INTO `sites` (`name`, `url`, `format`, `directory`, `js_url_stub`) VALUES ('onemanga', 'www.onemanga.com', '%s/%d/%s/', 'directory/', 'http://content.s-onemanga.com/manga-%d.js')[0m
+  [1m[35mSQL (0.281ms)[0m  INSERT INTO `mangas` (`name`, `published`, `site_id`) VALUES ('Eyeshield 21', TRUE, 4)
+
+
+Started GET "/img/img-a.onemanga.com/mangas/00000006/000052552/01.jpg" for 127.0.0.1 at 2011-03-30 00:24:16 +0200
+  Processing by ChaptersController#test as HTML
+  Parameters: {"id"=>"img-a.onemanga.com/mangas/00000006/000052552/01.jpg"}
+Sent data image.jpg (12.6ms)
+Completed 200 OK in 1354ms (Views: 12.5ms | Models: 0.732ms)
+[datamapper] Setting up the "test" environment:
+[datamapper] Setting up :default repository: 'mangapad_test' on mysql
+  [1m[36mSQL (0.090ms)[0m  [1mSET sql_auto_is_null = 0[0m
+  [1m[35mSQL (0.085ms)[0m  SET SESSION sql_mode = 'ANSI,NO_BACKSLASH_ESCAPES,NO_DIR_IN_CREATE,NO_ENGINE_SUBSTITUTION,NO_UNSIGNED_SUBTRACTION,TRADITIONAL'
+  [1m[36mSQL (0.336ms)[0m  [1mINSERT INTO `sites` (`name`, `url`, `format`, `directory`, `js_url_stub`) VALUES ('onemanga', 'www.onemanga.com', '%s/%d/%s/', 'directory/', 'http://content.s-onemanga.com/manga-%d.js')[0m
+  [1m[35mSQL (0.335ms)[0m  INSERT INTO `mangas` (`name`, `published`, `site_id`) VALUES ('Eyeshield 21', TRUE, 5)
+
+
+Started GET "/img/img-a.onemanga.com/mangas/00000006/000052552/01.jpg" for 127.0.0.1 at 2011-03-30 00:24:27 +0200
+  Processing by ChaptersController#test as HTML
+  Parameters: {"id"=>"img-a.onemanga.com/mangas/00000006/000052552/01.jpg"}
+Sent data image.jpg (12.6ms)
+Completed 200 OK in 1347ms (Views: 12.5ms | Models: 0.846ms)
+[datamapper] Setting up the "test" environment:
+[datamapper] Setting up :default repository: 'mangapad_test' on mysql
+  [1m[36mSQL (0.092ms)[0m  [1mSET sql_auto_is_null = 0[0m
+  [1m[35mSQL (0.076ms)[0m  SET SESSION sql_mode = 'ANSI,NO_BACKSLASH_ESCAPES,NO_DIR_IN_CREATE,NO_ENGINE_SUBSTITUTION,NO_UNSIGNED_SUBTRACTION,TRADITIONAL'
+  [1m[36mSQL (0.302ms)[0m  [1mINSERT INTO `sites` (`name`, `url`, `format`, `directory`, `js_url_stub`) VALUES ('onemanga', 'www.onemanga.com', '%s/%d/%s/', 'directory/', 'http://content.s-onemanga.com/manga-%d.js')[0m
+  [1m[35mSQL (0.342ms)[0m  INSERT INTO `mangas` (`name`, `published`, `site_id`) VALUES ('Eyeshield 21', TRUE, 6)
+  [1m[36mSQL (0.235ms)[0m  [1mINSERT INTO `chapters` (`name`, `position`, `manga_id`) VALUES ('1', 1, 6)[0m
+  [1m[35mSQL (0.217ms)[0m  INSERT INTO `pages` (`name`, `chapter_id`) VALUES ('1', 2)
+
+
+Started GET "/mangas/1/chapters/1" for 127.0.0.1 at 2011-03-30 00:24:38 +0200
+  Processing by ChaptersController#show as HTML
+  Parameters: {"manga_id"=>"1", "id"=>"1"}
+  [1m[36mSQL (0.241ms)[0m  [1mSELECT `id`, `name`, `name_url`, `first_page`, `image_id`, `position`, `manga_id` FROM `chapters` WHERE `id` = 1 LIMIT 1[0m
+  [1m[35mSQL (0.144ms)[0m  SELECT `id`, `name`, `name_url`, `latest_chapter`, `status_id`, `last_update`, `rank_om`, `image_id`, `scraped`, `published`, `site_id` FROM `mangas` WHERE `id` = 2 LIMIT 1
+  [1m[36mSQL (0.176ms)[0m  [1mSELECT `id`, `chapter_id` FROM `pages` WHERE `chapter_id` = 1 ORDER BY `id` LIMIT 1[0m
+  [1m[35mSQL (0.139ms)[0m  SELECT `id`, `name` FROM `pages` WHERE `id` = 1 ORDER BY `id`
+  [1m[36mSQL (0.163ms)[0m  [1mSELECT `id`, `name`, `name_url`, `first_page`, `image_id`, `position`, `manga_id` FROM `chapters` WHERE `manga_id` = 2 ORDER BY `id`[0m
+Rendered chapters/show.html.haml within layouts/read (19.2ms)
+Completed   in 31ms
+
+
+Started GET "/img/img-a.onemanga.com/mangas/00000006/000052552/01.jpg" for 127.0.0.1 at 2011-03-30 00:24:38 +0200
+  Processing by ChaptersController#test as HTML
+  Parameters: {"id"=>"img-a.onemanga.com/mangas/00000006/000052552/01.jpg"}
+Sent data image.jpg (12.5ms)
+Completed 200 OK in 1301ms (Views: 12.4ms | Models: 0.302ms)
+[datamapper] Setting up the "test" environment:
+[datamapper] Setting up :default repository: 'mangapad_test' on mysql
+
+
+Started GET "/img/img-a.onemanga.com/mangas/00000006/000052552/01.jpg" for 127.0.0.1 at 2011-03-30 00:25:33 +0200
+  Processing by ChaptersController#test as HTML
+  Parameters: {"id"=>"img-a.onemanga.com/mangas/00000006/000052552/01.jpg"}
+Sent data image.jpg (55.5ms)
+Completed 200 OK in 1361ms (Views: 55.3ms | Models: 0.000ms)
+[datamapper] Setting up the "test" environment:
+[datamapper] Setting up :default repository: 'mangapad_test' on mysql
+
+
+Started GET "/img/img-a.onemanga.com/mangas/00000006/000052552/01.jpg" for 127.0.0.1 at 2011-03-30 00:26:52 +0200
+  Processing by ChaptersController#test as HTML
+  Parameters: {"id"=>"img-a.onemanga.com/mangas/00000006/000052552/01.jpg"}
+Sent data image.jpg (12.6ms)
+Completed 200 OK in 1341ms (Views: 12.5ms | Models: 0.000ms)
+[datamapper] Setting up the "test" environment:
+[datamapper] Setting up :default repository: 'mangapad_test' on mysql
+
+
+Started GET "/img/img-a.onemanga.com/mangas/00000006/000052552/01.jpg" for 127.0.0.1 at 2011-03-30 00:27:11 +0200
+  Processing by ChaptersController#test as HTML
+  Parameters: {"id"=>"img-a.onemanga.com/mangas/00000006/000052552/01.jpg"}
+Sent data image.jpg (12.6ms)
+Completed 200 OK in 1369ms (Views: 12.5ms | Models: 0.000ms)
+[datamapper] Setting up the "test" environment:
+[datamapper] Setting up :default repository: 'mangapad_test' on mysql
+
+
+Started GET "/img/img-a.onemanga.com/mangas/00000006/000052552/01.jpg" for 127.0.0.1 at 2011-03-30 00:27:33 +0200
+  Processing by ChaptersController#test as HTML
+  Parameters: {"id"=>"img-a.onemanga.com/mangas/00000006/000052552/01.jpg"}
+Sent data image.jpg (13.0ms)
+Completed 200 OK in 1338ms (Views: 12.8ms | Models: 0.000ms)
+[datamapper] Setting up the "test" environment:
+[datamapper] Setting up :default repository: 'mangapad_test' on mysql
+
+
+Started GET "/img/img-a.onemanga.com/mangas/00000006/000052552/01.jpg" for 127.0.0.1 at 2011-03-30 00:29:42 +0200
+  Processing by ChaptersController#test as HTML
+  Parameters: {"id"=>"img-a.onemanga.com/mangas/00000006/000052552/01.jpg"}
+Sent data image.jpg (12.7ms)
+Completed 200 OK in 1514ms (Views: 12.6ms | Models: 0.000ms)
+[datamapper] Setting up the "test" environment:
+[datamapper] Setting up :default repository: 'mangapad_test' on mysql
+
+
+Started GET "/img/img-a.onemanga.com/mangas/00000006/000052552/01.jpg" for 127.0.0.1 at 2011-03-30 00:29:53 +0200
+  Processing by ChaptersController#test as HTML
+  Parameters: {"id"=>"img-a.onemanga.com/mangas/00000006/000052552/01.jpg"}
+Sent data image.jpg (13.1ms)
+Completed 200 OK in 1354ms (Views: 12.9ms | Models: 0.000ms)
+[datamapper] Setting up the "test" environment:
+[datamapper] Setting up :default repository: 'mangapad_test' on mysql
+
+
+Started GET "/img/img-a.onemanga.com/mangas/00000006/000052552/01.jpg" for 127.0.0.1 at 2011-03-30 00:30:31 +0200
+  Processing by ChaptersController#test as HTML
+  Parameters: {"id"=>"img-a.onemanga.com/mangas/00000006/000052552/01.jpg"}
+Sent data image.jpg (51.4ms)
+Completed 200 OK in 1373ms (Views: 51.2ms | Models: 0.000ms)
+[datamapper] Setting up the "test" environment:
+[datamapper] Setting up :default repository: 'mangapad_test' on mysql
+
+
+Started GET "/img/img-a.onemanga.com/mangas/00000006/000052552/01.jpg" for 127.0.0.1 at 2011-03-30 00:31:28 +0200
+  Processing by ChaptersController#test as HTML
+  Parameters: {"id"=>"img-a.onemanga.com/mangas/00000006/000052552/01.jpg"}
+Sent data image.jpg (12.9ms)
+Completed 200 OK in 1339ms (Views: 12.7ms | Models: 0.000ms)
+[datamapper] Setting up the "test" environment:
+[datamapper] Setting up :default repository: 'mangapad_test' on mysql
+
+
+Started GET "/img/img-a.onemanga.com/mangas/00000006/000052552/01.jpg" for 127.0.0.1 at 2011-03-30 00:32:42 +0200
+  Processing by ChaptersController#test as HTML
+  Parameters: {"id"=>"img-a.onemanga.com/mangas/00000006/000052552/01.jpg"}
+Sent data image.jpg (13.1ms)
+Completed 200 OK in 1307ms (Views: 12.9ms | Models: 0.000ms)
+[datamapper] Setting up the "test" environment:
+[datamapper] Setting up :default repository: 'mangapad_test' on mysql
+
+
+Started GET "/img/img-a.onemanga.com/mangas/00000006/000052552/01.jpg" for 127.0.0.1 at 2011-03-30 00:33:22 +0200
+  Processing by ChaptersController#test as HTML
+  Parameters: {"id"=>"img-a.onemanga.com/mangas/00000006/000052552/01.jpg"}
+Sent data image.jpg (12.9ms)
+Completed 200 OK in 1292ms (Views: 12.7ms | Models: 0.000ms)
+[datamapper] Setting up the "test" environment:
+[datamapper] Setting up :default repository: 'mangapad_test' on mysql
+
+
+Started GET "/img/img-a.onemanga.com/mangas/00000006/000052552/01.jpg" for 127.0.0.1 at 2011-03-30 00:33:33 +0200
+  Processing by ChaptersController#test as HTML
+  Parameters: {"id"=>"img-a.onemanga.com/mangas/00000006/000052552/01.jpg"}
+Sent data image.jpg (13.0ms)
+Completed 200 OK in 1341ms (Views: 12.8ms | Models: 0.000ms)
+[datamapper] Setting up the "test" environment:
+[datamapper] Setting up :default repository: 'mangapad_test' on mysql
+
+
+Started GET "/img/img-a.onemanga.com/mangas/00000006/000052552/01.jpg" for 127.0.0.1 at 2011-03-30 00:33:48 +0200
+  Processing by ChaptersController#test as HTML
+  Parameters: {"id"=>"img-a.onemanga.com/mangas/00000006/000052552/01.jpg"}
+Sent data image.jpg (12.9ms)
+Completed 200 OK in 1311ms (Views: 12.8ms | Models: 0.000ms)
+[datamapper] Setting up the "test" environment:
+[datamapper] Setting up :default repository: 'mangapad_test' on mysql
+
+
+Started GET "/img/img-a.onemanga.com/mangas/00000006/000052552/01.jpg" for 127.0.0.1 at 2011-03-30 00:34:47 +0200
+  Processing by ChaptersController#test as HTML
+  Parameters: {"id"=>"img-a.onemanga.com/mangas/00000006/000052552/01.jpg"}
+Sent data image.jpg (12.8ms)
+Completed 200 OK in 1292ms (Views: 12.6ms | Models: 0.000ms)
+[datamapper] Setting up the "test" environment:
+[datamapper] Setting up :default repository: 'mangapad_test' on mysql
+[datamapper] Setting up the "test" environment:
+[datamapper] Setting up :default repository: 'mangapad_test' on mysql
+
+
+Started GET "/img/img-a.onemanga.com/mangas/00000006/000052552/01.jpg" for 127.0.0.1 at 2011-03-30 00:36:50 +0200
+  Processing by ChaptersController#test as HTML
+  Parameters: {"id"=>"img-a.onemanga.com/mangas/00000006/000052552/01.jpg"}
+Sent data image.jpg (12.8ms)
+Completed 200 OK in 1377ms (Views: 12.6ms | Models: 0.000ms)
+
+
+Started GET "/" for 127.0.0.1 at 2011-03-30 00:36:52 +0200
+  Processing by MangasController#index as HTML
+  [1m[36mSQL (0.092ms)[0m  [1mSET sql_auto_is_null = 0[0m
+  [1m[35mSQL (0.079ms)[0m  SET SESSION sql_mode = 'ANSI,NO_BACKSLASH_ESCAPES,NO_DIR_IN_CREATE,NO_ENGINE_SUBSTITUTION,NO_UNSIGNED_SUBTRACTION,TRADITIONAL'
+  [1m[36mSQL (0.184ms)[0m  [1mSELECT COUNT(*) FROM `mangas`[0m
+  [1m[35mSQL (0.228ms)[0m  SELECT `id`, `name`, `name_url`, `latest_chapter`, `status_id`, `last_update`, `rank_om`, `image_id`, `scraped`, `published`, `site_id` FROM `mangas` WHERE `published` = TRUE ORDER BY `id` LIMIT 70
+Rendered mangas/_manga.html.haml (2.0ms)
+Completed   in 28ms
+[datamapper] Setting up the "test" environment:
+[datamapper] Setting up :default repository: 'mangapad_test' on mysql
+
+
+Started GET "/img/img-a.onemanga.com/mangas/00000006/000052552/01.jpg" for 127.0.0.1 at 2011-03-30 00:42:14 +0200
+  Processing by ChaptersController#test as HTML
+  Parameters: {"id"=>"img-a.onemanga.com/mangas/00000006/000052552/01.jpg"}
+Sent data image.jpg (12.6ms)
+Completed 200 OK in 1363ms (Views: 12.4ms | Models: 0.000ms)
+
+
+Started GET "/" for 127.0.0.1 at 2011-03-30 00:42:15 +0200
+  Processing by MangasController#index as HTML
+  [1m[36mSQL (0.093ms)[0m  [1mSET sql_auto_is_null = 0[0m
+  [1m[35mSQL (0.077ms)[0m  SET SESSION sql_mode = 'ANSI,NO_BACKSLASH_ESCAPES,NO_DIR_IN_CREATE,NO_ENGINE_SUBSTITUTION,NO_UNSIGNED_SUBTRACTION,TRADITIONAL'
+  [1m[36mSQL (0.182ms)[0m  [1mSELECT COUNT(*) FROM `mangas`[0m
+  [1m[35mSQL (0.218ms)[0m  SELECT `id`, `name`, `name_url`, `latest_chapter`, `status_id`, `last_update`, `rank_om`, `image_id`, `scraped`, `published`, `site_id` FROM `mangas` WHERE `published` = TRUE ORDER BY `id` LIMIT 70
+Rendered mangas/_manga.html.haml (2.1ms)
+Completed   in 28ms
+[datamapper] Setting up the "test" environment:
+[datamapper] Setting up :default repository: 'mangapad_test' on mysql
+
+
+Started GET "/" for 127.0.0.1 at 2011-03-30 00:42:25 +0200
+  Processing by MangasController#index as HTML
+  [1m[36mSQL (0.101ms)[0m  [1mSET sql_auto_is_null = 0[0m
+  [1m[35mSQL (0.055ms)[0m  SET SESSION sql_mode = 'ANSI,NO_BACKSLASH_ESCAPES,NO_DIR_IN_CREATE,NO_ENGINE_SUBSTITUTION,NO_UNSIGNED_SUBTRACTION,TRADITIONAL'
+  [1m[36mSQL (0.174ms)[0m  [1mSELECT COUNT(*) FROM `mangas`[0m
+  [1m[35mSQL (0.255ms)[0m  SELECT `id`, `name`, `name_url`, `latest_chapter`, `status_id`, `last_update`, `rank_om`, `image_id`, `scraped`, `published`, `site_id` FROM `mangas` WHERE `published` = TRUE ORDER BY `id` LIMIT 70
+Rendered mangas/_manga.html.haml (2.0ms)
+Rendered mangas/index.html.haml within layouts/application (21.4ms)
+Completed   in 29ms
+
+
+Started GET "/img/img-a.onemanga.com/mangas/00000001/000052552/01.jpg" for 127.0.0.1 at 2011-03-30 00:42:25 +0200
+  Processing by ChaptersController#test as HTML
+  Parameters: {"id"=>"img-a.onemanga.com/mangas/00000001/000052552/01.jpg"}
+Sent data image.jpg (12.9ms)
+Completed 200 OK in 418ms (Views: 12.8ms | Models: 0.585ms)
+[datamapper] Setting up the "test" environment:
+[datamapper] Setting up :default repository: 'mangapad_test' on mysql
+
+
+Started GET "/img/img-a.onemanga.com/mangas/00000001/000052552/01.jpg" for 127.0.0.1 at 2011-03-30 00:43:30 +0200
+  Processing by ChaptersController#test as HTML
+  Parameters: {"id"=>"img-a.onemanga.com/mangas/00000001/000052552/01.jpg"}
+Sent data image.jpg (13.3ms)
+Completed 200 OK in 408ms (Views: 13.2ms | Models: 0.000ms)
+[datamapper] Setting up the "test" environment:
+[datamapper] Setting up :default repository: 'mangapad_test' on mysql
+
+
+Started GET "/img/img-a.onemanga.com/mangas/00000001/000052552/01.jpg" for 127.0.0.1 at 2011-03-30 00:44:29 +0200
+  Processing by ChaptersController#test as HTML
+  Parameters: {"id"=>"img-a.onemanga.com/mangas/00000001/000052552/01.jpg"}
+Sent data image.jpg (12.9ms)
+Completed 200 OK in 419ms (Views: 12.8ms | Models: 0.000ms)
+[datamapper] Setting up the "test" environment:
+[datamapper] Setting up :default repository: 'mangapad_test' on mysql
+  [1m[36mSQL (0.094ms)[0m  [1mSET sql_auto_is_null = 0[0m
+  [1m[35mSQL (0.092ms)[0m  SET SESSION sql_mode = 'ANSI,NO_BACKSLASH_ESCAPES,NO_DIR_IN_CREATE,NO_ENGINE_SUBSTITUTION,NO_UNSIGNED_SUBTRACTION,TRADITIONAL'
+  [1m[36mSQL (0.256ms)[0m  [1mSELECT `id`, `name`, `url`, `format`, `directory`, `js_url_stub` FROM `sites` ORDER BY `id`[0m
+  [1m[35mSQL (0.832ms)[0m  DELETE FROM `sites` WHERE `id` = 1
+  [1m[36mSQL (0.212ms)[0m  [1mDELETE FROM `sites` WHERE `id` = 2[0m
+  [1m[35mSQL (0.219ms)[0m  DELETE FROM `sites` WHERE `id` = 3
+  [1m[36mSQL (0.354ms)[0m  [1mDELETE FROM `sites` WHERE `id` = 4[0m
+  [1m[35mSQL (0.223ms)[0m  DELETE FROM `sites` WHERE `id` = 5
+  [1m[36mSQL (0.210ms)[0m  [1mDELETE FROM `sites` WHERE `id` = 6[0m
+  [1m[35mSQL (0.202ms)[0m  SELECT `id`, `name`, `name_url`, `latest_chapter`, `status_id`, `last_update`, `rank_om`, `image_id`, `scraped`, `published`, `site_id` FROM `mangas` ORDER BY `id`
+  [1m[36mSQL (0.309ms)[0m  [1mDELETE FROM `mangas` WHERE `id` = 1[0m
+  [1m[35mSQL (0.519ms)[0m  DELETE FROM `mangas` WHERE `id` = 2
+  [1m[36mSQL (0.226ms)[0m  [1mDELETE FROM `mangas` WHERE `id` = 3[0m
+  [1m[35mSQL (0.247ms)[0m  DELETE FROM `mangas` WHERE `id` = 4
+  [1m[36mSQL (0.226ms)[0m  [1mDELETE FROM `mangas` WHERE `id` = 5[0m
+  [1m[35mSQL (0.216ms)[0m  DELETE FROM `mangas` WHERE `id` = 6
+  [1m[36mSQL (0.145ms)[0m  [1mSELECT `id`, `name`, `name_url`, `first_page`, `image_id`, `position`, `manga_id` FROM `chapters` ORDER BY `id`[0m
+  [1m[35mSQL (0.230ms)[0m  DELETE FROM `chapters` WHERE `id` = 1
+  [1m[36mSQL (0.216ms)[0m  [1mDELETE FROM `chapters` WHERE `id` = 2[0m
+  [1m[35mSQL (0.121ms)[0m  SELECT `id`, `chapter_id` FROM `pages` ORDER BY `id`
+  [1m[36mSQL (0.232ms)[0m  [1mDELETE FROM `pages` WHERE `id` = 1[0m
+  [1m[35mSQL (0.215ms)[0m  DELETE FROM `pages` WHERE `id` = 2
+  [1m[36mSQL (0.247ms)[0m  [1mINSERT INTO `sites` (`name`, `url`, `format`, `directory`, `js_url_stub`) VALUES ('onemanga', 'www.onemanga.com', '%s/%d/%s/', 'directory/', 'http://content.s-onemanga.com/manga-%d.js')[0m
+  [1m[35mSQL (0.277ms)[0m  INSERT INTO `mangas` (`name`, `published`, `site_id`) VALUES ('Eyeshield 21', TRUE, 7)
+  [1m[36mSQL (0.228ms)[0m  [1mINSERT INTO `chapters` (`name`, `position`, `manga_id`) VALUES ('1', 1, 7)[0m
+  [1m[35mSQL (0.215ms)[0m  INSERT INTO `pages` (`name`, `chapter_id`) VALUES ('1', 3)
+
+
+Started GET "/mangas/1/chapters/1" for 127.0.0.1 at 2011-03-30 00:44:50 +0200
+  Processing by ChaptersController#show as HTML
+  Parameters: {"manga_id"=>"1", "id"=>"1"}
+  [1m[36mSQL (0.176ms)[0m  [1mSELECT `id`, `name`, `name_url`, `first_page`, `image_id`, `position`, `manga_id` FROM `chapters` WHERE `id` = 1 LIMIT 1[0m
+Rendered public/404.html (0.5ms)
+Completed 404 Not Found in 6ms (Views: 4.2ms | Models: 6.739ms)
+
+
+Started GET "/img/img-a.onemanga.com/mangas/00000001/000052552/01.jpg" for 127.0.0.1 at 2011-03-30 00:44:50 +0200
+  Processing by ChaptersController#test as HTML
+  Parameters: {"id"=>"img-a.onemanga.com/mangas/00000001/000052552/01.jpg"}
+Sent data image.jpg (12.5ms)
+Completed 200 OK in 417ms (Views: 12.3ms | Models: 0.000ms)
+[datamapper] Setting up the "test" environment:
+[datamapper] Setting up :default repository: 'mangapad_test' on mysql
+  [1m[36mSQL (0.102ms)[0m  [1mSET sql_auto_is_null = 0[0m
+  [1m[35mSQL (0.077ms)[0m  SET SESSION sql_mode = 'ANSI,NO_BACKSLASH_ESCAPES,NO_DIR_IN_CREATE,NO_ENGINE_SUBSTITUTION,NO_UNSIGNED_SUBTRACTION,TRADITIONAL'
+  [1m[36mSQL (0.206ms)[0m  [1mSELECT `id`, `name`, `url`, `format`, `directory`, `js_url_stub` FROM `sites` ORDER BY `id`[0m
+  [1m[35mSQL (0.537ms)[0m  DELETE FROM `sites` WHERE `id` = 7
+  [1m[36mSQL (0.147ms)[0m  [1mSELECT `id`, `name`, `name_url`, `latest_chapter`, `status_id`, `last_update`, `rank_om`, `image_id`, `scraped`, `published`, `site_id` FROM `mangas` ORDER BY `id`[0m
+  [1m[35mSQL (0.237ms)[0m  DELETE FROM `mangas` WHERE `id` = 7
+  [1m[36mSQL (0.303ms)[0m  [1mSELECT `id`, `name`, `name_url`, `first_page`, `image_id`, `position`, `manga_id` FROM `chapters` ORDER BY `id`[0m
+  [1m[35mSQL (0.358ms)[0m  DELETE FROM `chapters` WHERE `id` = 3
+  [1m[36mSQL (0.238ms)[0m  [1mSELECT `id`, `chapter_id` FROM `pages` ORDER BY `id`[0m
+  [1m[35mSQL (0.724ms)[0m  DELETE FROM `pages` WHERE `id` = 3
+  [1m[36mSQL (0.473ms)[0m  [1mINSERT INTO `sites` (`name`, `url`, `format`, `directory`, `js_url_stub`) VALUES ('onemanga', 'www.onemanga.com', '%s/%d/%s/', 'directory/', 'http://content.s-onemanga.com/manga-%d.js')[0m
+  [1m[35mSQL (0.399ms)[0m  INSERT INTO `mangas` (`name`, `published`, `site_id`) VALUES ('Eyeshield 21', TRUE, 8)
+  [1m[36mSQL (0.348ms)[0m  [1mINSERT INTO `chapters` (`name`, `position`, `manga_id`) VALUES ('1', 1, 8)[0m
+  [1m[35mSQL (0.368ms)[0m  INSERT INTO `pages` (`name`, `chapter_id`) VALUES ('1', 4)
+
+
+Started GET "/mangas/1/chapters/1" for 127.0.0.1 at 2011-03-30 00:46:53 +0200
+  Processing by ChaptersController#show as HTML
+  Parameters: {"manga_id"=>"1", "id"=>"1"}
+  [1m[36mSQL (0.176ms)[0m  [1mSELECT `id`, `name`, `name_url`, `first_page`, `image_id`, `position`, `manga_id` FROM `chapters` WHERE `id` = 1 LIMIT 1[0m
+Rendered public/404.html (0.5ms)
+Completed 404 Not Found in 6ms (Views: 4.2ms | Models: 4.693ms)
+
+
+Started GET "/img/img-a.onemanga.com/mangas/00000001/000052552/01.jpg" for 127.0.0.1 at 2011-03-30 00:46:53 +0200
+  Processing by ChaptersController#test as HTML
+  Parameters: {"id"=>"img-a.onemanga.com/mangas/00000001/000052552/01.jpg"}
+Sent data image.jpg (12.3ms)
+Completed 200 OK in 417ms (Views: 12.2ms | Models: 0.000ms)
+[datamapper] Setting up the "test" environment:
+[datamapper] Setting up :default repository: 'mangapad_test' on mysql
+
+
+Started GET "/img/img-a.onemanga.com/mangas/00000001/000052552/01.jpg" for 127.0.0.1 at 2011-03-30 00:47:42 +0200
+  Processing by ChaptersController#test as HTML
+  Parameters: {"id"=>"img-a.onemanga.com/mangas/00000001/000052552/01.jpg"}
+Sent data image.jpg (12.8ms)
+Completed 200 OK in 405ms (Views: 12.7ms | Models: 0.000ms)
+[datamapper] Setting up the "test" environment:
+[datamapper] Setting up :default repository: 'mangapad_test' on mysql
+
+
+Started GET "/img/img-a.onemanga.com/mangas/00000001/000052552/01.jpg" for 127.0.0.1 at 2011-03-30 00:48:14 +0200
+  Processing by ChaptersController#test as HTML
+  Parameters: {"id"=>"img-a.onemanga.com/mangas/00000001/000052552/01.jpg"}
+Sent data image.jpg (12.9ms)
+Completed 200 OK in 407ms (Views: 12.7ms | Models: 0.000ms)
+
+
+Started GET "/" for 127.0.0.1 at 2011-03-30 00:48:14 +0200
+  Processing by MangasController#index as HTML
+  [1m[36mSQL (0.091ms)[0m  [1mSET sql_auto_is_null = 0[0m
+  [1m[35mSQL (0.077ms)[0m  SET SESSION sql_mode = 'ANSI,NO_BACKSLASH_ESCAPES,NO_DIR_IN_CREATE,NO_ENGINE_SUBSTITUTION,NO_UNSIGNED_SUBTRACTION,TRADITIONAL'
+  [1m[36mSQL (0.182ms)[0m  [1mSELECT COUNT(*) FROM `mangas`[0m
+  [1m[35mSQL (0.244ms)[0m  SELECT `id`, `name`, `name_url`, `latest_chapter`, `status_id`, `last_update`, `rank_om`, `image_id`, `scraped`, `published`, `site_id` FROM `mangas` WHERE `published` = TRUE ORDER BY `id` LIMIT 70
+Rendered mangas/_manga.html.haml (2.1ms)
+Completed   in 28ms
+[datamapper] Setting up the "test" environment:
+[datamapper] Setting up :default repository: 'mangapad_test' on mysql
+
+
+Started GET "/" for 127.0.0.1 at 2011-03-30 00:49:01 +0200
+  Processing by MangasController#index as HTML
+  [1m[36mSQL (0.100ms)[0m  [1mSET sql_auto_is_null = 0[0m
+  [1m[35mSQL (0.081ms)[0m  SET SESSION sql_mode = 'ANSI,NO_BACKSLASH_ESCAPES,NO_DIR_IN_CREATE,NO_ENGINE_SUBSTITUTION,NO_UNSIGNED_SUBTRACTION,TRADITIONAL'
+  [1m[36mSQL (0.183ms)[0m  [1mSELECT COUNT(*) FROM `mangas`[0m
+  [1m[35mSQL (0.271ms)[0m  SELECT `id`, `name`, `name_url`, `latest_chapter`, `status_id`, `last_update`, `rank_om`, `image_id`, `scraped`, `published`, `site_id` FROM `mangas` WHERE `published` = TRUE ORDER BY `id` LIMIT 70
+Rendered mangas/_manga.html.haml (2.0ms)
+Rendered mangas/index.html.haml within layouts/application (20.6ms)
+Completed   in 28ms
+
+
+Started GET "/img/img-a.onemanga.com/mangas/00000001/000052552/01.jpg" for 127.0.0.1 at 2011-03-30 00:49:01 +0200
+  Processing by ChaptersController#test as HTML
+  Parameters: {"id"=>"img-a.onemanga.com/mangas/00000001/000052552/01.jpg"}
+Sent data image.jpg (13.2ms)
+Completed 200 OK in 414ms (Views: 13.1ms | Models: 0.635ms)
+[datamapper] Setting up the "test" environment:
+[datamapper] Setting up :default repository: 'mangapad_test' on mysql
+
+
+Started GET "/img/img-a.onemanga.com/mangas/00000001/000052552/01.jpg" for 127.0.0.1 at 2011-03-30 00:49:25 +0200
+  Processing by ChaptersController#test as HTML
+  Parameters: {"id"=>"img-a.onemanga.com/mangas/00000001/000052552/01.jpg"}
+Sent data image.jpg (12.9ms)
+Completed 200 OK in 415ms (Views: 12.8ms | Models: 0.000ms)
+[datamapper] Setting up the "test" environment:
+[datamapper] Setting up :default repository: 'mangapad_test' on mysql
+
+
+Started GET "/img/img-a.onemanga.com/mangas/00000001/000052552/01.jpg" for 127.0.0.1 at 2011-03-30 00:52:53 +0200
+  Processing by ChaptersController#test as HTML
+  Parameters: {"id"=>"img-a.onemanga.com/mangas/00000001/000052552/01.jpg"}
+Sent data image.jpg (13.0ms)
+Completed 200 OK in 407ms (Views: 12.9ms | Models: 0.000ms)
+[datamapper] Setting up the "test" environment:
+[datamapper] Setting up :default repository: 'mangapad_test' on mysql
+  [1m[36mSQL (0.097ms)[0m  [1mSET sql_auto_is_null = 0[0m
+  [1m[35mSQL (0.060ms)[0m  SET SESSION sql_mode = 'ANSI,NO_BACKSLASH_ESCAPES,NO_DIR_IN_CREATE,NO_ENGINE_SUBSTITUTION,NO_UNSIGNED_SUBTRACTION,TRADITIONAL'
+  [1m[36mSQL (0.192ms)[0m  [1mSELECT `id`, `name`, `url`, `format`, `directory`, `js_url_stub` FROM `sites` ORDER BY `id`[0m
+  [1m[35mSQL (0.332ms)[0m  DELETE FROM `sites` WHERE `id` = 8
+  [1m[36mSQL (0.202ms)[0m  [1mSELECT `id`, `name`, `name_url`, `latest_chapter`, `status_id`, `last_update`, `rank_om`, `image_id`, `scraped`, `published`, `site_id` FROM `mangas` ORDER BY `id`[0m
+  [1m[35mSQL (0.328ms)[0m  DELETE FROM `mangas` WHERE `id` = 8
+  [1m[36mSQL (0.147ms)[0m  [1mSELECT `id`, `name`, `name_url`, `first_page`, `image_id`, `position`, `manga_id` FROM `chapters` ORDER BY `id`[0m
+  [1m[35mSQL (0.285ms)[0m  DELETE FROM `chapters` WHERE `id` = 4
+  [1m[36mSQL (0.127ms)[0m  [1mSELECT `id`, `chapter_id` FROM `pages` ORDER BY `id`[0m
+  [1m[35mSQL (0.346ms)[0m  DELETE FROM `pages` WHERE `id` = 4
+  [1m[36mSQL (0.217ms)[0m  [1mINSERT INTO `sites` (`name`, `url`, `format`, `directory`, `js_url_stub`) VALUES ('onemanga', 'www.onemanga.com', '%s/%d/%s/', 'directory/', 'http://content.s-onemanga.com/manga-%d.js')[0m
+  [1m[35mSQL (0.352ms)[0m  INSERT INTO `mangas` (`name`, `published`, `site_id`) VALUES ('Eyeshield 21', TRUE, 9)
+  [1m[36mSQL (0.297ms)[0m  [1mINSERT INTO `chapters` (`name`, `position`, `manga_id`) VALUES ('1', 1, 9)[0m
+  [1m[35mSQL (0.199ms)[0m  INSERT INTO `pages` (`name`, `chapter_id`) VALUES ('1', 5)
+
+
+Started GET "/mangas/1/chapters/1" for 127.0.0.1 at 2011-03-30 00:53:09 +0200
+  Processing by ChaptersController#show as HTML
+  Parameters: {"manga_id"=>"1", "id"=>"1"}
+  [1m[36mSQL (0.202ms)[0m  [1mSELECT `id`, `name`, `name_url`, `first_page`, `image_id`, `position`, `manga_id` FROM `chapters` WHERE `id` = 1 LIMIT 1[0m
+Rendered public/404.html (0.5ms)
+Completed 404 Not Found in 6ms (Views: 4.2ms | Models: 3.383ms)
+
+
+Started GET "/img/img-a.onemanga.com/mangas/00000001/000052552/01.jpg" for 127.0.0.1 at 2011-03-30 00:53:09 +0200
+  Processing by ChaptersController#test as HTML
+  Parameters: {"id"=>"img-a.onemanga.com/mangas/00000001/000052552/01.jpg"}
+Sent data image.jpg (12.4ms)
+Completed 200 OK in 407ms (Views: 12.3ms | Models: 0.000ms)
+[datamapper] Setting up the "test" environment:
+[datamapper] Setting up :default repository: 'mangapad_test' on mysql
+  [1m[36mSQL (0.109ms)[0m  [1mSET sql_auto_is_null = 0[0m
+  [1m[35mSQL (0.064ms)[0m  SET SESSION sql_mode = 'ANSI,NO_BACKSLASH_ESCAPES,NO_DIR_IN_CREATE,NO_ENGINE_SUBSTITUTION,NO_UNSIGNED_SUBTRACTION,TRADITIONAL'
+  [1m[36mSQL (0.195ms)[0m  [1mSELECT `id`, `name`, `url`, `format`, `directory`, `js_url_stub` FROM `sites` ORDER BY `id`[0m
+  [1m[35mSQL (0.338ms)[0m  DELETE FROM `sites` WHERE `id` = 9
+  [1m[36mSQL (0.182ms)[0m  [1mSELECT `id`, `name`, `name_url`, `latest_chapter`, `status_id`, `last_update`, `rank_om`, `image_id`, `scraped`, `published`, `site_id` FROM `mangas` ORDER BY `id`[0m
+  [1m[35mSQL (0.396ms)[0m  DELETE FROM `mangas` WHERE `id` = 9
+  [1m[36mSQL (0.180ms)[0m  [1mSELECT `id`, `name`, `name_url`, `first_page`, `image_id`, `position`, `manga_id` FROM `chapters` ORDER BY `id`[0m
+  [1m[35mSQL (0.509ms)[0m  DELETE FROM `chapters` WHERE `id` = 5
+  [1m[36mSQL (0.137ms)[0m  [1mSELECT `id`, `chapter_id` FROM `pages` ORDER BY `id`[0m
+  [1m[35mSQL (0.280ms)[0m  DELETE FROM `pages` WHERE `id` = 5
+  [1m[36mSQL (0.347ms)[0m  [1mINSERT INTO `sites` (`name`, `url`, `format`, `directory`, `js_url_stub`) VALUES ('onemanga', 'www.onemanga.com', '%s/%d/%s/', 'directory/', 'http://content.s-onemanga.com/manga-%d.js')[0m
+  [1m[35mSQL (0.307ms)[0m  INSERT INTO `mangas` (`name`, `published`, `site_id`) VALUES ('Eyeshield 21', TRUE, 10)
+  [1m[36mSQL (0.299ms)[0m  [1mINSERT INTO `chapters` (`name`, `position`, `manga_id`) VALUES ('1', 1, 10)[0m
+  [1m[35mSQL (0.279ms)[0m  INSERT INTO `pages` (`name`, `chapter_id`) VALUES ('1', 6)
+
+
+Started GET "/mangas/1/chapters/1" for 127.0.0.1 at 2011-03-30 00:53:19 +0200
+  Processing by ChaptersController#show as HTML
+  Parameters: {"manga_id"=>"1", "id"=>"1"}
+  [1m[36mSQL (0.217ms)[0m  [1mSELECT `id`, `name`, `name_url`, `first_page`, `image_id`, `position`, `manga_id` FROM `chapters` WHERE `id` = 1 LIMIT 1[0m
+Rendered public/404.html (0.5ms)
+Completed 404 Not Found in 6ms (Views: 4.3ms | Models: 3.839ms)
+
+
+Started GET "/img/img-a.onemanga.com/mangas/00000001/000052552/01.jpg" for 127.0.0.1 at 2011-03-30 00:53:19 +0200
+  Processing by ChaptersController#test as HTML
+  Parameters: {"id"=>"img-a.onemanga.com/mangas/00000001/000052552/01.jpg"}
+Sent data image.jpg (12.2ms)
+Completed 200 OK in 427ms (Views: 12.1ms | Models: 0.000ms)
+[datamapper] Setting up the "test" environment:
+[datamapper] Setting up :default repository: 'mangapad_test' on mysql
+
+
+Started GET "/" for 127.0.0.1 at 2011-03-30 00:54:28 +0200
+  Processing by MangasController#index as HTML
+  [1m[36mSQL (0.066ms)[0m  [1mSET sql_auto_is_null = 0[0m
+  [1m[35mSQL (0.057ms)[0m  SET SESSION sql_mode = 'ANSI,NO_BACKSLASH_ESCAPES,NO_DIR_IN_CREATE,NO_ENGINE_SUBSTITUTION,NO_UNSIGNED_SUBTRACTION,TRADITIONAL'
+  [1m[36mSQL (0.210ms)[0m  [1mSELECT COUNT(*) FROM `mangas`[0m
+  [1m[35mSQL (0.228ms)[0m  SELECT `id`, `name`, `name_url`, `latest_chapter`, `status_id`, `last_update`, `rank_om`, `image_id`, `scraped`, `published`, `site_id` FROM `mangas` WHERE `published` = TRUE ORDER BY `id` LIMIT 70
+Rendered mangas/_manga.html.haml (1.9ms)
+Rendered mangas/index.html.haml within layouts/application (20.4ms)
+Completed   in 27ms
+
+
+Started GET "/" for 127.0.0.1 at 2011-03-30 00:54:30 +0200
+  Processing by MangasController#index as HTML
+  [1m[36mSQL (0.202ms)[0m  [1mSELECT COUNT(*) FROM `mangas`[0m
+  [1m[35mSQL (0.301ms)[0m  SELECT `id`, `name`, `name_url`, `latest_chapter`, `status_id`, `last_update`, `rank_om`, `image_id`, `scraped`, `published`, `site_id` FROM `mangas` WHERE `published` = TRUE ORDER BY `id` LIMIT 70
+Rendered mangas/_manga.html.haml (0.5ms)
+Rendered mangas/index.html.haml within layouts/application (4.3ms)
+Completed   in 5ms
+
+
+Started GET "/" for 127.0.0.1 at 2011-03-30 00:54:31 +0200
+  Processing by MangasController#index as HTML
+  [1m[36mSQL (0.191ms)[0m  [1mSELECT COUNT(*) FROM `mangas`[0m
+  [1m[35mSQL (0.222ms)[0m  SELECT `id`, `name`, `name_url`, `latest_chapter`, `status_id`, `last_update`, `rank_om`, `image_id`, `scraped`, `published`, `site_id` FROM `mangas` WHERE `published` = TRUE ORDER BY `id` LIMIT 70
+Rendered mangas/_manga.html.haml (0.5ms)
+Rendered mangas/index.html.haml within layouts/application (3.9ms)
+Completed   in 5ms
+
+
+Started GET "/" for 127.0.0.1 at 2011-03-30 00:54:32 +0200
+  Processing by MangasController#index as HTML
+  [1m[36mSQL (0.151ms)[0m  [1mSELECT COUNT(*) FROM `mangas`[0m
+  [1m[35mSQL (0.221ms)[0m  SELECT `id`, `name`, `name_url`, `latest_chapter`, `status_id`, `last_update`, `rank_om`, `image_id`, `scraped`, `published`, `site_id` FROM `mangas` WHERE `published` = TRUE ORDER BY `id` LIMIT 70
+Rendered mangas/_manga.html.haml (0.5ms)
+Rendered mangas/index.html.haml within layouts/application (4.1ms)
+Completed   in 5ms
+
+
+Started GET "/" for 127.0.0.1 at 2011-03-30 00:54:32 +0200
+  Processing by MangasController#index as HTML
+  [1m[36mSQL (0.178ms)[0m  [1mSELECT COUNT(*) FROM `mangas`[0m
+  [1m[35mSQL (0.231ms)[0m  SELECT `id`, `name`, `name_url`, `latest_chapter`, `status_id`, `last_update`, `rank_om`, `image_id`, `scraped`, `published`, `site_id` FROM `mangas` WHERE `published` = TRUE ORDER BY `id` LIMIT 70
+Rendered mangas/_manga.html.haml (0.6ms)
+Rendered mangas/index.html.haml within layouts/application (4.2ms)
+Completed   in 5ms
+
+
+Started GET "/" for 127.0.0.1 at 2011-03-30 00:54:32 +0200
+  Processing by MangasController#index as HTML
+  [1m[36mSQL (0.184ms)[0m  [1mSELECT COUNT(*) FROM `mangas`[0m
+  [1m[35mSQL (0.227ms)[0m  SELECT `id`, `name`, `name_url`, `latest_chapter`, `status_id`, `last_update`, `rank_om`, `image_id`, `scraped`, `published`, `site_id` FROM `mangas` WHERE `published` = TRUE ORDER BY `id` LIMIT 70
+Rendered mangas/_manga.html.haml (0.5ms)
+Rendered mangas/index.html.haml within layouts/application (4.2ms)
+Completed   in 6ms
+
+
+Started GET "/" for 127.0.0.1 at 2011-03-30 00:54:32 +0200
+  Processing by MangasController#index as HTML
+  [1m[36mSQL (0.176ms)[0m  [1mSELECT COUNT(*) FROM `mangas`[0m
+  [1m[35mSQL (0.226ms)[0m  SELECT `id`, `name`, `name_url`, `latest_chapter`, `status_id`, `last_update`, `rank_om`, `image_id`, `scraped`, `published`, `site_id` FROM `mangas` WHERE `published` = TRUE ORDER BY `id` LIMIT 70
+Rendered mangas/_manga.html.haml (0.5ms)
+Rendered mangas/index.html.haml within layouts/application (4.1ms)
+Completed   in 5ms
+
+
+Started GET "/" for 127.0.0.1 at 2011-03-30 00:54:33 +0200
+  Processing by MangasController#index as HTML
+  [1m[36mSQL (0.176ms)[0m  [1mSELECT COUNT(*) FROM `mangas`[0m
+  [1m[35mSQL (0.230ms)[0m  SELECT `id`, `name`, `name_url`, `latest_chapter`, `status_id`, `last_update`, `rank_om`, `image_id`, `scraped`, `published`, `site_id` FROM `mangas` WHERE `published` = TRUE ORDER BY `id` LIMIT 70
+Rendered mangas/_manga.html.haml (0.5ms)
+Rendered mangas/index.html.haml within layouts/application (4.0ms)
+Completed   in 5ms
+
+
+Started GET "/" for 127.0.0.1 at 2011-03-30 00:54:39 +0200
+  Processing by MangasController#index as HTML
+  [1m[36mSQL (0.206ms)[0m  [1mSELECT COUNT(*) FROM `mangas`[0m
+  [1m[35mSQL (0.239ms)[0m  SELECT `id`, `name`, `name_url`, `latest_chapter`, `status_id`, `last_update`, `rank_om`, `image_id`, `scraped`, `published`, `site_id` FROM `mangas` WHERE `published` = TRUE ORDER BY `id` LIMIT 70
+Rendered mangas/_manga.html.haml (0.5ms)
+Rendered mangas/index.html.haml within layouts/application (4.2ms)
+Completed   in 5ms
+
+
+Started GET "/" for 127.0.0.1 at 2011-03-30 00:55:03 +0200
+  Processing by MangasController#index as HTML
+  [1m[36mSQL (0.172ms)[0m  [1mSELECT COUNT(*) FROM `mangas`[0m
+  [1m[35mSQL (0.227ms)[0m  SELECT `id`, `name`, `name_url`, `latest_chapter`, `status_id`, `last_update`, `rank_om`, `image_id`, `scraped`, `published`, `site_id` FROM `mangas` WHERE `published` = TRUE ORDER BY `id` LIMIT 70
+Rendered mangas/_manga.html.haml (0.5ms)
+Rendered mangas/index.html.haml within layouts/application (4.1ms)
+Completed   in 5ms
+
+
+Started GET "/" for 127.0.0.1 at 2011-03-30 00:55:16 +0200
+  Processing by MangasController#index as HTML
+  [1m[36mSQL (0.184ms)[0m  [1mSELECT COUNT(*) FROM `mangas`[0m
+  [1m[35mSQL (0.298ms)[0m  SELECT `id`, `name`, `name_url`, `latest_chapter`, `status_id`, `last_update`, `rank_om`, `image_id`, `scraped`, `published`, `site_id` FROM `mangas` WHERE `published` = TRUE ORDER BY `id` LIMIT 70
+Rendered mangas/_manga.html.haml (0.6ms)
+Rendered mangas/index.html.haml within layouts/application (4.9ms)
+Completed   in 6ms
+
+
+Started GET "/" for 127.0.0.1 at 2011-03-30 00:55:16 +0200
+  Processing by MangasController#index as HTML
+  [1m[36mSQL (0.175ms)[0m  [1mSELECT COUNT(*) FROM `mangas`[0m
+  [1m[35mSQL (0.264ms)[0m  SELECT `id`, `name`, `name_url`, `latest_chapter`, `status_id`, `last_update`, `rank_om`, `image_id`, `scraped`, `published`, `site_id` FROM `mangas` WHERE `published` = TRUE ORDER BY `id` LIMIT 70
+Rendered mangas/_manga.html.haml (0.6ms)
+Rendered mangas/index.html.haml within layouts/application (4.3ms)
+Completed   in 5ms
+
+
+Started GET "/" for 127.0.0.1 at 2011-03-30 00:55:17 +0200
+  Processing by MangasController#index as HTML
+  [1m[36mSQL (0.155ms)[0m  [1mSELECT COUNT(*) FROM `mangas`[0m
+  [1m[35mSQL (0.218ms)[0m  SELECT `id`, `name`, `name_url`, `latest_chapter`, `status_id`, `last_update`, `rank_om`, `image_id`, `scraped`, `published`, `site_id` FROM `mangas` WHERE `published` = TRUE ORDER BY `id` LIMIT 70
+Rendered mangas/_manga.html.haml (0.6ms)
+Rendered mangas/index.html.haml within layouts/application (46.5ms)
+Completed   in 48ms
+
+
+Started GET "/" for 127.0.0.1 at 2011-03-30 00:55:17 +0200
+  Processing by MangasController#index as HTML
+  [1m[36mSQL (0.182ms)[0m  [1mSELECT COUNT(*) FROM `mangas`[0m
+  [1m[35mSQL (0.211ms)[0m  SELECT `id`, `name`, `name_url`, `latest_chapter`, `status_id`, `last_update`, `rank_om`, `image_id`, `scraped`, `published`, `site_id` FROM `mangas` WHERE `published` = TRUE ORDER BY `id` LIMIT 70
+Rendered mangas/_manga.html.haml (0.5ms)
+Rendered mangas/index.html.haml within layouts/application (3.9ms)
+Completed   in 5ms
+
+
+Started GET "/" for 127.0.0.1 at 2011-03-30 00:55:17 +0200
+  Processing by MangasController#index as HTML
+  [1m[36mSQL (0.180ms)[0m  [1mSELECT COUNT(*) FROM `mangas`[0m
+  [1m[35mSQL (0.203ms)[0m  SELECT `id`, `name`, `name_url`, `latest_chapter`, `status_id`, `last_update`, `rank_om`, `image_id`, `scraped`, `published`, `site_id` FROM `mangas` WHERE `published` = TRUE ORDER BY `id` LIMIT 70
+Rendered mangas/_manga.html.haml (0.5ms)
+Rendered mangas/index.html.haml within layouts/application (3.9ms)
+Completed   in 5ms
+
+
+Started GET "/" for 127.0.0.1 at 2011-03-30 00:55:23 +0200
+  Processing by MangasController#index as HTML
+  [1m[36mSQL (0.204ms)[0m  [1mSELECT COUNT(*) FROM `mangas`[0m
+  [1m[35mSQL (0.210ms)[0m  SELECT `id`, `name`, `name_url`, `latest_chapter`, `status_id`, `last_update`, `rank_om`, `image_id`, `scraped`, `published`, `site_id` FROM `mangas` WHERE `published` = TRUE ORDER BY `id` LIMIT 70
+Rendered mangas/_manga.html.haml (0.5ms)
+Rendered mangas/index.html.haml within layouts/application (4.0ms)
+Completed   in 5ms
+[datamapper] Setting up the "test" environment:
+[datamapper] Setting up :default repository: 'mangapad_test' on mysql
+  [1m[36mSQL (0.123ms)[0m  [1mSET sql_auto_is_null = 0[0m
+  [1m[35mSQL (0.084ms)[0m  SET SESSION sql_mode = 'ANSI,NO_BACKSLASH_ESCAPES,NO_DIR_IN_CREATE,NO_ENGINE_SUBSTITUTION,NO_UNSIGNED_SUBTRACTION,TRADITIONAL'
+  [1m[36mSQL (1.538ms)[0m  [1mDROP TABLE IF EXISTS `chapters`[0m
+  [1m[35mSQL (0.238ms)[0m  SHOW TABLES LIKE 'chapters'
+  [1m[36mSQL (0.051ms)[0m  [1mSET sql_auto_is_null = 0[0m
+  [1m[35mSQL (0.055ms)[0m  SET SESSION sql_mode = 'ANSI,NO_BACKSLASH_ESCAPES,NO_DIR_IN_CREATE,NO_ENGINE_SUBSTITUTION,NO_UNSIGNED_SUBTRACTION,TRADITIONAL'
+  [1m[36mSQL (0.311ms)[0m  [1mSHOW VARIABLES LIKE 'character_set_connection'[0m
+  [1m[35mSQL (0.284ms)[0m  SHOW VARIABLES LIKE 'collation_connection'
+  [1m[36mSQL (7.908ms)[0m  [1mCREATE TABLE `chapters` (`id` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT, `name` VARCHAR(100), `name_url` VARCHAR(100), `first_page` VARCHAR(50), `image_id` VARCHAR(50), `position` INTEGER NOT NULL, `manga_id` INT(10) UNSIGNED NOT NULL, PRIMARY KEY(`id`)) ENGINE = InnoDB CHARACTER SET utf8 COLLATE utf8_general_ci[0m
+  [1m[35mSQL (6.106ms)[0m  CREATE INDEX `index_chapters_name_url` ON `chapters` (`name_url`)
+  [1m[36mSQL (4.968ms)[0m  [1mCREATE INDEX `index_chapters_manga` ON `chapters` (`manga_id`)[0m
+  [1m[35mSQL (1.040ms)[0m  DROP TABLE IF EXISTS `genres`
+  [1m[36mSQL (0.232ms)[0m  [1mSHOW TABLES LIKE 'genres'[0m
+  [1m[35mSQL (4.311ms)[0m  CREATE TABLE `genres` (`id` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT, `name` VARCHAR(50), PRIMARY KEY(`id`)) ENGINE = InnoDB CHARACTER SET utf8 COLLATE utf8_general_ci
+  [1m[36mSQL (1.882ms)[0m  [1mDROP TABLE IF EXISTS `mangas`[0m
+  [1m[35mSQL (0.219ms)[0m  SHOW TABLES LIKE 'mangas'
+  [1m[36mSQL (5.447ms)[0m  [1mCREATE TABLE `mangas` (`id` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT, `name` VARCHAR(150), `name_url` VARCHAR(150), `latest_chapter` INTEGER, `status_id` INTEGER, `last_update` DATETIME, `rank_om` INTEGER, `image_id` VARCHAR(50), `scraped` BOOLEAN, `published` BOOLEAN DEFAULT TRUE, `site_id` INT(10) UNSIGNED NOT NULL, PRIMARY KEY(`id`)) ENGINE = InnoDB CHARACTER SET utf8 COLLATE utf8_general_ci[0m
+  [1m[35mSQL (6.542ms)[0m  CREATE INDEX `index_mangas_name_url` ON `mangas` (`name_url`)
+  [1m[36mSQL (5.118ms)[0m  [1mCREATE INDEX `index_mangas_status_id` ON `mangas` (`status_id`)[0m
+  [1m[35mSQL (7.314ms)[0m  CREATE INDEX `index_mangas_published` ON `mangas` (`published`)
+  [1m[36mSQL (8.175ms)[0m  [1mCREATE INDEX `index_mangas_site` ON `mangas` (`site_id`)[0m
+  [1m[35mSQL (1.427ms)[0m  DROP TABLE IF EXISTS `manga_genres`
+  [1m[36mSQL (0.258ms)[0m  [1mSHOW TABLES LIKE 'manga_genres'[0m
+  [1m[35mSQL (4.899ms)[0m  CREATE TABLE `manga_genres` (`id` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT, `manga_id` INT(10) UNSIGNED NOT NULL, `genre_id` INT(10) UNSIGNED NOT NULL, PRIMARY KEY(`id`)) ENGINE = InnoDB CHARACTER SET utf8 COLLATE utf8_general_ci
+  [1m[36mSQL (5.342ms)[0m  [1mCREATE INDEX `index_manga_genres_manga` ON `manga_genres` (`manga_id`)[0m
+  [1m[35mSQL (6.065ms)[0m  CREATE INDEX `index_manga_genres_genre` ON `manga_genres` (`genre_id`)
+  [1m[36mSQL (0.818ms)[0m  [1mDROP TABLE IF EXISTS `pages`[0m
+  [1m[35mSQL (0.214ms)[0m  SHOW TABLES LIKE 'pages'
+  [1m[36mSQL (5.408ms)[0m  [1mCREATE TABLE `pages` (`id` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT, `name` VARCHAR(50), `chapter_id` INT(10) UNSIGNED NOT NULL, PRIMARY KEY(`id`)) ENGINE = InnoDB CHARACTER SET utf8 COLLATE utf8_general_ci[0m
+  [1m[35mSQL (7.074ms)[0m  CREATE INDEX `index_pages_chapter` ON `pages` (`chapter_id`)
+  [1m[36mSQL (1.163ms)[0m  [1mDROP TABLE IF EXISTS `sites`[0m
+  [1m[35mSQL (0.218ms)[0m  SHOW TABLES LIKE 'sites'
+  [1m[36mSQL (4.770ms)[0m  [1mCREATE TABLE `sites` (`id` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT, `name` VARCHAR(50), `url` VARCHAR(50), `format` VARCHAR(255), `directory` VARCHAR(50), `js_url_stub` VARCHAR(50), PRIMARY KEY(`id`)) ENGINE = InnoDB CHARACTER SET utf8 COLLATE utf8_general_ci[0m
+  [1m[35mSQL (0.976ms)[0m  DROP TABLE IF EXISTS `submissions`
+  [1m[36mSQL (0.216ms)[0m  [1mSHOW TABLES LIKE 'submissions'[0m
+  [1m[35mSQL (3.712ms)[0m  CREATE TABLE `submissions` (`id` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT, `name` VARCHAR(50), `chapters_url` VARCHAR(50), `first_page_url` VARCHAR(50), `email` VARCHAR(50), PRIMARY KEY(`id`)) ENGINE = InnoDB CHARACTER SET utf8 COLLATE utf8_general_ci
+[datamapper] Setting up the "test" environment:
+[datamapper] Setting up :default repository: 'mangapad_test' on mysql
+
+
+Started GET "/" for 127.0.0.1 at 2011-03-30 00:56:13 +0200
+  Processing by MangasController#index as HTML
+  [1m[36mSQL (0.092ms)[0m  [1mSET sql_auto_is_null = 0[0m
+  [1m[35mSQL (0.078ms)[0m  SET SESSION sql_mode = 'ANSI,NO_BACKSLASH_ESCAPES,NO_DIR_IN_CREATE,NO_ENGINE_SUBSTITUTION,NO_UNSIGNED_SUBTRACTION,TRADITIONAL'
+  [1m[36mSQL (0.194ms)[0m  [1mSELECT COUNT(*) FROM `mangas`[0m
+  [1m[35mSQL (0.300ms)[0m  SELECT `id`, `name`, `name_url`, `latest_chapter`, `status_id`, `last_update`, `rank_om`, `image_id`, `scraped`, `published`, `site_id` FROM `mangas` WHERE `published` = TRUE ORDER BY `id` LIMIT 70
+Rendered collection (0.0ms)
+  [1m[36mSQL (0.122ms)[0m  [1mSELECT COUNT(*) FROM `mangas`[0m
+Rendered mangas/index.html.haml within layouts/application (32.3ms)
+Completed 200 OK in 40ms (Views: 37.5ms | Models: 0.786ms)
+[datamapper] Setting up the "test" environment:
+[datamapper] Setting up :default repository: 'mangapad_test' on mysql
+
+
+Started GET "/" for 127.0.0.1 at 2011-03-30 00:57:12 +0200
+  Processing by MangasController#index as HTML
+  [1m[36mSQL (0.087ms)[0m  [1mSET sql_auto_is_null = 0[0m
+  [1m[35mSQL (0.075ms)[0m  SET SESSION sql_mode = 'ANSI,NO_BACKSLASH_ESCAPES,NO_DIR_IN_CREATE,NO_ENGINE_SUBSTITUTION,NO_UNSIGNED_SUBTRACTION,TRADITIONAL'
+  [1m[36mSQL (0.177ms)[0m  [1mSELECT COUNT(*) FROM `mangas`[0m
+  [1m[35mSQL (0.205ms)[0m  SELECT `id`, `name`, `name_url`, `latest_chapter`, `status_id`, `last_update`, `rank_om`, `image_id`, `scraped`, `published`, `site_id` FROM `mangas` WHERE `published` = TRUE ORDER BY `id` LIMIT 70
+Rendered collection (0.0ms)
+  [1m[36mSQL (0.100ms)[0m  [1mSELECT COUNT(*) FROM `mangas`[0m
+Rendered mangas/index.html.haml within layouts/application (31.5ms)
+Completed 200 OK in 39ms (Views: 36.9ms | Models: 0.644ms)
+
+
+Started GET "/mangas/" for 127.0.0.1 at 2011-03-30 00:57:22 +0200
+  Processing by MangasController#index as HTML
+  [1m[35mSQL (0.173ms)[0m  SELECT COUNT(*) FROM `mangas`
+  [1m[36mSQL (0.196ms)[0m  [1mSELECT `id`, `name`, `name_url`, `latest_chapter`, `status_id`, `last_update`, `rank_om`, `image_id`, `scraped`, `published`, `site_id` FROM `mangas` WHERE `published` = TRUE ORDER BY `id` LIMIT 70[0m
+Rendered collection (0.0ms)
+  [1m[35mSQL (0.097ms)[0m  SELECT COUNT(*) FROM `mangas`
+Rendered mangas/index.html.haml within layouts/application (7.7ms)
+Completed 200 OK in 9ms (Views: 8.0ms | Models: 0.466ms)
+
+
+Started GET "/mangas/1" for 127.0.0.1 at 2011-03-30 00:57:26 +0200
+  Processing by MangasController#redirect as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mSQL (0.360ms)[0m  [1mSELECT `id`, `name`, `name_url`, `latest_chapter`, `status_id`, `last_update`, `rank_om`, `image_id`, `scraped`, `published`, `site_id` FROM `mangas` WHERE `id` = 1 LIMIT 1[0m
+Rendered public/404.html (0.5ms)
+Completed 404 Not Found in 6ms (Views: 4.1ms | Models: 0.360ms)
+[datamapper] Setting up the "test" environment:
+[datamapper] Setting up :default repository: 'mangapad_test' on mysql
+  [1m[36mSQL (0.091ms)[0m  [1mSET sql_auto_is_null = 0[0m
+  [1m[35mSQL (0.066ms)[0m  SET SESSION sql_mode = 'ANSI,NO_BACKSLASH_ESCAPES,NO_DIR_IN_CREATE,NO_ENGINE_SUBSTITUTION,NO_UNSIGNED_SUBTRACTION,TRADITIONAL'
+  [1m[36mSQL (0.193ms)[0m  [1mSELECT `id`, `name`, `url`, `format`, `directory`, `js_url_stub` FROM `sites` ORDER BY `id`[0m
+  [1m[35mSQL (0.166ms)[0m  SELECT `id`, `name`, `name_url`, `latest_chapter`, `status_id`, `last_update`, `rank_om`, `image_id`, `scraped`, `published`, `site_id` FROM `mangas` ORDER BY `id`
+  [1m[36mSQL (0.140ms)[0m  [1mSELECT `id`, `name`, `name_url`, `first_page`, `image_id`, `position`, `manga_id` FROM `chapters` ORDER BY `id`[0m
+  [1m[35mSQL (0.119ms)[0m  SELECT `id`, `chapter_id` FROM `pages` ORDER BY `id`
+  [1m[36mSQL (0.306ms)[0m  [1mINSERT INTO `sites` (`name`, `url`, `format`, `directory`, `js_url_stub`) VALUES ('onemanga', 'www.onemanga.com', '%s/%d/%s/', 'directory/', 'http://content.s-onemanga.com/manga-%d.js')[0m
+  [1m[35mSQL (0.330ms)[0m  INSERT INTO `mangas` (`name`, `published`, `site_id`) VALUES ('Eyeshield 21', TRUE, 1)
+  [1m[36mSQL (0.300ms)[0m  [1mINSERT INTO `chapters` (`name`, `position`, `manga_id`) VALUES ('1', 1, 1)[0m
+  [1m[35mSQL (0.289ms)[0m  INSERT INTO `pages` (`name`, `chapter_id`) VALUES ('1', 1)
+
+
+Started GET "/mangas/1/chapters/1" for 127.0.0.1 at 2011-03-30 00:58:08 +0200
+  Processing by ChaptersController#show as HTML
+  Parameters: {"manga_id"=>"1", "id"=>"1"}
+  [1m[36mSQL (0.199ms)[0m  [1mSELECT `id`, `name`, `name_url`, `first_page`, `image_id`, `position`, `manga_id` FROM `chapters` WHERE `id` = 1 LIMIT 1[0m
+  [1m[35mSQL (0.202ms)[0m  SELECT `id`, `name`, `name_url`, `latest_chapter`, `status_id`, `last_update`, `rank_om`, `image_id`, `scraped`, `published`, `site_id` FROM `mangas` WHERE `id` = 1 LIMIT 1
+  [1m[36mSQL (0.273ms)[0m  [1mSELECT `id`, `chapter_id` FROM `pages` WHERE `chapter_id` = 1 ORDER BY `id` LIMIT 1[0m
+  [1m[35mSQL (0.177ms)[0m  SELECT `id`, `name` FROM `pages` WHERE `id` = 1 ORDER BY `id`
+  [1m[36mSQL (0.239ms)[0m  [1mSELECT `id`, `name`, `name_url`, `first_page`, `image_id`, `position`, `manga_id` FROM `chapters` WHERE `manga_id` = 1 ORDER BY `id`[0m
+  [1m[35mSQL (0.209ms)[0m  SELECT COUNT(*) FROM `chapters` WHERE `manga_id` = 1
+  [1m[36mSQL (0.175ms)[0m  [1mSELECT COUNT(*) FROM `pages` WHERE `chapter_id` = 1[0m
+  [1m[35mSQL (0.215ms)[0m  SELECT `id`, `name`, `url`, `format`, `directory`, `js_url_stub` FROM `sites` WHERE `id` = 1 LIMIT 1
+Rendered chapters/show.html.haml within layouts/read (25.7ms)
+Completed   in 38ms
+
+
+Started GET "/img/img-a.onemanga.com/mangas/00000001/000052552/01.jpg" for 127.0.0.1 at 2011-03-30 00:58:08 +0200
+  Processing by ChaptersController#test as HTML
+  Parameters: {"id"=>"img-a.onemanga.com/mangas/00000001/000052552/01.jpg"}
+Sent data image.jpg (12.5ms)
+Completed 200 OK in 420ms (Views: 12.3ms | Models: 1.015ms)
+[datamapper] Setting up the "test" environment:
+[datamapper] Setting up :default repository: 'mangapad_test' on mysql
+  [1m[36mSQL (0.117ms)[0m  [1mSET sql_auto_is_null = 0[0m
+  [1m[35mSQL (0.061ms)[0m  SET SESSION sql_mode = 'ANSI,NO_BACKSLASH_ESCAPES,NO_DIR_IN_CREATE,NO_ENGINE_SUBSTITUTION,NO_UNSIGNED_SUBTRACTION,TRADITIONAL'
+  [1m[36mSQL (0.226ms)[0m  [1mSELECT `id`, `name`, `url`, `format`, `directory`, `js_url_stub` FROM `sites` ORDER BY `id`[0m
+  [1m[35mSQL (0.357ms)[0m  DELETE FROM `sites` WHERE `id` = 1
+  [1m[36mSQL (0.174ms)[0m  [1mSELECT `id`, `name`, `name_url`, `latest_chapter`, `status_id`, `last_update`, `rank_om`, `image_id`, `scraped`, `published`, `site_id` FROM `mangas` ORDER BY `id`[0m
+  [1m[35mSQL (0.317ms)[0m  DELETE FROM `mangas` WHERE `id` = 1
+  [1m[36mSQL (0.214ms)[0m  [1mSELECT `id`, `name`, `name_url`, `first_page`, `image_id`, `position`, `manga_id` FROM `chapters` ORDER BY `id`[0m
+  [1m[35mSQL (0.281ms)[0m  DELETE FROM `chapters` WHERE `id` = 1
+  [1m[36mSQL (0.124ms)[0m  [1mSELECT `id`, `chapter_id` FROM `pages` ORDER BY `id`[0m
+  [1m[35mSQL (0.334ms)[0m  DELETE FROM `pages` WHERE `id` = 1
+  [1m[36mSQL (0.205ms)[0m  [1mINSERT INTO `sites` (`name`, `url`, `format`, `directory`, `js_url_stub`) VALUES ('onemanga', 'www.onemanga.com', '%s/%d/%s/', 'directory/', 'http://content.s-onemanga.com/manga-%d.js')[0m
+  [1m[35mSQL (0.327ms)[0m  INSERT INTO `mangas` (`name`, `published`, `site_id`) VALUES ('Eyeshield 21', TRUE, 2)
+  [1m[36mSQL (0.189ms)[0m  [1mINSERT INTO `chapters` (`name`, `position`, `manga_id`) VALUES ('1', 1, 2)[0m
+  [1m[35mSQL (0.379ms)[0m  INSERT INTO `pages` (`name`, `chapter_id`) VALUES ('1', 2)
+
+
+Started GET "/mangas/1/chapters/1" for 127.0.0.1 at 2011-03-30 00:59:02 +0200
+  Processing by ChaptersController#show as HTML
+  Parameters: {"manga_id"=>"1", "id"=>"1"}
+  [1m[36mSQL (0.272ms)[0m  [1mSELECT `id`, `name`, `name_url`, `first_page`, `image_id`, `position`, `manga_id` FROM `chapters` WHERE `id` = 1 LIMIT 1[0m
+Rendered public/404.html (0.5ms)
+Completed 404 Not Found in 6ms (Views: 4.3ms | Models: 3.577ms)
+
+
+Started GET "/img/img-a.onemanga.com/mangas/00000001/000052552/01.jpg" for 127.0.0.1 at 2011-03-30 00:59:02 +0200
+  Processing by ChaptersController#test as HTML
+  Parameters: {"id"=>"img-a.onemanga.com/mangas/00000001/000052552/01.jpg"}
+Sent data image.jpg (12.6ms)
+Completed 200 OK in 428ms (Views: 12.5ms | Models: 0.000ms)
+[datamapper] Setting up the "test" environment:
+[datamapper] Setting up :default repository: 'mangapad_test' on mysql
+  [1m[36mSQL (0.065ms)[0m  [1mSET sql_auto_is_null = 0[0m
+  [1m[35mSQL (0.073ms)[0m  SET SESSION sql_mode = 'ANSI,NO_BACKSLASH_ESCAPES,NO_DIR_IN_CREATE,NO_ENGINE_SUBSTITUTION,NO_UNSIGNED_SUBTRACTION,TRADITIONAL'
+  [1m[36mSQL (0.216ms)[0m  [1mSELECT `id`, `name`, `url`, `format`, `directory`, `js_url_stub` FROM `sites` ORDER BY `id`[0m
+  [1m[35mSQL (0.388ms)[0m  DELETE FROM `sites` WHERE `id` = 2
+  [1m[36mSQL (0.213ms)[0m  [1mSELECT `id`, `name`, `name_url`, `latest_chapter`, `status_id`, `last_update`, `rank_om`, `image_id`, `scraped`, `published`, `site_id` FROM `mangas` ORDER BY `id`[0m
+  [1m[35mSQL (0.544ms)[0m  DELETE FROM `mangas` WHERE `id` = 2
+  [1m[36mSQL (0.212ms)[0m  [1mSELECT `id`, `name`, `name_url`, `first_page`, `image_id`, `position`, `manga_id` FROM `chapters` ORDER BY `id`[0m
+  [1m[35mSQL (0.292ms)[0m  DELETE FROM `chapters` WHERE `id` = 2
+  [1m[36mSQL (0.136ms)[0m  [1mSELECT `id`, `chapter_id` FROM `pages` ORDER BY `id`[0m
+  [1m[35mSQL (0.407ms)[0m  DELETE FROM `pages` WHERE `id` = 2
+  [1m[36mSQL (0.322ms)[0m  [1mINSERT INTO `sites` (`name`, `url`, `format`, `directory`, `js_url_stub`) VALUES ('onemanga', 'www.onemanga.com', '%s/%d/%s/', 'directory/', 'http://content.s-onemanga.com/manga-%d.js')[0m
+  [1m[35mSQL (0.355ms)[0m  INSERT INTO `mangas` (`name`, `published`, `site_id`) VALUES ('Eyeshield 21', TRUE, 3)
+  [1m[36mSQL (0.346ms)[0m  [1mINSERT INTO `chapters` (`name`, `position`, `manga_id`) VALUES ('1', 1, 3)[0m
+  [1m[35mSQL (0.322ms)[0m  INSERT INTO `pages` (`name`, `chapter_id`) VALUES ('1', 3)
+
+
+Started GET "/mangas/1/chapters/1" for 127.0.0.1 at 2011-03-30 00:59:30 +0200
+  Processing by ChaptersController#show as HTML
+  Parameters: {"manga_id"=>"1", "id"=>"1"}
+  [1m[36mSQL (0.186ms)[0m  [1mSELECT `id`, `name`, `name_url`, `first_page`, `image_id`, `position`, `manga_id` FROM `chapters` WHERE `id` = 1 LIMIT 1[0m
+Rendered public/404.html (0.5ms)
+Completed 404 Not Found in 6ms (Views: 4.3ms | Models: 4.077ms)
+
+
+Started GET "/img/img-a.onemanga.com/mangas/00000001/000052552/01.jpg" for 127.0.0.1 at 2011-03-30 00:59:30 +0200
+  Processing by ChaptersController#test as HTML
+  Parameters: {"id"=>"img-a.onemanga.com/mangas/00000001/000052552/01.jpg"}
+Sent data image.jpg (12.2ms)
+Completed 200 OK in 407ms (Views: 12.1ms | Models: 0.000ms)
+[datamapper] Setting up the "test" environment:
+[datamapper] Setting up :default repository: 'mangapad_test' on mysql
+  [1m[36mSQL (0.096ms)[0m  [1mSET sql_auto_is_null = 0[0m
+  [1m[35mSQL (0.065ms)[0m  SET SESSION sql_mode = 'ANSI,NO_BACKSLASH_ESCAPES,NO_DIR_IN_CREATE,NO_ENGINE_SUBSTITUTION,NO_UNSIGNED_SUBTRACTION,TRADITIONAL'
+  [1m[36mSQL (0.208ms)[0m  [1mSELECT `id`, `name`, `url`, `format`, `directory`, `js_url_stub` FROM `sites` ORDER BY `id`[0m
+  [1m[35mSQL (0.606ms)[0m  DELETE FROM `sites` WHERE `id` = 3
+  [1m[36mSQL (0.250ms)[0m  [1mSELECT `id`, `name`, `name_url`, `latest_chapter`, `status_id`, `last_update`, `rank_om`, `image_id`, `scraped`, `published`, `site_id` FROM `mangas` ORDER BY `id`[0m
+  [1m[35mSQL (0.349ms)[0m  DELETE FROM `mangas` WHERE `id` = 3
+  [1m[36mSQL (0.152ms)[0m  [1mSELECT `id`, `name`, `name_url`, `first_page`, `image_id`, `position`, `manga_id` FROM `chapters` ORDER BY `id`[0m
+  [1m[35mSQL (0.372ms)[0m  DELETE FROM `chapters` WHERE `id` = 3
+  [1m[36mSQL (0.152ms)[0m  [1mSELECT `id`, `chapter_id` FROM `pages` ORDER BY `id`[0m
+  [1m[35mSQL (0.340ms)[0m  DELETE FROM `pages` WHERE `id` = 3
+  [1m[36mSQL (0.277ms)[0m  [1mINSERT INTO `sites` (`name`, `url`, `format`, `directory`, `js_url_stub`) VALUES ('onemanga', 'www.onemanga.com', '%s/%d/%s/', 'directory/', 'http://content.s-onemanga.com/manga-%d.js')[0m
+  [1m[35mSQL (0.354ms)[0m  INSERT INTO `mangas` (`name`, `published`, `site_id`) VALUES ('Eyeshield 21', TRUE, 4)
+  [1m[36mSQL (0.267ms)[0m  [1mINSERT INTO `chapters` (`name`, `position`, `manga_id`) VALUES ('1', 1, 4)[0m
+  [1m[35mSQL (0.190ms)[0m  INSERT INTO `pages` (`name`, `chapter_id`) VALUES ('1', 4)
+
+
+Started GET "/mangas/4/chapters/4" for 127.0.0.1 at 2011-03-30 01:01:32 +0200
+  Processing by ChaptersController#show as HTML
+  Parameters: {"manga_id"=>"4", "id"=>"4"}
+  [1m[36mSQL (0.236ms)[0m  [1mSELECT `id`, `name`, `name_url`, `first_page`, `image_id`, `position`, `manga_id` FROM `chapters` WHERE `id` = 4 LIMIT 1[0m
+  [1m[35mSQL (0.145ms)[0m  SELECT `id`, `name`, `name_url`, `latest_chapter`, `status_id`, `last_update`, `rank_om`, `image_id`, `scraped`, `published`, `site_id` FROM `mangas` WHERE `id` = 4 LIMIT 1
+  [1m[36mSQL (0.202ms)[0m  [1mSELECT `id`, `chapter_id` FROM `pages` WHERE `chapter_id` = 4 ORDER BY `id` LIMIT 1[0m
+  [1m[35mSQL (0.196ms)[0m  SELECT `id`, `name` FROM `pages` WHERE `id` = 4 ORDER BY `id`
+  [1m[36mSQL (0.190ms)[0m  [1mSELECT `id`, `name`, `name_url`, `first_page`, `image_id`, `position`, `manga_id` FROM `chapters` WHERE `manga_id` = 4 ORDER BY `id`[0m
+  [1m[35mSQL (0.133ms)[0m  SELECT COUNT(*) FROM `chapters` WHERE `manga_id` = 4
+  [1m[36mSQL (0.144ms)[0m  [1mSELECT COUNT(*) FROM `pages` WHERE `chapter_id` = 4[0m
+  [1m[35mSQL (0.151ms)[0m  SELECT `id`, `name`, `url`, `format`, `directory`, `js_url_stub` FROM `sites` WHERE `id` = 4 LIMIT 1
+Rendered chapters/show.html.haml within layouts/read (25.7ms)
+Completed   in 37ms
+
+
+Started GET "/img/img-a.onemanga.com/mangas/00000001/000052552/01.jpg" for 127.0.0.1 at 2011-03-30 01:01:32 +0200
+  Processing by ChaptersController#test as HTML
+  Parameters: {"id"=>"img-a.onemanga.com/mangas/00000001/000052552/01.jpg"}
+Sent data image.jpg (12.5ms)
+Completed 200 OK in 406ms (Views: 12.4ms | Models: 0.814ms)
+[datamapper] Setting up the "test" environment:
+[datamapper] Setting up :default repository: 'mangapad_test' on mysql
+  [1m[36mSQL (0.091ms)[0m  [1mSET sql_auto_is_null = 0[0m
+  [1m[35mSQL (0.081ms)[0m  SET SESSION sql_mode = 'ANSI,NO_BACKSLASH_ESCAPES,NO_DIR_IN_CREATE,NO_ENGINE_SUBSTITUTION,NO_UNSIGNED_SUBTRACTION,TRADITIONAL'
+  [1m[36mSQL (0.209ms)[0m  [1mSELECT `id`, `name`, `url`, `format`, `directory`, `js_url_stub` FROM `sites` ORDER BY `id`[0m
+  [1m[35mSQL (0.285ms)[0m  DELETE FROM `sites` WHERE `id` = 4
+  [1m[36mSQL (0.149ms)[0m  [1mSELECT `id`, `name`, `name_url`, `latest_chapter`, `status_id`, `last_update`, `rank_om`, `image_id`, `scraped`, `published`, `site_id` FROM `mangas` ORDER BY `id`[0m
+  [1m[35mSQL (0.227ms)[0m  DELETE FROM `mangas` WHERE `id` = 4
+  [1m[36mSQL (0.155ms)[0m  [1mSELECT `id`, `name`, `name_url`, `first_page`, `image_id`, `position`, `manga_id` FROM `chapters` ORDER BY `id`[0m
+  [1m[35mSQL (0.307ms)[0m  DELETE FROM `chapters` WHERE `id` = 4
+  [1m[36mSQL (0.153ms)[0m  [1mSELECT `id`, `chapter_id` FROM `pages` ORDER BY `id`[0m
+  [1m[35mSQL (0.325ms)[0m  DELETE FROM `pages` WHERE `id` = 4
+  [1m[36mSQL (0.225ms)[0m  [1mINSERT INTO `sites` (`name`, `url`, `format`, `directory`, `js_url_stub`) VALUES ('onemanga', 'www.onemanga.com', '%s/%d/%s/', 'directory/', 'http://content.s-onemanga.com/manga-%d.js')[0m
+  [1m[35mSQL (0.213ms)[0m  INSERT INTO `mangas` (`name`, `published`, `site_id`) VALUES ('Eyeshield 21', TRUE, 5)
+  [1m[36mSQL (0.206ms)[0m  [1mINSERT INTO `chapters` (`name`, `position`, `manga_id`) VALUES ('1', 1, 5)[0m
+  [1m[35mSQL (0.201ms)[0m  INSERT INTO `pages` (`name`, `chapter_id`) VALUES ('1', 5)
+
+
+Started GET "/mangas/5/chapters/5" for 127.0.0.1 at 2011-03-30 01:02:17 +0200
+  Processing by ChaptersController#show as HTML
+  Parameters: {"manga_id"=>"5", "id"=>"5"}
+  [1m[36mSQL (0.238ms)[0m  [1mSELECT `id`, `name`, `name_url`, `first_page`, `image_id`, `position`, `manga_id` FROM `chapters` WHERE `id` = 5 LIMIT 1[0m
+  [1m[35mSQL (0.156ms)[0m  SELECT `id`, `name`, `name_url`, `latest_chapter`, `status_id`, `last_update`, `rank_om`, `image_id`, `scraped`, `published`, `site_id` FROM `mangas` WHERE `id` = 5 LIMIT 1
+  [1m[36mSQL (0.162ms)[0m  [1mSELECT `id`, `chapter_id` FROM `pages` WHERE `chapter_id` = 5 ORDER BY `id` LIMIT 1[0m
+  [1m[35mSQL (0.135ms)[0m  SELECT `id`, `name` FROM `pages` WHERE `id` = 5 ORDER BY `id`
+  [1m[36mSQL (0.181ms)[0m  [1mSELECT `id`, `name`, `name_url`, `first_page`, `image_id`, `position`, `manga_id` FROM `chapters` WHERE `manga_id` = 5 ORDER BY `id`[0m
+  [1m[35mSQL (0.209ms)[0m  SELECT COUNT(*) FROM `chapters` WHERE `manga_id` = 5
+  [1m[36mSQL (0.129ms)[0m  [1mSELECT COUNT(*) FROM `pages` WHERE `chapter_id` = 5[0m
+  [1m[35mSQL (0.136ms)[0m  SELECT `id`, `name`, `url`, `format`, `directory`, `js_url_stub` FROM `sites` WHERE `id` = 5 LIMIT 1
+Rendered chapters/show.html.haml within layouts/read (24.9ms)
+Completed   in 36ms
+
+
+Started GET "/img/img-a.onemanga.com/mangas/00000001/000052552/01.jpg" for 127.0.0.1 at 2011-03-30 01:02:17 +0200
+  Processing by ChaptersController#test as HTML
+  Parameters: {"id"=>"img-a.onemanga.com/mangas/00000001/000052552/01.jpg"}
+Sent data image.jpg (12.3ms)
+Completed 200 OK in 447ms (Views: 12.2ms | Models: 0.790ms)
+[datamapper] Setting up the "test" environment:
+[datamapper] Setting up :default repository: 'mangapad_test' on mysql
+  [1m[36mSQL (0.080ms)[0m  [1mSET sql_auto_is_null = 0[0m
+  [1m[35mSQL (0.070ms)[0m  SET SESSION sql_mode = 'ANSI,NO_BACKSLASH_ESCAPES,NO_DIR_IN_CREATE,NO_ENGINE_SUBSTITUTION,NO_UNSIGNED_SUBTRACTION,TRADITIONAL'
+  [1m[36mSQL (0.210ms)[0m  [1mSELECT `id`, `name`, `url`, `format`, `directory`, `js_url_stub` FROM `sites` ORDER BY `id`[0m
+  [1m[35mSQL (1.504ms)[0m  DELETE FROM `sites` WHERE `id` = 5
+  [1m[36mSQL (0.152ms)[0m  [1mSELECT `id`, `name`, `name_url`, `latest_chapter`, `status_id`, `last_update`, `rank_om`, `image_id`, `scraped`, `published`, `site_id` FROM `mangas` ORDER BY `id`[0m
+  [1m[35mSQL (101.951ms)[0m  DELETE FROM `mangas` WHERE `id` = 5
+  [1m[36mSQL (0.191ms)[0m  [1mSELECT `id`, `name`, `name_url`, `first_page`, `image_id`, `position`, `manga_id` FROM `chapters` ORDER BY `id`[0m
+  [1m[35mSQL (0.471ms)[0m  DELETE FROM `chapters` WHERE `id` = 5
+  [1m[36mSQL (0.117ms)[0m  [1mSELECT `id`, `chapter_id` FROM `pages` ORDER BY `id`[0m
+  [1m[35mSQL (0.398ms)[0m  DELETE FROM `pages` WHERE `id` = 5
+
+
+Started GET "/img/img-a.onemanga.com/mangas/00000001/000052552/01.jpg" for 127.0.0.1 at 2011-03-30 01:07:10 +0200
+  Processing by ChaptersController#test as HTML
+  Parameters: {"id"=>"img-a.onemanga.com/mangas/00000001/000052552/01.jpg"}
+Sent data image.jpg (12.9ms)
+Completed 200 OK in 413ms (Views: 12.8ms | Models: 105.144ms)
+[datamapper] Setting up the "test" environment:
+[datamapper] Setting up :default repository: 'mangapad_test' on mysql
+  [1m[36mSQL (0.065ms)[0m  [1mSET sql_auto_is_null = 0[0m
+  [1m[35mSQL (0.061ms)[0m  SET SESSION sql_mode = 'ANSI,NO_BACKSLASH_ESCAPES,NO_DIR_IN_CREATE,NO_ENGINE_SUBSTITUTION,NO_UNSIGNED_SUBTRACTION,TRADITIONAL'
+  [1m[36mSQL (0.178ms)[0m  [1mSELECT `id`, `name`, `url`, `format`, `directory`, `js_url_stub` FROM `sites` ORDER BY `id`[0m
+  [1m[35mSQL (0.178ms)[0m  SELECT `id`, `name`, `name_url`, `latest_chapter`, `status_id`, `last_update`, `rank_om`, `image_id`, `scraped`, `published`, `site_id` FROM `mangas` ORDER BY `id`
+  [1m[36mSQL (0.133ms)[0m  [1mSELECT `id`, `name`, `name_url`, `first_page`, `image_id`, `position`, `manga_id` FROM `chapters` ORDER BY `id`[0m
+  [1m[35mSQL (0.111ms)[0m  SELECT `id`, `chapter_id` FROM `pages` ORDER BY `id`
+  [1m[36mSQL (0.312ms)[0m  [1mINSERT INTO `sites` (`name`, `url`, `format`, `directory`, `js_url_stub`) VALUES ('onemanga', 'www.onemanga.com', 'img-a.onemanga.com/mangas/#{manga.image_id}/#{chapter.image_id}/#{name}.jpg', 'directory/', 'http://content.s-onemanga.com/manga-%d.js')[0m
+  [1m[35mSQL (0.321ms)[0m  INSERT INTO `mangas` (`name`, `published`, `site_id`) VALUES ('Eyeshield 21', TRUE, 6)
+  [1m[36mSQL (0.296ms)[0m  [1mINSERT INTO `chapters` (`name`, `position`, `manga_id`) VALUES ('1', 1, 6)[0m
+  [1m[35mSQL (0.491ms)[0m  INSERT INTO `pages` (`name`, `chapter_id`) VALUES ('1', 6)
+
+
+Started GET "/mangas/6/chapters/6" for 127.0.0.1 at 2011-03-30 01:07:46 +0200
+  Processing by ChaptersController#show as HTML
+  Parameters: {"manga_id"=>"6", "id"=>"6"}
+  [1m[36mSQL (0.191ms)[0m  [1mSELECT `id`, `name`, `name_url`, `first_page`, `image_id`, `position`, `manga_id` FROM `chapters` WHERE `id` = 6 LIMIT 1[0m
+  [1m[35mSQL (0.187ms)[0m  SELECT `id`, `name`, `name_url`, `latest_chapter`, `status_id`, `last_update`, `rank_om`, `image_id`, `scraped`, `published`, `site_id` FROM `mangas` WHERE `id` = 6 LIMIT 1
+  [1m[36mSQL (0.212ms)[0m  [1mSELECT `id`, `chapter_id` FROM `pages` WHERE `chapter_id` = 6 ORDER BY `id` LIMIT 1[0m
+  [1m[35mSQL (0.176ms)[0m  SELECT `id`, `name` FROM `pages` WHERE `id` = 6 ORDER BY `id`
+  [1m[36mSQL (0.233ms)[0m  [1mSELECT `id`, `name`, `name_url`, `first_page`, `image_id`, `position`, `manga_id` FROM `chapters` WHERE `manga_id` = 6 ORDER BY `id`[0m
+  [1m[35mSQL (0.208ms)[0m  SELECT COUNT(*) FROM `chapters` WHERE `manga_id` = 6
+  [1m[36mSQL (0.168ms)[0m  [1mSELECT COUNT(*) FROM `pages` WHERE `chapter_id` = 6[0m
+  [1m[35mSQL (0.176ms)[0m  SELECT `id`, `name`, `url`, `format`, `directory`, `js_url_stub` FROM `sites` WHERE `id` = 6 LIMIT 1
+Rendered chapters/show.html.haml within layouts/read (25.3ms)
+Completed   in 37ms
+
+
+Started GET "/img/img-a.onemanga.com/mangas/00000001/000052552/01.jpg" for 127.0.0.1 at 2011-03-30 01:07:46 +0200
+  Processing by ChaptersController#test as HTML
+  Parameters: {"id"=>"img-a.onemanga.com/mangas/00000001/000052552/01.jpg"}
+Sent data image.jpg (12.8ms)
+Completed 200 OK in 422ms (Views: 12.6ms | Models: 0.961ms)
+[datamapper] Setting up the "test" environment:
+[datamapper] Setting up :default repository: 'mangapad_test' on mysql
+  [1m[36mSQL (0.064ms)[0m  [1mSET sql_auto_is_null = 0[0m
+  [1m[35mSQL (0.073ms)[0m  SET SESSION sql_mode = 'ANSI,NO_BACKSLASH_ESCAPES,NO_DIR_IN_CREATE,NO_ENGINE_SUBSTITUTION,NO_UNSIGNED_SUBTRACTION,TRADITIONAL'
+  [1m[36mSQL (0.202ms)[0m  [1mSELECT `id`, `name`, `url`, `format`, `directory`, `js_url_stub` FROM `sites` ORDER BY `id`[0m
+  [1m[35mSQL (0.337ms)[0m  DELETE FROM `sites` WHERE `id` = 6
+  [1m[36mSQL (0.202ms)[0m  [1mSELECT `id`, `name`, `name_url`, `latest_chapter`, `status_id`, `last_update`, `rank_om`, `image_id`, `scraped`, `published`, `site_id` FROM `mangas` ORDER BY `id`[0m
+  [1m[35mSQL (0.320ms)[0m  DELETE FROM `mangas` WHERE `id` = 6
+  [1m[36mSQL (0.200ms)[0m  [1mSELECT `id`, `name`, `name_url`, `first_page`, `image_id`, `position`, `manga_id` FROM `chapters` ORDER BY `id`[0m
+  [1m[35mSQL (0.274ms)[0m  DELETE FROM `chapters` WHERE `id` = 6
+  [1m[36mSQL (0.153ms)[0m  [1mSELECT `id`, `chapter_id` FROM `pages` ORDER BY `id`[0m
+  [1m[35mSQL (0.319ms)[0m  DELETE FROM `pages` WHERE `id` = 6
+  [1m[36mSQL (0.210ms)[0m  [1mINSERT INTO `sites` (`name`, `url`, `format`, `directory`, `js_url_stub`) VALUES ('onemanga', 'www.onemanga.com', '"img-a.onemanga.com/mangas/#{manga.image_id}/#{chapter.image_id}/#{name}.jpg"', 'directory/', 'http://content.s-onemanga.com/manga-%d.js')[0m
+  [1m[35mSQL (0.249ms)[0m  INSERT INTO `mangas` (`name`, `published`, `site_id`) VALUES ('Eyeshield 21', TRUE, 7)
+  [1m[36mSQL (0.265ms)[0m  [1mINSERT INTO `chapters` (`name`, `position`, `manga_id`) VALUES ('1', 1, 7)[0m
+  [1m[35mSQL (0.341ms)[0m  INSERT INTO `pages` (`name`, `chapter_id`) VALUES ('1', 7)
+
+
+Started GET "/mangas/7/chapters/7" for 127.0.0.1 at 2011-03-30 01:08:33 +0200
+  Processing by ChaptersController#show as HTML
+  Parameters: {"manga_id"=>"7", "id"=>"7"}
+  [1m[36mSQL (0.246ms)[0m  [1mSELECT `id`, `name`, `name_url`, `first_page`, `image_id`, `position`, `manga_id` FROM `chapters` WHERE `id` = 7 LIMIT 1[0m
+  [1m[35mSQL (0.145ms)[0m  SELECT `id`, `name`, `name_url`, `latest_chapter`, `status_id`, `last_update`, `rank_om`, `image_id`, `scraped`, `published`, `site_id` FROM `mangas` WHERE `id` = 7 LIMIT 1
+  [1m[36mSQL (0.176ms)[0m  [1mSELECT `id`, `chapter_id` FROM `pages` WHERE `chapter_id` = 7 ORDER BY `id` LIMIT 1[0m
+  [1m[35mSQL (0.162ms)[0m  SELECT `id`, `name` FROM `pages` WHERE `id` = 7 ORDER BY `id`
+  [1m[36mSQL (0.182ms)[0m  [1mSELECT `id`, `name`, `name_url`, `first_page`, `image_id`, `position`, `manga_id` FROM `chapters` WHERE `manga_id` = 7 ORDER BY `id`[0m
+  [1m[35mSQL (0.132ms)[0m  SELECT COUNT(*) FROM `chapters` WHERE `manga_id` = 7
+  [1m[36mSQL (0.142ms)[0m  [1mSELECT COUNT(*) FROM `pages` WHERE `chapter_id` = 7[0m
+  [1m[35mSQL (0.137ms)[0m  SELECT `id`, `name`, `url`, `format`, `directory`, `js_url_stub` FROM `sites` WHERE `id` = 7 LIMIT 1
+  [1m[36mSQL (0.126ms)[0m  [1mSELECT COUNT(*) FROM `pages` WHERE `chapter_id` = 7[0m
+Rendered chapters/show.html.haml within layouts/read (35.4ms)
+Completed 200 OK in 47ms (Views: 39.0ms | Models: 4.657ms)
+
+
+Started GET "/img/img-a.onemanga.com/mangas/00000001/000052552/01.jpg" for 127.0.0.1 at 2011-03-30 01:08:33 +0200
+  Processing by ChaptersController#test as HTML
+  Parameters: {"id"=>"img-a.onemanga.com/mangas/00000001/000052552/01.jpg"}
+Sent data image.jpg (12.7ms)
+Completed 200 OK in 410ms (Views: 12.6ms | Models: 0.000ms)
+[datamapper] Setting up the "test" environment:
+[datamapper] Setting up :default repository: 'mangapad_test' on mysql
+  [1m[36mSQL (0.105ms)[0m  [1mSET sql_auto_is_null = 0[0m
+  [1m[35mSQL (0.073ms)[0m  SET SESSION sql_mode = 'ANSI,NO_BACKSLASH_ESCAPES,NO_DIR_IN_CREATE,NO_ENGINE_SUBSTITUTION,NO_UNSIGNED_SUBTRACTION,TRADITIONAL'
+  [1m[36mSQL (0.214ms)[0m  [1mSELECT `id`, `name`, `url`, `format`, `directory`, `js_url_stub` FROM `sites` ORDER BY `id`[0m
+  [1m[35mSQL (0.340ms)[0m  DELETE FROM `sites` WHERE `id` = 7
+  [1m[36mSQL (0.173ms)[0m  [1mSELECT `id`, `name`, `name_url`, `latest_chapter`, `status_id`, `last_update`, `rank_om`, `image_id`, `scraped`, `published`, `site_id` FROM `mangas` ORDER BY `id`[0m
+  [1m[35mSQL (0.318ms)[0m  DELETE FROM `mangas` WHERE `id` = 7
+  [1m[36mSQL (0.152ms)[0m  [1mSELECT `id`, `name`, `name_url`, `first_page`, `image_id`, `position`, `manga_id` FROM `chapters` ORDER BY `id`[0m
+  [1m[35mSQL (0.295ms)[0m  DELETE FROM `chapters` WHERE `id` = 7
+  [1m[36mSQL (0.136ms)[0m  [1mSELECT `id`, `chapter_id` FROM `pages` ORDER BY `id`[0m
+  [1m[35mSQL (0.274ms)[0m  DELETE FROM `pages` WHERE `id` = 7
+  [1m[36mSQL (0.276ms)[0m  [1mINSERT INTO `sites` (`name`, `url`, `format`, `directory`, `js_url_stub`) VALUES ('onemanga', 'www.onemanga.com', '"img-a.onemanga.com/mangas/#{manga.image_id}/#{chapter.image_id}/#{name}.jpg"', 'directory/', 'http://content.s-onemanga.com/manga-%d.js')[0m
+  [1m[35mSQL (0.342ms)[0m  INSERT INTO `mangas` (`name`, `published`, `site_id`) VALUES ('Eyeshield 21', TRUE, 8)
+  [1m[36mSQL (0.326ms)[0m  [1mINSERT INTO `chapters` (`name`, `position`, `manga_id`) VALUES ('1', 1, 8)[0m
+  [1m[35mSQL (0.197ms)[0m  INSERT INTO `pages` (`name`, `chapter_id`) VALUES ('1', 8)
+
+
+Started GET "/mangas/8/chapters/8" for 127.0.0.1 at 2011-03-30 01:09:16 +0200
+  Processing by ChaptersController#show as HTML
+  Parameters: {"manga_id"=>"8", "id"=>"8"}
+  [1m[36mSQL (0.216ms)[0m  [1mSELECT `id`, `name`, `name_url`, `first_page`, `image_id`, `position`, `manga_id` FROM `chapters` WHERE `id` = 8 LIMIT 1[0m
+  [1m[35mSQL (0.143ms)[0m  SELECT `id`, `name`, `name_url`, `latest_chapter`, `status_id`, `last_update`, `rank_om`, `image_id`, `scraped`, `published`, `site_id` FROM `mangas` WHERE `id` = 8 LIMIT 1
+  [1m[36mSQL (0.170ms)[0m  [1mSELECT `id`, `chapter_id` FROM `pages` WHERE `chapter_id` = 8 ORDER BY `id` LIMIT 1[0m
+  [1m[35mSQL (0.188ms)[0m  SELECT `id`, `name` FROM `pages` WHERE `id` = 8 ORDER BY `id`
+  [1m[36mSQL (0.258ms)[0m  [1mSELECT `id`, `name`, `name_url`, `first_page`, `image_id`, `position`, `manga_id` FROM `chapters` WHERE `manga_id` = 8 ORDER BY `id`[0m
+  [1m[35mSQL (0.136ms)[0m  SELECT COUNT(*) FROM `chapters` WHERE `manga_id` = 8
+  [1m[36mSQL (0.138ms)[0m  [1mSELECT COUNT(*) FROM `pages` WHERE `chapter_id` = 8[0m
+  [1m[35mSQL (0.129ms)[0m  SELECT `id`, `name`, `url`, `format`, `directory`, `js_url_stub` FROM `sites` WHERE `id` = 8 LIMIT 1
+  [1m[36mSQL (0.138ms)[0m  [1mSELECT COUNT(*) FROM `pages` WHERE `chapter_id` = 8[0m
+Rendered chapters/show.html.haml within layouts/read (35.6ms)
+Completed 200 OK in 47ms (Views: 39.2ms | Models: 4.737ms)
+
+
+Started GET "/img/img-a.onemanga.com/mangas/00000001/000052552/01.jpg" for 127.0.0.1 at 2011-03-30 01:09:16 +0200
+  Processing by ChaptersController#test as HTML
+  Parameters: {"id"=>"img-a.onemanga.com/mangas/00000001/000052552/01.jpg"}
+Sent data image.jpg (12.4ms)
+Completed 200 OK in 408ms (Views: 12.2ms | Models: 0.000ms)
+[datamapper] Setting up the "test" environment:
+[datamapper] Setting up :default repository: 'mangapad_test' on mysql
+  [1m[36mSQL (0.105ms)[0m  [1mSET sql_auto_is_null = 0[0m
+  [1m[35mSQL (0.062ms)[0m  SET SESSION sql_mode = 'ANSI,NO_BACKSLASH_ESCAPES,NO_DIR_IN_CREATE,NO_ENGINE_SUBSTITUTION,NO_UNSIGNED_SUBTRACTION,TRADITIONAL'
+  [1m[36mSQL (0.260ms)[0m  [1mSELECT `id`, `name`, `url`, `format`, `directory`, `js_url_stub` FROM `sites` ORDER BY `id`[0m
+  [1m[35mSQL (0.514ms)[0m  DELETE FROM `sites` WHERE `id` = 8
+  [1m[36mSQL (0.153ms)[0m  [1mSELECT `id`, `name`, `name_url`, `latest_chapter`, `status_id`, `last_update`, `rank_om`, `image_id`, `scraped`, `published`, `site_id` FROM `mangas` ORDER BY `id`[0m
+  [1m[35mSQL (0.232ms)[0m  DELETE FROM `mangas` WHERE `id` = 8
+  [1m[36mSQL (0.146ms)[0m  [1mSELECT `id`, `name`, `name_url`, `first_page`, `image_id`, `position`, `manga_id` FROM `chapters` ORDER BY `id`[0m
+  [1m[35mSQL (0.219ms)[0m  DELETE FROM `chapters` WHERE `id` = 8
+  [1m[36mSQL (0.117ms)[0m  [1mSELECT `id`, `chapter_id` FROM `pages` ORDER BY `id`[0m
+  [1m[35mSQL (0.203ms)[0m  DELETE FROM `pages` WHERE `id` = 8
+  [1m[36mSQL (0.237ms)[0m  [1mINSERT INTO `sites` (`name`, `url`, `format`, `directory`, `js_url_stub`) VALUES ('onemanga', 'www.onemanga.com', '"img-a.onemanga.com/mangas/#{manga.image_id}/#{chapter.image_id}/#{name}.jpg"', 'directory/', 'http://content.s-onemanga.com/manga-%d.js')[0m
+  [1m[35mSQL (0.331ms)[0m  INSERT INTO `mangas` (`name`, `published`, `site_id`) VALUES ('Eyeshield 21', TRUE, 9)
+  [1m[36mSQL (0.320ms)[0m  [1mINSERT INTO `chapters` (`name`, `position`, `manga_id`) VALUES ('1', 1, 9)[0m
+  [1m[35mSQL (0.187ms)[0m  INSERT INTO `pages` (`name`, `chapter_id`) VALUES ('1', 9)
+
+
+Started GET "/mangas/9/chapters/9" for 127.0.0.1 at 2011-03-30 01:09:34 +0200
+  Processing by ChaptersController#show as HTML
+  Parameters: {"manga_id"=>"9", "id"=>"9"}
+  [1m[36mSQL (0.262ms)[0m  [1mSELECT `id`, `name`, `name_url`, `first_page`, `image_id`, `position`, `manga_id` FROM `chapters` WHERE `id` = 9 LIMIT 1[0m
+  [1m[35mSQL (0.147ms)[0m  SELECT `id`, `name`, `name_url`, `latest_chapter`, `status_id`, `last_update`, `rank_om`, `image_id`, `scraped`, `published`, `site_id` FROM `mangas` WHERE `id` = 9 LIMIT 1
+  [1m[36mSQL (0.181ms)[0m  [1mSELECT `id`, `chapter_id` FROM `pages` WHERE `chapter_id` = 9 ORDER BY `id` LIMIT 1[0m
+  [1m[35mSQL (0.170ms)[0m  SELECT `id`, `name` FROM `pages` WHERE `id` = 9 ORDER BY `id`
+  [1m[36mSQL (0.179ms)[0m  [1mSELECT `id`, `name`, `name_url`, `first_page`, `image_id`, `position`, `manga_id` FROM `chapters` WHERE `manga_id` = 9 ORDER BY `id`[0m
+  [1m[35mSQL (0.134ms)[0m  SELECT COUNT(*) FROM `chapters` WHERE `manga_id` = 9
+  [1m[36mSQL (0.142ms)[0m  [1mSELECT COUNT(*) FROM `pages` WHERE `chapter_id` = 9[0m
+  [1m[35mSQL (0.167ms)[0m  SELECT `id`, `name`, `url`, `format`, `directory`, `js_url_stub` FROM `sites` WHERE `id` = 9 LIMIT 1
+  [1m[36mSQL (0.135ms)[0m  [1mSELECT COUNT(*) FROM `pages` WHERE `chapter_id` = 9[0m
+Rendered chapters/show.html.haml within layouts/read (34.6ms)
+Completed 200 OK in 46ms (Views: 38.1ms | Models: 4.603ms)
+
+
+Started GET "/img/img-a.onemanga.com/mangas/00000001/000052552/01.jpg" for 127.0.0.1 at 2011-03-30 01:09:34 +0200
+  Processing by ChaptersController#test as HTML
+  Parameters: {"id"=>"img-a.onemanga.com/mangas/00000001/000052552/01.jpg"}
+Sent data image.jpg (12.5ms)
+Completed 200 OK in 409ms (Views: 12.4ms | Models: 0.000ms)
+[datamapper] Setting up the "test" environment:
+[datamapper] Setting up :default repository: 'mangapad_test' on mysql
+  [1m[36mSQL (0.088ms)[0m  [1mSET sql_auto_is_null = 0[0m
+  [1m[35mSQL (0.083ms)[0m  SET SESSION sql_mode = 'ANSI,NO_BACKSLASH_ESCAPES,NO_DIR_IN_CREATE,NO_ENGINE_SUBSTITUTION,NO_UNSIGNED_SUBTRACTION,TRADITIONAL'
+  [1m[36mSQL (0.192ms)[0m  [1mSELECT `id`, `name`, `url`, `format`, `directory`, `js_url_stub` FROM `sites` ORDER BY `id`[0m
+  [1m[35mSQL (0.321ms)[0m  DELETE FROM `sites` WHERE `id` = 9
+  [1m[36mSQL (0.182ms)[0m  [1mSELECT `id`, `name`, `name_url`, `latest_chapter`, `status_id`, `last_update`, `rank_om`, `image_id`, `scraped`, `published`, `site_id` FROM `mangas` ORDER BY `id`[0m
+  [1m[35mSQL (0.236ms)[0m  DELETE FROM `mangas` WHERE `id` = 9
+  [1m[36mSQL (0.132ms)[0m  [1mSELECT `id`, `name`, `name_url`, `first_page`, `image_id`, `position`, `manga_id` FROM `chapters` ORDER BY `id`[0m
+  [1m[35mSQL (0.313ms)[0m  DELETE FROM `chapters` WHERE `id` = 9
+  [1m[36mSQL (0.118ms)[0m  [1mSELECT `id`, `chapter_id` FROM `pages` ORDER BY `id`[0m
+  [1m[35mSQL (0.232ms)[0m  DELETE FROM `pages` WHERE `id` = 9
+  [1m[36mSQL (0.293ms)[0m  [1mINSERT INTO `sites` (`name`, `url`, `format`, `directory`, `js_url_stub`) VALUES ('onemanga', 'www.onemanga.com', '"img-a.onemanga.com/mangas/#{manga.image_id}/#{chapter.image_id}/#{name}.jpg"', 'directory/', 'http://content.s-onemanga.com/manga-%d.js')[0m
+  [1m[35mSQL (0.216ms)[0m  INSERT INTO `mangas` (`name`, `published`, `site_id`) VALUES ('Eyeshield 21', TRUE, 10)
+  [1m[36mSQL (0.205ms)[0m  [1mINSERT INTO `chapters` (`name`, `position`, `manga_id`) VALUES ('1', 1, 10)[0m
+  [1m[35mSQL (0.278ms)[0m  INSERT INTO `pages` (`name`, `chapter_id`) VALUES ('1', 10)
+
+
+Started GET "/mangas/10/chapters/10" for 127.0.0.1 at 2011-03-30 01:09:44 +0200
+  Processing by ChaptersController#show as HTML
+  Parameters: {"manga_id"=>"10", "id"=>"10"}
+  [1m[36mSQL (0.231ms)[0m  [1mSELECT `id`, `name`, `name_url`, `first_page`, `image_id`, `position`, `manga_id` FROM `chapters` WHERE `id` = 10 LIMIT 1[0m
+  [1m[35mSQL (0.145ms)[0m  SELECT `id`, `name`, `name_url`, `latest_chapter`, `status_id`, `last_update`, `rank_om`, `image_id`, `scraped`, `published`, `site_id` FROM `mangas` WHERE `id` = 10 LIMIT 1
+  [1m[36mSQL (0.164ms)[0m  [1mSELECT `id`, `chapter_id` FROM `pages` WHERE `chapter_id` = 10 ORDER BY `id` LIMIT 1[0m
+  [1m[35mSQL (0.208ms)[0m  SELECT `id`, `name` FROM `pages` WHERE `id` = 10 ORDER BY `id`
+  [1m[36mSQL (0.173ms)[0m  [1mSELECT `id`, `name`, `name_url`, `first_page`, `image_id`, `position`, `manga_id` FROM `chapters` WHERE `manga_id` = 10 ORDER BY `id`[0m
+  [1m[35mSQL (0.138ms)[0m  SELECT COUNT(*) FROM `chapters` WHERE `manga_id` = 10
+  [1m[36mSQL (0.126ms)[0m  [1mSELECT COUNT(*) FROM `pages` WHERE `chapter_id` = 10[0m
+  [1m[35mSQL (0.196ms)[0m  SELECT `id`, `name`, `url`, `format`, `directory`, `js_url_stub` FROM `sites` WHERE `id` = 10 LIMIT 1
+  [1m[36mSQL (0.138ms)[0m  [1mSELECT COUNT(*) FROM `pages` WHERE `chapter_id` = 10[0m
+Rendered chapters/show.html.haml within layouts/read (34.8ms)
+Completed 200 OK in 47ms (Views: 38.6ms | Models: 4.408ms)
+
+
+Started GET "/img/img-a.onemanga.com/mangas/00000001/000052552/01.jpg" for 127.0.0.1 at 2011-03-30 01:09:44 +0200
+  Processing by ChaptersController#test as HTML
+  Parameters: {"id"=>"img-a.onemanga.com/mangas/00000001/000052552/01.jpg"}
+Sent data image.jpg (12.2ms)
+Completed 200 OK in 419ms (Views: 12.1ms | Models: 0.000ms)
+[datamapper] Setting up the "test" environment:
+[datamapper] Setting up :default repository: 'mangapad_test' on mysql
+  [1m[36mSQL (0.096ms)[0m  [1mSET sql_auto_is_null = 0[0m
+  [1m[35mSQL (0.063ms)[0m  SET SESSION sql_mode = 'ANSI,NO_BACKSLASH_ESCAPES,NO_DIR_IN_CREATE,NO_ENGINE_SUBSTITUTION,NO_UNSIGNED_SUBTRACTION,TRADITIONAL'
+  [1m[36mSQL (0.208ms)[0m  [1mSELECT `id`, `name`, `url`, `format`, `directory`, `js_url_stub` FROM `sites` ORDER BY `id`[0m
+  [1m[35mSQL (0.590ms)[0m  DELETE FROM `sites` WHERE `id` = 10
+  [1m[36mSQL (0.190ms)[0m  [1mSELECT `id`, `name`, `name_url`, `latest_chapter`, `status_id`, `last_update`, `rank_om`, `image_id`, `scraped`, `published`, `site_id` FROM `mangas` ORDER BY `id`[0m
+  [1m[35mSQL (0.282ms)[0m  DELETE FROM `mangas` WHERE `id` = 10
+  [1m[36mSQL (0.145ms)[0m  [1mSELECT `id`, `name`, `name_url`, `first_page`, `image_id`, `position`, `manga_id` FROM `chapters` ORDER BY `id`[0m
+  [1m[35mSQL (0.255ms)[0m  DELETE FROM `chapters` WHERE `id` = 10
+  [1m[36mSQL (0.118ms)[0m  [1mSELECT `id`, `chapter_id` FROM `pages` ORDER BY `id`[0m
+  [1m[35mSQL (0.338ms)[0m  DELETE FROM `pages` WHERE `id` = 10
+  [1m[36mSQL (0.228ms)[0m  [1mINSERT INTO `sites` (`name`, `url`, `format`, `directory`, `js_url_stub`) VALUES ('onemanga', 'www.onemanga.com', '"img-a.onemanga.com/mangas/#{manga.image_id}/#{chapter.image_id}/#{name}.jpg"', 'directory/', 'http://content.s-onemanga.com/manga-%d.js')[0m
+  [1m[35mSQL (0.248ms)[0m  INSERT INTO `mangas` (`name`, `published`, `site_id`) VALUES ('Eyeshield 21', TRUE, 11)
+  [1m[36mSQL (0.259ms)[0m  [1mINSERT INTO `chapters` (`name`, `position`, `manga_id`) VALUES ('1', 1, 11)[0m
+  [1m[35mSQL (0.206ms)[0m  INSERT INTO `pages` (`name`, `chapter_id`) VALUES ('1', 11)
+
+
+Started GET "/mangas/11/chapters/11" for 127.0.0.1 at 2011-03-30 01:10:10 +0200
+  Processing by ChaptersController#show as HTML
+  Parameters: {"manga_id"=>"11", "id"=>"11"}
+  [1m[36mSQL (0.244ms)[0m  [1mSELECT `id`, `name`, `name_url`, `first_page`, `image_id`, `position`, `manga_id` FROM `chapters` WHERE `id` = 11 LIMIT 1[0m
+  [1m[35mSQL (0.145ms)[0m  SELECT `id`, `name`, `name_url`, `latest_chapter`, `status_id`, `last_update`, `rank_om`, `image_id`, `scraped`, `published`, `site_id` FROM `mangas` WHERE `id` = 11 LIMIT 1
+  [1m[36mSQL (0.165ms)[0m  [1mSELECT `id`, `chapter_id` FROM `pages` WHERE `chapter_id` = 11 ORDER BY `id` LIMIT 1[0m
+  [1m[35mSQL (0.188ms)[0m  SELECT `id`, `name` FROM `pages` WHERE `id` = 11 ORDER BY `id`
+  [1m[36mSQL (0.168ms)[0m  [1mSELECT `id`, `name`, `name_url`, `first_page`, `image_id`, `position`, `manga_id` FROM `chapters` WHERE `manga_id` = 11 ORDER BY `id`[0m
+  [1m[35mSQL (0.155ms)[0m  SELECT COUNT(*) FROM `chapters` WHERE `manga_id` = 11
+  [1m[36mSQL (0.126ms)[0m  [1mSELECT COUNT(*) FROM `pages` WHERE `chapter_id` = 11[0m
+  [1m[35mSQL (0.131ms)[0m  SELECT `id`, `name`, `url`, `format`, `directory`, `js_url_stub` FROM `sites` WHERE `id` = 11 LIMIT 1
+  [1m[36mSQL (0.127ms)[0m  [1mSELECT COUNT(*) FROM `pages` WHERE `chapter_id` = 11[0m
+Rendered chapters/show.html.haml within layouts/read (35.9ms)
+Completed 200 OK in 48ms (Views: 39.6ms | Models: 4.675ms)
+
+
+Started GET "/img/img-a.onemanga.com/mangas/00000001/000052552/01.jpg" for 127.0.0.1 at 2011-03-30 01:10:10 +0200
+  Processing by ChaptersController#test as HTML
+  Parameters: {"id"=>"img-a.onemanga.com/mangas/00000001/000052552/01.jpg"}
+Sent data image.jpg (12.4ms)
+Completed 200 OK in 419ms (Views: 12.3ms | Models: 0.000ms)
+[datamapper] Setting up the "test" environment:
+[datamapper] Setting up :default repository: 'mangapad_test' on mysql
+[datamapper] Setting up the "test" environment:
+[datamapper] Setting up :default repository: 'mangapad_test' on mysql
+  [1m[36mSQL (0.065ms)[0m  [1mSET sql_auto_is_null = 0[0m
+  [1m[35mSQL (0.065ms)[0m  SET SESSION sql_mode = 'ANSI,NO_BACKSLASH_ESCAPES,NO_DIR_IN_CREATE,NO_ENGINE_SUBSTITUTION,NO_UNSIGNED_SUBTRACTION,TRADITIONAL'
+  [1m[36mSQL (0.209ms)[0m  [1mSELECT `id`, `name`, `url`, `format`, `directory`, `js_url_stub` FROM `sites` ORDER BY `id`[0m
+  [1m[35mSQL (0.631ms)[0m  DELETE FROM `sites` WHERE `id` = 11
+  [1m[36mSQL (0.179ms)[0m  [1mSELECT `id`, `name`, `name_url`, `latest_chapter`, `status_id`, `last_update`, `rank_om`, `image_id`, `scraped`, `published`, `site_id` FROM `mangas` ORDER BY `id`[0m
+  [1m[35mSQL (0.309ms)[0m  DELETE FROM `mangas` WHERE `id` = 11
+  [1m[36mSQL (0.151ms)[0m  [1mSELECT `id`, `name`, `name_url`, `first_page`, `image_id`, `position`, `manga_id` FROM `chapters` ORDER BY `id`[0m
+  [1m[35mSQL (0.285ms)[0m  DELETE FROM `chapters` WHERE `id` = 11
+  [1m[36mSQL (0.133ms)[0m  [1mSELECT `id`, `chapter_id` FROM `pages` ORDER BY `id`[0m
+  [1m[35mSQL (0.439ms)[0m  DELETE FROM `pages` WHERE `id` = 11
+  [1m[36mSQL (0.274ms)[0m  [1mINSERT INTO `sites` (`name`, `url`, `format`, `directory`, `js_url_stub`) VALUES ('onemanga', 'www.onemanga.com', '"img-a.onemanga.com/mangas/#{manga.image_id}/#{chapter.image_id}/#{name}.jpg"', 'directory/', 'http://content.s-onemanga.com/manga-%d.js')[0m
+  [1m[35mSQL (0.370ms)[0m  INSERT INTO `mangas` (`name`, `published`, `site_id`) VALUES ('Eyeshield 21', TRUE, 12)
+  [1m[36mSQL (0.285ms)[0m  [1mINSERT INTO `chapters` (`name`, `position`, `manga_id`) VALUES ('1', 1, 12)[0m
+  [1m[35mSQL (0.303ms)[0m  INSERT INTO `pages` (`name`, `chapter_id`) VALUES ('1', 12)
+
+
+Started GET "/mangas/12/chapters/12" for 127.0.0.1 at 2011-03-30 01:10:37 +0200
+  Processing by ChaptersController#show as HTML
+  Parameters: {"manga_id"=>"12", "id"=>"12"}
+  [1m[36mSQL (0.200ms)[0m  [1mSELECT `id`, `name`, `name_url`, `first_page`, `image_id`, `position`, `manga_id` FROM `chapters` WHERE `id` = 12 LIMIT 1[0m
+  [1m[35mSQL (0.201ms)[0m  SELECT `id`, `name`, `name_url`, `latest_chapter`, `status_id`, `last_update`, `rank_om`, `image_id`, `scraped`, `published`, `site_id` FROM `mangas` WHERE `id` = 12 LIMIT 1
+  [1m[36mSQL (0.216ms)[0m  [1mSELECT `id`, `chapter_id` FROM `pages` WHERE `chapter_id` = 12 ORDER BY `id` LIMIT 1[0m
+  [1m[35mSQL (0.255ms)[0m  SELECT `id`, `name` FROM `pages` WHERE `id` = 12 ORDER BY `id`
+  [1m[36mSQL (0.225ms)[0m  [1mSELECT `id`, `name`, `name_url`, `first_page`, `image_id`, `position`, `manga_id` FROM `chapters` WHERE `manga_id` = 12 ORDER BY `id`[0m
+  [1m[35mSQL (0.144ms)[0m  SELECT COUNT(*) FROM `chapters` WHERE `manga_id` = 12
+  [1m[36mSQL (0.127ms)[0m  [1mSELECT COUNT(*) FROM `pages` WHERE `chapter_id` = 12[0m
+  [1m[35mSQL (0.130ms)[0m  SELECT `id`, `name`, `url`, `format`, `directory`, `js_url_stub` FROM `sites` WHERE `id` = 12 LIMIT 1
+  [1m[36mSQL (0.248ms)[0m  [1mSELECT COUNT(*) FROM `pages` WHERE `chapter_id` = 12[0m
+Rendered chapters/show.html.haml within layouts/read (35.8ms)
+Completed 200 OK in 48ms (Views: 39.2ms | Models: 5.444ms)
+
+
+Started GET "/img/img-a.onemanga.com/mangas/00000001/000052552/01.jpg" for 127.0.0.1 at 2011-03-30 01:10:37 +0200
+  Processing by ChaptersController#test as HTML
+  Parameters: {"id"=>"img-a.onemanga.com/mangas/00000001/000052552/01.jpg"}
+Sent data image.jpg (12.4ms)
+Completed 200 OK in 406ms (Views: 12.2ms | Models: 0.000ms)
+
+
+Started GET "/" for 127.0.0.1 at 2011-03-30 01:10:37 +0200
+  Processing by MangasController#index as HTML
+  [1m[35mSQL (0.174ms)[0m  SELECT COUNT(*) FROM `mangas`
+  [1m[36mSQL (0.205ms)[0m  [1mSELECT `id`, `name`, `name_url`, `latest_chapter`, `status_id`, `last_update`, `rank_om`, `image_id`, `scraped`, `published`, `site_id` FROM `mangas` WHERE `published` = TRUE ORDER BY `id` LIMIT 70[0m
+Rendered mangas/_manga.html.haml (2.0ms)
+Completed   in 24ms
+[datamapper] Setting up the "test" environment:
+[datamapper] Setting up :default repository: 'mangapad_test' on mysql
+
+
+Started GET "/" for 127.0.0.1 at 2011-03-30 01:10:56 +0200
+  Processing by MangasController#index as HTML
+  [1m[36mSQL (0.107ms)[0m  [1mSET sql_auto_is_null = 0[0m
+  [1m[35mSQL (0.060ms)[0m  SET SESSION sql_mode = 'ANSI,NO_BACKSLASH_ESCAPES,NO_DIR_IN_CREATE,NO_ENGINE_SUBSTITUTION,NO_UNSIGNED_SUBTRACTION,TRADITIONAL'
+  [1m[36mSQL (0.191ms)[0m  [1mSELECT COUNT(*) FROM `mangas`[0m
+  [1m[35mSQL (0.257ms)[0m  SELECT `id`, `name`, `name_url`, `latest_chapter`, `status_id`, `last_update`, `rank_om`, `image_id`, `scraped`, `published`, `site_id` FROM `mangas` WHERE `published` = TRUE ORDER BY `id` LIMIT 70
+Rendered mangas/_manga.html.haml (2.1ms)
+Rendered mangas/index.html.haml within layouts/application (20.4ms)
+Completed   in 28ms
+  [1m[36mSQL (0.220ms)[0m  [1mSELECT `id`, `name`, `url`, `format`, `directory`, `js_url_stub` FROM `sites` ORDER BY `id`[0m
+  [1m[35mSQL (0.540ms)[0m  DELETE FROM `sites` WHERE `id` = 12
+  [1m[36mSQL (0.152ms)[0m  [1mSELECT `id`, `name`, `name_url`, `latest_chapter`, `status_id`, `last_update`, `rank_om`, `image_id`, `scraped`, `published`, `site_id` FROM `mangas` ORDER BY `id`[0m
+  [1m[35mSQL (0.240ms)[0m  DELETE FROM `mangas` WHERE `id` = 12
+  [1m[36mSQL (0.128ms)[0m  [1mSELECT `id`, `name`, `name_url`, `first_page`, `image_id`, `position`, `manga_id` FROM `chapters` ORDER BY `id`[0m
+  [1m[35mSQL (0.228ms)[0m  DELETE FROM `chapters` WHERE `id` = 12
+  [1m[36mSQL (0.114ms)[0m  [1mSELECT `id`, `chapter_id` FROM `pages` ORDER BY `id`[0m
+  [1m[35mSQL (0.235ms)[0m  DELETE FROM `pages` WHERE `id` = 12
+  [1m[36mSQL (0.237ms)[0m  [1mINSERT INTO `sites` (`name`, `url`, `format`, `directory`, `js_url_stub`) VALUES ('onemanga', 'www.onemanga.com', '"img-a.onemanga.com/mangas/#{manga.image_id}/#{chapter.image_id}/#{name}.jpg"', 'directory/', 'http://content.s-onemanga.com/manga-%d.js')[0m
+  [1m[35mSQL (0.270ms)[0m  INSERT INTO `mangas` (`name`, `published`, `site_id`) VALUES ('Eyeshield 21', TRUE, 13)
+  [1m[36mSQL (0.216ms)[0m  [1mINSERT INTO `chapters` (`name`, `position`, `manga_id`) VALUES ('1', 1, 13)[0m
+  [1m[35mSQL (0.217ms)[0m  INSERT INTO `pages` (`name`, `chapter_id`) VALUES ('1', 13)
+
+
+Started GET "/mangas/13/chapters/13" for 127.0.0.1 at 2011-03-30 01:10:56 +0200
+  Processing by ChaptersController#show as HTML
+  Parameters: {"manga_id"=>"13", "id"=>"13"}
+  [1m[36mSQL (0.174ms)[0m  [1mSELECT `id`, `name`, `name_url`, `first_page`, `image_id`, `position`, `manga_id` FROM `chapters` WHERE `id` = 13 LIMIT 1[0m
+  [1m[35mSQL (0.230ms)[0m  SELECT `id`, `name`, `name_url`, `latest_chapter`, `status_id`, `last_update`, `rank_om`, `image_id`, `scraped`, `published`, `site_id` FROM `mangas` WHERE `id` = 13 LIMIT 1
+  [1m[36mSQL (0.250ms)[0m  [1mSELECT `id`, `chapter_id` FROM `pages` WHERE `chapter_id` = 13 ORDER BY `id` LIMIT 1[0m
+  [1m[35mSQL (0.203ms)[0m  SELECT `id`, `name` FROM `pages` WHERE `id` = 13 ORDER BY `id`
+  [1m[36mSQL (0.199ms)[0m  [1mSELECT `id`, `name`, `name_url`, `first_page`, `image_id`, `position`, `manga_id` FROM `chapters` WHERE `manga_id` = 13 ORDER BY `id`[0m
+  [1m[35mSQL (0.131ms)[0m  SELECT COUNT(*) FROM `chapters` WHERE `manga_id` = 13
+  [1m[36mSQL (0.129ms)[0m  [1mSELECT COUNT(*) FROM `pages` WHERE `chapter_id` = 13[0m
+  [1m[35mSQL (0.135ms)[0m  SELECT `id`, `name`, `url`, `format`, `directory`, `js_url_stub` FROM `sites` WHERE `id` = 13 LIMIT 1
+  [1m[36mSQL (0.125ms)[0m  [1mSELECT COUNT(*) FROM `pages` WHERE `chapter_id` = 13[0m
+Completed 200 OK in 48ms (Views: 39.7ms | Models: 4.988ms)
+
+
+Started GET "/img/img-a.onemanga.com/mangas/00000001/000052552/01.jpg" for 127.0.0.1 at 2011-03-30 01:10:56 +0200
+  Processing by ChaptersController#test as HTML
+  Parameters: {"id"=>"img-a.onemanga.com/mangas/00000001/000052552/01.jpg"}
+Sent data image.jpg (12.5ms)
+Completed 200 OK in 408ms (Views: 12.4ms | Models: 0.000ms)
+
+
+Started GET "/mangas/1" for 127.0.0.1 at 2011-03-30 01:11:02 +0200
+  Processing by MangasController#redirect as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mSQL (0.057ms)[0m  SET sql_auto_is_null = 0
+  [1m[36mSQL (0.108ms)[0m  [1mSET SESSION sql_mode = 'ANSI,NO_BACKSLASH_ESCAPES,NO_DIR_IN_CREATE,NO_ENGINE_SUBSTITUTION,NO_UNSIGNED_SUBTRACTION,TRADITIONAL'[0m
+  [1m[35mSQL (0.427ms)[0m  SELECT `id`, `name`, `name_url`, `latest_chapter`, `status_id`, `last_update`, `rank_om`, `image_id`, `scraped`, `published`, `site_id` FROM `mangas` WHERE `id` = 1 LIMIT 1
+Rendered public/404.html (0.1ms)
+Completed 404 Not Found in 4ms (Views: 0.7ms | Models: 0.592ms)
+
+
+Started GET "/" for 127.0.0.1 at 2011-03-30 01:11:07 +0200
+  Processing by MangasController#index as HTML
+  [1m[36mSQL (0.181ms)[0m  [1mSELECT COUNT(*) FROM `mangas`[0m
+  [1m[35mSQL (0.229ms)[0m  SELECT `id`, `name`, `name_url`, `latest_chapter`, `status_id`, `last_update`, `rank_om`, `image_id`, `scraped`, `published`, `site_id` FROM `mangas` WHERE `published` = TRUE ORDER BY `id` LIMIT 70
+Rendered mangas/_manga.html.haml (1.9ms)
+Rendered mangas/index.html.haml within layouts/application (7.0ms)
+Completed   in 8ms
+
+
+Started GET "/" for 127.0.0.1 at 2011-03-30 01:11:07 +0200
+  Processing by MangasController#index as HTML
+  [1m[36mSQL (0.243ms)[0m  [1mSELECT COUNT(*) FROM `mangas`[0m
+  [1m[35mSQL (0.307ms)[0m  SELECT `id`, `name`, `name_url`, `latest_chapter`, `status_id`, `last_update`, `rank_om`, `image_id`, `scraped`, `published`, `site_id` FROM `mangas` WHERE `published` = TRUE ORDER BY `id` LIMIT 70
+Rendered mangas/_manga.html.haml (0.5ms)
+Rendered mangas/index.html.haml within layouts/application (4.6ms)
+Completed   in 6ms
+
+
+Started GET "/" for 127.0.0.1 at 2011-03-30 01:11:08 +0200
+  Processing by MangasController#index as HTML
+  [1m[36mSQL (0.286ms)[0m  [1mSELECT COUNT(*) FROM `mangas`[0m
+  [1m[35mSQL (0.305ms)[0m  SELECT `id`, `name`, `name_url`, `latest_chapter`, `status_id`, `last_update`, `rank_om`, `image_id`, `scraped`, `published`, `site_id` FROM `mangas` WHERE `published` = TRUE ORDER BY `id` LIMIT 70
+Rendered mangas/_manga.html.haml (0.7ms)
+Rendered mangas/index.html.haml within layouts/application (5.0ms)
+Completed   in 6ms
+
+
+Started GET "/" for 127.0.0.1 at 2011-03-30 01:11:08 +0200
+  Processing by MangasController#index as HTML
+  [1m[36mSQL (0.154ms)[0m  [1mSELECT COUNT(*) FROM `mangas`[0m
+  [1m[35mSQL (0.228ms)[0m  SELECT `id`, `name`, `name_url`, `latest_chapter`, `status_id`, `last_update`, `rank_om`, `image_id`, `scraped`, `published`, `site_id` FROM `mangas` WHERE `published` = TRUE ORDER BY `id` LIMIT 70
+Rendered mangas/_manga.html.haml (0.5ms)
+Rendered mangas/index.html.haml within layouts/application (4.0ms)
+Completed   in 5ms
+
+
+Started GET "/" for 127.0.0.1 at 2011-03-30 01:11:08 +0200
+  Processing by MangasController#index as HTML
+  [1m[36mSQL (0.182ms)[0m  [1mSELECT COUNT(*) FROM `mangas`[0m
+  [1m[35mSQL (0.265ms)[0m  SELECT `id`, `name`, `name_url`, `latest_chapter`, `status_id`, `last_update`, `rank_om`, `image_id`, `scraped`, `published`, `site_id` FROM `mangas` WHERE `published` = TRUE ORDER BY `id` LIMIT 70
+Rendered mangas/_manga.html.haml (0.5ms)
+Rendered mangas/index.html.haml within layouts/application (4.2ms)
+Completed   in 5ms
+
+
+Started GET "/" for 127.0.0.1 at 2011-03-30 01:11:08 +0200
+  Processing by MangasController#index as HTML
+  [1m[36mSQL (0.178ms)[0m  [1mSELECT COUNT(*) FROM `mangas`[0m
+  [1m[35mSQL (0.231ms)[0m  SELECT `id`, `name`, `name_url`, `latest_chapter`, `status_id`, `last_update`, `rank_om`, `image_id`, `scraped`, `published`, `site_id` FROM `mangas` WHERE `published` = TRUE ORDER BY `id` LIMIT 70
+Rendered mangas/_manga.html.haml (0.6ms)
+Rendered mangas/index.html.haml within layouts/application (4.1ms)
+Completed   in 5ms
+
+
+Started GET "/" for 127.0.0.1 at 2011-03-30 01:11:08 +0200
+  Processing by MangasController#index as HTML
+  [1m[36mSQL (0.171ms)[0m  [1mSELECT COUNT(*) FROM `mangas`[0m
+  [1m[35mSQL (0.213ms)[0m  SELECT `id`, `name`, `name_url`, `latest_chapter`, `status_id`, `last_update`, `rank_om`, `image_id`, `scraped`, `published`, `site_id` FROM `mangas` WHERE `published` = TRUE ORDER BY `id` LIMIT 70
+Rendered mangas/_manga.html.haml (0.6ms)
+Rendered mangas/index.html.haml within layouts/application (4.1ms)
+Completed   in 5ms
+
+
+Started GET "/" for 127.0.0.1 at 2011-03-30 01:11:09 +0200
+  Processing by MangasController#index as HTML
+  [1m[36mSQL (0.191ms)[0m  [1mSELECT COUNT(*) FROM `mangas`[0m
+  [1m[35mSQL (0.212ms)[0m  SELECT `id`, `name`, `name_url`, `latest_chapter`, `status_id`, `last_update`, `rank_om`, `image_id`, `scraped`, `published`, `site_id` FROM `mangas` WHERE `published` = TRUE ORDER BY `id` LIMIT 70
+Rendered mangas/_manga.html.haml (0.5ms)
+Rendered mangas/index.html.haml within layouts/application (3.9ms)
+Completed   in 5ms
+
+
+Started GET "/" for 127.0.0.1 at 2011-03-30 01:11:09 +0200
+  Processing by MangasController#index as HTML
+  [1m[36mSQL (0.178ms)[0m  [1mSELECT COUNT(*) FROM `mangas`[0m
+  [1m[35mSQL (0.202ms)[0m  SELECT `id`, `name`, `name_url`, `latest_chapter`, `status_id`, `last_update`, `rank_om`, `image_id`, `scraped`, `published`, `site_id` FROM `mangas` WHERE `published` = TRUE ORDER BY `id` LIMIT 70
+Rendered mangas/_manga.html.haml (0.5ms)
+Rendered mangas/index.html.haml within layouts/application (4.1ms)
+Completed   in 5ms
+
+
+Started GET "/" for 127.0.0.1 at 2011-03-30 01:11:09 +0200
+  Processing by MangasController#index as HTML
+  [1m[36mSQL (0.188ms)[0m  [1mSELECT COUNT(*) FROM `mangas`[0m
+  [1m[35mSQL (0.200ms)[0m  SELECT `id`, `name`, `name_url`, `latest_chapter`, `status_id`, `last_update`, `rank_om`, `image_id`, `scraped`, `published`, `site_id` FROM `mangas` WHERE `published` = TRUE ORDER BY `id` LIMIT 70
+Rendered mangas/_manga.html.haml (0.5ms)
+Rendered mangas/index.html.haml within layouts/application (3.9ms)
+Completed   in 5ms
+
+
+Started GET "/" for 127.0.0.1 at 2011-03-30 01:11:09 +0200
+  Processing by MangasController#index as HTML
+  [1m[36mSQL (0.211ms)[0m  [1mSELECT COUNT(*) FROM `mangas`[0m
+  [1m[35mSQL (0.295ms)[0m  SELECT `id`, `name`, `name_url`, `latest_chapter`, `status_id`, `last_update`, `rank_om`, `image_id`, `scraped`, `published`, `site_id` FROM `mangas` WHERE `published` = TRUE ORDER BY `id` LIMIT 70
+Rendered mangas/_manga.html.haml (0.5ms)
+Rendered mangas/index.html.haml within layouts/application (4.5ms)
+Completed   in 6ms
+[datamapper] Setting up the "test" environment:
+[datamapper] Setting up :default repository: 'mangapad_test' on mysql
+
+
+Started GET "/" for 127.0.0.1 at 2011-03-30 01:11:24 +0200
+  Processing by MangasController#index as HTML
+  [1m[36mSQL (0.078ms)[0m  [1mSET sql_auto_is_null = 0[0m
+  [1m[35mSQL (0.056ms)[0m  SET SESSION sql_mode = 'ANSI,NO_BACKSLASH_ESCAPES,NO_DIR_IN_CREATE,NO_ENGINE_SUBSTITUTION,NO_UNSIGNED_SUBTRACTION,TRADITIONAL'
+  [1m[36mSQL (0.203ms)[0m  [1mSELECT COUNT(*) FROM `mangas`[0m
+  [1m[35mSQL (0.262ms)[0m  SELECT `id`, `name`, `name_url`, `latest_chapter`, `status_id`, `last_update`, `rank_om`, `image_id`, `scraped`, `published`, `site_id` FROM `mangas` WHERE `published` = TRUE ORDER BY `id` LIMIT 70
+Rendered mangas/_manga.html.haml (1.9ms)
+Rendered mangas/index.html.haml within layouts/application (20.5ms)
+Completed   in 28ms
+[datamapper] Setting up the "test" environment:
+[datamapper] Setting up :default repository: 'mangapad_test' on mysql
+
+
+Started GET "/" for 127.0.0.1 at 2011-03-30 01:12:06 +0200
+  Processing by MangasController#index as HTML
+  [1m[36mSQL (0.067ms)[0m  [1mSET sql_auto_is_null = 0[0m
+  [1m[35mSQL (0.059ms)[0m  SET SESSION sql_mode = 'ANSI,NO_BACKSLASH_ESCAPES,NO_DIR_IN_CREATE,NO_ENGINE_SUBSTITUTION,NO_UNSIGNED_SUBTRACTION,TRADITIONAL'
+  [1m[36mSQL (0.211ms)[0m  [1mSELECT COUNT(*) FROM `mangas`[0m
+  [1m[35mSQL (0.278ms)[0m  SELECT `id`, `name`, `name_url`, `latest_chapter`, `status_id`, `last_update`, `rank_om`, `image_id`, `scraped`, `published`, `site_id` FROM `mangas` WHERE `published` = TRUE ORDER BY `id` LIMIT 70
+Rendered mangas/_manga.html.haml (1.4ms)
+  [1m[36mSQL (0.221ms)[0m  [1mSELECT COUNT(*) FROM `mangas`[0m
+Rendered mangas/index.html.haml within layouts/application (39.2ms)
+Completed 200 OK in 46ms (Views: 44.2ms | Models: 0.836ms)
+[datamapper] Setting up the "test" environment:
+[datamapper] Setting up :default repository: 'mangapad_test' on mysql
+
+
+Started GET "/" for 127.0.0.1 at 2011-03-30 01:12:12 +0200
+  Processing by MangasController#index as HTML
+  [1m[36mSQL (0.140ms)[0m  [1mSET sql_auto_is_null = 0[0m
+  [1m[35mSQL (0.097ms)[0m  SET SESSION sql_mode = 'ANSI,NO_BACKSLASH_ESCAPES,NO_DIR_IN_CREATE,NO_ENGINE_SUBSTITUTION,NO_UNSIGNED_SUBTRACTION,TRADITIONAL'
+  [1m[36mSQL (0.268ms)[0m  [1mSELECT COUNT(*) FROM `mangas`[0m
+  [1m[35mSQL (0.273ms)[0m  SELECT `id`, `name`, `name_url`, `latest_chapter`, `status_id`, `last_update`, `rank_om`, `image_id`, `scraped`, `published`, `site_id` FROM `mangas` WHERE `published` = TRUE ORDER BY `id` LIMIT 70
+Rendered mangas/_manga.html.haml (1.1ms)
+  [1m[36mSQL (0.152ms)[0m  [1mSELECT COUNT(*) FROM `mangas`[0m
+Rendered mangas/index.html.haml within layouts/application (34.8ms)
+Completed 200 OK in 42ms (Views: 39.9ms | Models: 0.930ms)
+
+
+Started GET "/" for 127.0.0.1 at 2011-03-30 01:12:13 +0200
+  Processing by MangasController#index as HTML
+  [1m[35mSQL (0.168ms)[0m  SELECT COUNT(*) FROM `mangas`
+  [1m[36mSQL (0.196ms)[0m  [1mSELECT `id`, `name`, `name_url`, `latest_chapter`, `status_id`, `last_update`, `rank_om`, `image_id`, `scraped`, `published`, `site_id` FROM `mangas` WHERE `published` = TRUE ORDER BY `id` LIMIT 70[0m
+Rendered mangas/_manga.html.haml (0.1ms)
+  [1m[35mSQL (0.099ms)[0m  SELECT COUNT(*) FROM `mangas`
+Rendered mangas/index.html.haml within layouts/application (7.0ms)
+Completed 200 OK in 8ms (Views: 7.2ms | Models: 0.463ms)
+
+
+Started GET "/" for 127.0.0.1 at 2011-03-30 01:12:13 +0200
+  Processing by MangasController#index as HTML
+  [1m[36mSQL (0.159ms)[0m  [1mSELECT COUNT(*) FROM `mangas`[0m
+  [1m[35mSQL (0.218ms)[0m  SELECT `id`, `name`, `name_url`, `latest_chapter`, `status_id`, `last_update`, `rank_om`, `image_id`, `scraped`, `published`, `site_id` FROM `mangas` WHERE `published` = TRUE ORDER BY `id` LIMIT 70
+Rendered mangas/_manga.html.haml (0.1ms)
+  [1m[36mSQL (0.133ms)[0m  [1mSELECT COUNT(*) FROM `mangas`[0m
+Rendered mangas/index.html.haml within layouts/application (7.0ms)
+Completed 200 OK in 8ms (Views: 7.2ms | Models: 0.510ms)
+[datamapper] Setting up the "test" environment:
+[datamapper] Setting up :default repository: 'mangapad_test' on mysql
+  [1m[36mSQL (0.066ms)[0m  [1mSET sql_auto_is_null = 0[0m
+  [1m[35mSQL (0.061ms)[0m  SET SESSION sql_mode = 'ANSI,NO_BACKSLASH_ESCAPES,NO_DIR_IN_CREATE,NO_ENGINE_SUBSTITUTION,NO_UNSIGNED_SUBTRACTION,TRADITIONAL'
+  [1m[36mSQL (0.190ms)[0m  [1mSELECT `id`, `name`, `url`, `format`, `directory`, `js_url_stub` FROM `sites` ORDER BY `id`[0m
+  [1m[35mSQL (0.333ms)[0m  DELETE FROM `sites` WHERE `id` = 13
+  [1m[36mSQL (0.195ms)[0m  [1mSELECT `id`, `name`, `name_url`, `latest_chapter`, `status_id`, `last_update`, `rank_om`, `image_id`, `scraped`, `published`, `site_id` FROM `mangas` ORDER BY `id`[0m
+  [1m[35mSQL (0.323ms)[0m  DELETE FROM `mangas` WHERE `id` = 13
+  [1m[36mSQL (0.157ms)[0m  [1mSELECT `id`, `name`, `name_url`, `first_page`, `image_id`, `position`, `manga_id` FROM `chapters` ORDER BY `id`[0m
+  [1m[35mSQL (0.311ms)[0m  DELETE FROM `chapters` WHERE `id` = 13
+  [1m[36mSQL (0.162ms)[0m  [1mSELECT `id`, `chapter_id` FROM `pages` ORDER BY `id`[0m
+  [1m[35mSQL (0.300ms)[0m  DELETE FROM `pages` WHERE `id` = 13
+  [1m[36mSQL (0.350ms)[0m  [1mINSERT INTO `sites` (`name`, `url`, `format`, `directory`, `js_url_stub`) VALUES ('onemanga', 'www.onemanga.com', '"img-a.onemanga.com/mangas/#{manga.image_id}/#{chapter.image_id}/#{name}.jpg"', 'directory/', 'http://content.s-onemanga.com/manga-%d.js')[0m
+  [1m[35mSQL (0.315ms)[0m  INSERT INTO `mangas` (`name`, `published`, `site_id`) VALUES ('Eyeshield 21', TRUE, 14)
+  [1m[36mSQL (0.201ms)[0m  [1mINSERT INTO `chapters` (`name`, `position`, `manga_id`) VALUES ('1', 1, 14)[0m
+  [1m[35mSQL (0.179ms)[0m  INSERT INTO `pages` (`name`, `chapter_id`) VALUES ('1', 14)
+
+
+Started GET "/mangas/14/chapters/14" for 127.0.0.1 at 2011-03-30 01:12:16 +0200
+  Processing by ChaptersController#show as HTML
+  Parameters: {"manga_id"=>"14", "id"=>"14"}
+  [1m[36mSQL (0.222ms)[0m  [1mSELECT `id`, `name`, `name_url`, `first_page`, `image_id`, `position`, `manga_id` FROM `chapters` WHERE `id` = 14 LIMIT 1[0m
+  [1m[35mSQL (0.149ms)[0m  SELECT `id`, `name`, `name_url`, `latest_chapter`, `status_id`, `last_update`, `rank_om`, `image_id`, `scraped`, `published`, `site_id` FROM `mangas` WHERE `id` = 14 LIMIT 1
+  [1m[36mSQL (0.192ms)[0m  [1mSELECT `id`, `chapter_id` FROM `pages` WHERE `chapter_id` = 14 ORDER BY `id` LIMIT 1[0m
+  [1m[35mSQL (0.204ms)[0m  SELECT `id`, `name` FROM `pages` WHERE `id` = 14 ORDER BY `id`
+  [1m[36mSQL (0.200ms)[0m  [1mSELECT `id`, `name`, `name_url`, `first_page`, `image_id`, `position`, `manga_id` FROM `chapters` WHERE `manga_id` = 14 ORDER BY `id`[0m
+  [1m[35mSQL (0.144ms)[0m  SELECT COUNT(*) FROM `chapters` WHERE `manga_id` = 14
+  [1m[36mSQL (0.124ms)[0m  [1mSELECT COUNT(*) FROM `pages` WHERE `chapter_id` = 14[0m
+  [1m[35mSQL (0.192ms)[0m  SELECT `id`, `name`, `url`, `format`, `directory`, `js_url_stub` FROM `sites` WHERE `id` = 14 LIMIT 1
+  [1m[36mSQL (0.185ms)[0m  [1mSELECT COUNT(*) FROM `pages` WHERE `chapter_id` = 14[0m
+Rendered chapters/show.html.haml within layouts/read (35.1ms)
+Completed 200 OK in 47ms (Views: 38.6ms | Models: 4.755ms)
+
+
+Started GET "/img/img-a.onemanga.com/mangas/00000001/000052552/01.jpg" for 127.0.0.1 at 2011-03-30 01:12:16 +0200
+  Processing by ChaptersController#test as HTML
+  Parameters: {"id"=>"img-a.onemanga.com/mangas/00000001/000052552/01.jpg"}
+Sent data image.jpg (12.5ms)
+Completed 200 OK in 413ms (Views: 12.4ms | Models: 0.000ms)
+
+
+Started GET "/" for 127.0.0.1 at 2011-03-30 01:12:16 +0200
+  Processing by MangasController#index as HTML
+  [1m[35mSQL (0.189ms)[0m  SELECT COUNT(*) FROM `mangas`
+  [1m[36mSQL (0.215ms)[0m  [1mSELECT `id`, `name`, `name_url`, `latest_chapter`, `status_id`, `last_update`, `rank_om`, `image_id`, `scraped`, `published`, `site_id` FROM `mangas` WHERE `published` = TRUE ORDER BY `id` LIMIT 70[0m
+Rendered mangas/_manga.html.haml (1.3ms)
+  [1m[35mSQL (0.126ms)[0m  SELECT COUNT(*) FROM `mangas`
+Completed 200 OK in 81ms (Views: 79.6ms | Models: 0.530ms)
+
+
+Started GET "/" for 127.0.0.1 at 2011-03-30 01:12:29 +0200
+  Processing by MangasController#index as HTML
+  [1m[35mSQL (0.199ms)[0m  SELECT COUNT(*) FROM `mangas`
+  [1m[36mSQL (0.198ms)[0m  [1mSELECT `id`, `name`, `name_url`, `latest_chapter`, `status_id`, `last_update`, `rank_om`, `image_id`, `scraped`, `published`, `site_id` FROM `mangas` WHERE `published` = TRUE ORDER BY `id` LIMIT 70[0m
+Rendered mangas/_manga.html.haml (0.1ms)
+  [1m[35mSQL (0.108ms)[0m  SELECT COUNT(*) FROM `mangas`
+Rendered mangas/index.html.haml within layouts/application (7.3ms)
+Completed 200 OK in 9ms (Views: 7.5ms | Models: 0.505ms)
+
+
+Started GET "/" for 127.0.0.1 at 2011-03-30 01:12:30 +0200
+  Processing by MangasController#index as HTML
+  [1m[36mSQL (0.205ms)[0m  [1mSELECT COUNT(*) FROM `mangas`[0m
+  [1m[35mSQL (0.203ms)[0m  SELECT `id`, `name`, `name_url`, `latest_chapter`, `status_id`, `last_update`, `rank_om`, `image_id`, `scraped`, `published`, `site_id` FROM `mangas` WHERE `published` = TRUE ORDER BY `id` LIMIT 70
+Rendered mangas/_manga.html.haml (0.1ms)
+  [1m[36mSQL (0.102ms)[0m  [1mSELECT COUNT(*) FROM `mangas`[0m
+Rendered mangas/index.html.haml within layouts/application (8.1ms)
+Completed 200 OK in 9ms (Views: 8.3ms | Models: 0.510ms)
+[datamapper] Setting up the "test" environment:
+[datamapper] Setting up :default repository: 'mangapad_test' on mysql
+
+
+Started GET "/" for 127.0.0.1 at 2011-03-30 01:12:44 +0200
+  Processing by MangasController#index as HTML
+  [1m[36mSQL (0.079ms)[0m  [1mSET sql_auto_is_null = 0[0m
+  [1m[35mSQL (0.102ms)[0m  SET SESSION sql_mode = 'ANSI,NO_BACKSLASH_ESCAPES,NO_DIR_IN_CREATE,NO_ENGINE_SUBSTITUTION,NO_UNSIGNED_SUBTRACTION,TRADITIONAL'
+  [1m[36mSQL (0.211ms)[0m  [1mSELECT COUNT(*) FROM `mangas`[0m
+  [1m[35mSQL (0.220ms)[0m  SELECT `id`, `name`, `name_url`, `latest_chapter`, `status_id`, `last_update`, `rank_om`, `image_id`, `scraped`, `published`, `site_id` FROM `mangas` WHERE `published` = TRUE ORDER BY `id` LIMIT 70
+Rendered mangas/_manga.html.haml (1.7ms)
+Rendered mangas/index.html.haml within layouts/application (19.6ms)
+Completed   in 27ms
+
+
+Started GET "/" for 127.0.0.1 at 2011-03-30 01:12:45 +0200
+  Processing by MangasController#index as HTML
+  [1m[36mSQL (0.162ms)[0m  [1mSELECT COUNT(*) FROM `mangas`[0m
+  [1m[35mSQL (0.355ms)[0m  SELECT `id`, `name`, `name_url`, `latest_chapter`, `status_id`, `last_update`, `rank_om`, `image_id`, `scraped`, `published`, `site_id` FROM `mangas` WHERE `published` = TRUE ORDER BY `id` LIMIT 70
+Rendered mangas/_manga.html.haml (0.5ms)
+Rendered mangas/index.html.haml within layouts/application (4.2ms)
+Completed   in 5ms
+
+
+Started GET "/" for 127.0.0.1 at 2011-03-30 01:12:45 +0200
+  Processing by MangasController#index as HTML
+  [1m[36mSQL (0.167ms)[0m  [1mSELECT COUNT(*) FROM `mangas`[0m
+  [1m[35mSQL (0.222ms)[0m  SELECT `id`, `name`, `name_url`, `latest_chapter`, `status_id`, `last_update`, `rank_om`, `image_id`, `scraped`, `published`, `site_id` FROM `mangas` WHERE `published` = TRUE ORDER BY `id` LIMIT 70
+Rendered mangas/_manga.html.haml (0.5ms)
+Rendered mangas/index.html.haml within layouts/application (4.0ms)
+Completed   in 5ms
+
+
+Started GET "/" for 127.0.0.1 at 2011-03-30 01:12:46 +0200
+  Processing by MangasController#index as HTML
+  [1m[36mSQL (0.188ms)[0m  [1mSELECT COUNT(*) FROM `mangas`[0m
+  [1m[35mSQL (0.231ms)[0m  SELECT `id`, `name`, `name_url`, `latest_chapter`, `status_id`, `last_update`, `rank_om`, `image_id`, `scraped`, `published`, `site_id` FROM `mangas` WHERE `published` = TRUE ORDER BY `id` LIMIT 70
+Rendered mangas/_manga.html.haml (0.5ms)
+Rendered mangas/index.html.haml within layouts/application (4.0ms)
+Completed   in 5ms
+
+
+Started GET "/" for 127.0.0.1 at 2011-03-30 01:12:46 +0200
+  Processing by MangasController#index as HTML
+  [1m[36mSQL (0.205ms)[0m  [1mSELECT COUNT(*) FROM `mangas`[0m
+  [1m[35mSQL (0.224ms)[0m  SELECT `id`, `name`, `name_url`, `latest_chapter`, `status_id`, `last_update`, `rank_om`, `image_id`, `scraped`, `published`, `site_id` FROM `mangas` WHERE `published` = TRUE ORDER BY `id` LIMIT 70
+Rendered mangas/_manga.html.haml (0.6ms)
+Rendered mangas/index.html.haml within layouts/application (4.5ms)
+Completed   in 6ms
+[datamapper] Setting up the "test" environment:
+[datamapper] Setting up :default repository: 'mangapad_test' on mysql
+
+
+Started GET "/" for 127.0.0.1 at 2011-03-30 01:13:15 +0200
+  Processing by MangasController#index as HTML
+  [1m[36mSQL (0.070ms)[0m  [1mSET sql_auto_is_null = 0[0m
+  [1m[35mSQL (0.061ms)[0m  SET SESSION sql_mode = 'ANSI,NO_BACKSLASH_ESCAPES,NO_DIR_IN_CREATE,NO_ENGINE_SUBSTITUTION,NO_UNSIGNED_SUBTRACTION,TRADITIONAL'
+  [1m[36mSQL (0.259ms)[0m  [1mSELECT COUNT(*) FROM `mangas`[0m
+  [1m[35mSQL (0.275ms)[0m  SELECT `id`, `name`, `name_url`, `latest_chapter`, `status_id`, `last_update`, `rank_om`, `image_id`, `scraped`, `published`, `site_id` FROM `mangas` WHERE `published` = TRUE ORDER BY `id` LIMIT 70
+Rendered mangas/_manga.html.haml (1.4ms)
+  [1m[36mSQL (0.162ms)[0m  [1mSELECT COUNT(*) FROM `mangas`[0m
+Rendered mangas/index.html.haml within layouts/application (36.0ms)
+Completed 200 OK in 43ms (Views: 41.4ms | Models: 0.827ms)
+
+
+Started GET "/" for 127.0.0.1 at 2011-03-30 01:13:16 +0200
+  Processing by MangasController#index as HTML
+  [1m[35mSQL (0.154ms)[0m  SELECT COUNT(*) FROM `mangas`
+  [1m[36mSQL (0.235ms)[0m  [1mSELECT `id`, `name`, `name_url`, `latest_chapter`, `status_id`, `last_update`, `rank_om`, `image_id`, `scraped`, `published`, `site_id` FROM `mangas` WHERE `published` = TRUE ORDER BY `id` LIMIT 70[0m
+Rendered mangas/_manga.html.haml (0.2ms)
+  [1m[35mSQL (0.148ms)[0m  SELECT COUNT(*) FROM `mangas`
+Rendered mangas/index.html.haml within layouts/application (7.6ms)
+Completed 200 OK in 9ms (Views: 7.7ms | Models: 0.537ms)
+[datamapper] Setting up the "test" environment:
+[datamapper] Setting up :default repository: 'mangapad_test' on mysql
+  [1m[36mSQL (0.124ms)[0m  [1mSET sql_auto_is_null = 0[0m
+  [1m[35mSQL (0.060ms)[0m  SET SESSION sql_mode = 'ANSI,NO_BACKSLASH_ESCAPES,NO_DIR_IN_CREATE,NO_ENGINE_SUBSTITUTION,NO_UNSIGNED_SUBTRACTION,TRADITIONAL'
+  [1m[36mSQL (0.222ms)[0m  [1mSELECT `id`, `name`, `url`, `format`, `directory`, `js_url_stub` FROM `sites` ORDER BY `id`[0m
+  [1m[35mSQL (0.361ms)[0m  DELETE FROM `sites` WHERE `id` = 14
+  [1m[36mSQL (0.286ms)[0m  [1mSELECT `id`, `name`, `name_url`, `latest_chapter`, `status_id`, `last_update`, `rank_om`, `image_id`, `scraped`, `published`, `site_id` FROM `mangas` ORDER BY `id`[0m
+  [1m[35mSQL (0.567ms)[0m  DELETE FROM `mangas` WHERE `id` = 14
+  [1m[36mSQL (0.134ms)[0m  [1mSELECT `id`, `name`, `name_url`, `first_page`, `image_id`, `position`, `manga_id` FROM `chapters` ORDER BY `id`[0m
+  [1m[35mSQL (0.249ms)[0m  DELETE FROM `chapters` WHERE `id` = 14
+  [1m[36mSQL (0.110ms)[0m  [1mSELECT `id`, `chapter_id` FROM `pages` ORDER BY `id`[0m
+  [1m[35mSQL (0.248ms)[0m  DELETE FROM `pages` WHERE `id` = 14
+  [1m[36mSQL (0.250ms)[0m  [1mINSERT INTO `sites` (`name`, `url`, `format`, `directory`, `js_url_stub`) VALUES ('onemanga', 'www.onemanga.com', '"img-a.onemanga.com/mangas/#{manga.image_id}/#{chapter.image_id}/#{name}.jpg"', 'directory/', 'http://content.s-onemanga.com/manga-%d.js')[0m
+  [1m[35mSQL (0.373ms)[0m  INSERT INTO `mangas` (`name`, `name_url`, `published`, `site_id`) VALUES ('Eyeshield 21', 'eyeshield_21', TRUE, 15)
+  [1m[36mSQL (0.300ms)[0m  [1mINSERT INTO `chapters` (`name`, `position`, `manga_id`) VALUES ('1', 1, 15)[0m
+  [1m[35mSQL (0.285ms)[0m  INSERT INTO `pages` (`name`, `chapter_id`) VALUES ('1', 15)
+
+
+Started GET "/mangas/15/chapters/15" for 127.0.0.1 at 2011-03-30 01:13:41 +0200
+  Processing by ChaptersController#show as HTML
+  Parameters: {"manga_id"=>"15", "id"=>"15"}
+  [1m[36mSQL (0.207ms)[0m  [1mSELECT `id`, `name`, `name_url`, `first_page`, `image_id`, `position`, `manga_id` FROM `chapters` WHERE `id` = 15 LIMIT 1[0m
+  [1m[35mSQL (0.171ms)[0m  SELECT `id`, `name`, `name_url`, `latest_chapter`, `status_id`, `last_update`, `rank_om`, `image_id`, `scraped`, `published`, `site_id` FROM `mangas` WHERE `id` = 15 LIMIT 1
+  [1m[36mSQL (0.197ms)[0m  [1mSELECT `id`, `chapter_id` FROM `pages` WHERE `chapter_id` = 15 ORDER BY `id` LIMIT 1[0m
+  [1m[35mSQL (0.216ms)[0m  SELECT `id`, `name` FROM `pages` WHERE `id` = 15 ORDER BY `id`
+  [1m[36mSQL (0.291ms)[0m  [1mSELECT `id`, `name`, `name_url`, `first_page`, `image_id`, `position`, `manga_id` FROM `chapters` WHERE `manga_id` = 15 ORDER BY `id`[0m
+  [1m[35mSQL (0.260ms)[0m  SELECT COUNT(*) FROM `chapters` WHERE `manga_id` = 15
+  [1m[36mSQL (0.422ms)[0m  [1mSELECT COUNT(*) FROM `pages` WHERE `chapter_id` = 15[0m
+  [1m[35mSQL (0.291ms)[0m  SELECT `id`, `name`, `url`, `format`, `directory`, `js_url_stub` FROM `sites` WHERE `id` = 15 LIMIT 1
+  [1m[36mSQL (0.237ms)[0m  [1mSELECT COUNT(*) FROM `pages` WHERE `chapter_id` = 15[0m
+Rendered chapters/show.html.haml within layouts/read (35.9ms)
+Completed 200 OK in 48ms (Views: 38.7ms | Models: 5.861ms)
+
+
+Started GET "/img/img-a.onemanga.com/mangas/00000001/000052552/01.jpg" for 127.0.0.1 at 2011-03-30 01:13:41 +0200
+  Processing by ChaptersController#test as HTML
+  Parameters: {"id"=>"img-a.onemanga.com/mangas/00000001/000052552/01.jpg"}
+Sent data image.jpg (13.6ms)
+Completed 200 OK in 429ms (Views: 13.5ms | Models: 0.000ms)
+[datamapper] Setting up the "test" environment:
+[datamapper] Setting up :default repository: 'mangapad_test' on mysql
+[datamapper] Setting up the "test" environment:
+[datamapper] Setting up :default repository: 'mangapad_test' on mysql
+  [1m[36mSQL (0.081ms)[0m  [1mSET sql_auto_is_null = 0[0m
+  [1m[35mSQL (0.083ms)[0m  SET SESSION sql_mode = 'ANSI,NO_BACKSLASH_ESCAPES,NO_DIR_IN_CREATE,NO_ENGINE_SUBSTITUTION,NO_UNSIGNED_SUBTRACTION,TRADITIONAL'
+  [1m[36mSQL (0.215ms)[0m  [1mSELECT `id`, `name`, `url`, `format`, `directory`, `js_url_stub` FROM `sites` ORDER BY `id`[0m
+  [1m[35mSQL (0.372ms)[0m  DELETE FROM `sites` WHERE `id` = 15
+  [1m[36mSQL (0.181ms)[0m  [1mSELECT `id`, `name`, `name_url`, `latest_chapter`, `status_id`, `last_update`, `rank_om`, `image_id`, `scraped`, `published`, `site_id` FROM `mangas` ORDER BY `id`[0m
+  [1m[35mSQL (0.242ms)[0m  DELETE FROM `mangas` WHERE `id` = 15
+  [1m[36mSQL (0.136ms)[0m  [1mSELECT `id`, `name`, `name_url`, `first_page`, `image_id`, `position`, `manga_id` FROM `chapters` ORDER BY `id`[0m
+  [1m[35mSQL (0.213ms)[0m  DELETE FROM `chapters` WHERE `id` = 15
+  [1m[36mSQL (0.115ms)[0m  [1mSELECT `id`, `chapter_id` FROM `pages` ORDER BY `id`[0m
+  [1m[35mSQL (0.194ms)[0m  DELETE FROM `pages` WHERE `id` = 15
+  [1m[36mSQL (0.212ms)[0m  [1mINSERT INTO `sites` (`name`, `url`, `format`, `directory`, `js_url_stub`) VALUES ('onemanga', 'www.onemanga.com', '"img-a.onemanga.com/mangas/#{manga.image_id}/#{chapter.image_id}/#{name}.jpg"', 'directory/', 'http://content.s-onemanga.com/manga-%d.js')[0m
+  [1m[35mSQL (0.368ms)[0m  INSERT INTO `mangas` (`name`, `name_url`, `published`, `site_id`) VALUES ('Eyeshield 21', 'eyeshield_21', TRUE, 16)
+  [1m[36mSQL (0.313ms)[0m  [1mINSERT INTO `chapters` (`name`, `position`, `manga_id`) VALUES ('1', 1, 16)[0m
+  [1m[35mSQL (0.307ms)[0m  INSERT INTO `pages` (`name`, `chapter_id`) VALUES ('1', 16)
+
+
+Started GET "/mangas/16/chapters/16" for 127.0.0.1 at 2011-03-30 01:15:28 +0200
+  Processing by ChaptersController#show as HTML
+  Parameters: {"manga_id"=>"16", "id"=>"16"}
+  [1m[36mSQL (0.209ms)[0m  [1mSELECT `id`, `name`, `name_url`, `first_page`, `image_id`, `position`, `manga_id` FROM `chapters` WHERE `id` = 16 LIMIT 1[0m
+  [1m[35mSQL (0.141ms)[0m  SELECT `id`, `name`, `name_url`, `latest_chapter`, `status_id`, `last_update`, `rank_om`, `image_id`, `scraped`, `published`, `site_id` FROM `mangas` WHERE `id` = 16 LIMIT 1
+  [1m[36mSQL (0.158ms)[0m  [1mSELECT `id`, `chapter_id` FROM `pages` WHERE `chapter_id` = 16 ORDER BY `id` LIMIT 1[0m
+  [1m[35mSQL (0.185ms)[0m  SELECT `id`, `name` FROM `pages` WHERE `id` = 16 ORDER BY `id`
+  [1m[36mSQL (0.241ms)[0m  [1mSELECT `id`, `name`, `name_url`, `first_page`, `image_id`, `position`, `manga_id` FROM `chapters` WHERE `manga_id` = 16 ORDER BY `id`[0m
+  [1m[35mSQL (0.228ms)[0m  SELECT COUNT(*) FROM `chapters` WHERE `manga_id` = 16
+  [1m[36mSQL (0.131ms)[0m  [1mSELECT COUNT(*) FROM `pages` WHERE `chapter_id` = 16[0m
+  [1m[35mSQL (0.142ms)[0m  SELECT `id`, `name`, `url`, `format`, `directory`, `js_url_stub` FROM `sites` WHERE `id` = 16 LIMIT 1
+  [1m[36mSQL (0.135ms)[0m  [1mSELECT COUNT(*) FROM `pages` WHERE `chapter_id` = 16[0m
+Rendered chapters/show.html.haml within layouts/read (34.6ms)
+Completed 200 OK in 47ms (Views: 38.2ms | Models: 4.602ms)
+
+
+Started GET "/img/img-a.onemanga.com/mangas/00000001/000052552/01.jpg" for 127.0.0.1 at 2011-03-30 01:15:28 +0200
+  Processing by ChaptersController#test as HTML
+  Parameters: {"id"=>"img-a.onemanga.com/mangas/00000001/000052552/01.jpg"}
+Sent data image.jpg (12.8ms)
+Completed 200 OK in 408ms (Views: 12.7ms | Models: 0.000ms)
+[datamapper] Setting up the "test" environment:
+[datamapper] Setting up :default repository: 'mangapad_test' on mysql
+  [1m[36mSQL (0.091ms)[0m  [1mSET sql_auto_is_null = 0[0m
+  [1m[35mSQL (0.081ms)[0m  SET SESSION sql_mode = 'ANSI,NO_BACKSLASH_ESCAPES,NO_DIR_IN_CREATE,NO_ENGINE_SUBSTITUTION,NO_UNSIGNED_SUBTRACTION,TRADITIONAL'
+  [1m[36mSQL (0.254ms)[0m  [1mSELECT `id`, `name`, `url`, `format`, `directory`, `js_url_stub` FROM `sites` ORDER BY `id`[0m
+  [1m[35mSQL (0.288ms)[0m  DELETE FROM `sites` WHERE `id` = 16
+  [1m[36mSQL (0.149ms)[0m  [1mSELECT `id`, `name`, `name_url`, `latest_chapter`, `status_id`, `last_update`, `rank_om`, `image_id`, `scraped`, `published`, `site_id` FROM `mangas` ORDER BY `id`[0m
+  [1m[35mSQL (0.507ms)[0m  DELETE FROM `mangas` WHERE `id` = 16
+  [1m[36mSQL (0.143ms)[0m  [1mSELECT `id`, `name`, `name_url`, `first_page`, `image_id`, `position`, `manga_id` FROM `chapters` ORDER BY `id`[0m
+  [1m[35mSQL (0.335ms)[0m  DELETE FROM `chapters` WHERE `id` = 16
+  [1m[36mSQL (0.176ms)[0m  [1mSELECT `id`, `chapter_id` FROM `pages` ORDER BY `id`[0m
+  [1m[35mSQL (0.395ms)[0m  DELETE FROM `pages` WHERE `id` = 16
+  [1m[36mSQL (0.325ms)[0m  [1mINSERT INTO `sites` (`name`, `url`, `format`, `directory`, `js_url_stub`) VALUES ('onemanga', 'www.onemanga.com', '"img-a.onemanga.com/mangas/#{manga.image_id}/#{chapter.image_id}/#{name}.jpg"', 'directory/', 'http://content.s-onemanga.com/manga-%d.js')[0m
+  [1m[35mSQL (0.327ms)[0m  INSERT INTO `mangas` (`name`, `name_url`, `published`, `site_id`) VALUES ('Eyeshield 21', 'eyeshield_21', TRUE, 17)
+  [1m[36mSQL (0.288ms)[0m  [1mINSERT INTO `chapters` (`name`, `position`, `manga_id`) VALUES ('1', 1, 17)[0m
+  [1m[35mSQL (0.285ms)[0m  INSERT INTO `pages` (`name`, `chapter_id`) VALUES ('1', 17)
+
+
+Started GET "/mangas/17/chapters/17" for 127.0.0.1 at 2011-03-30 01:18:43 +0200
+  Processing by ChaptersController#show as HTML
+  Parameters: {"manga_id"=>"17", "id"=>"17"}
+  [1m[36mSQL (0.198ms)[0m  [1mSELECT `id`, `name`, `name_url`, `first_page`, `image_id`, `position`, `manga_id` FROM `chapters` WHERE `id` = 17 LIMIT 1[0m
+  [1m[35mSQL (0.191ms)[0m  SELECT `id`, `name`, `name_url`, `latest_chapter`, `status_id`, `last_update`, `rank_om`, `image_id`, `scraped`, `published`, `site_id` FROM `mangas` WHERE `id` = 17 LIMIT 1
+  [1m[36mSQL (0.269ms)[0m  [1mSELECT `id`, `chapter_id` FROM `pages` WHERE `chapter_id` = 17 ORDER BY `id` LIMIT 1[0m
+  [1m[35mSQL (0.193ms)[0m  SELECT `id`, `name` FROM `pages` WHERE `id` = 17 ORDER BY `id`
+  [1m[36mSQL (0.172ms)[0m  [1mSELECT `id`, `name`, `name_url`, `first_page`, `image_id`, `position`, `manga_id` FROM `chapters` WHERE `manga_id` = 17 ORDER BY `id`[0m
+  [1m[35mSQL (0.133ms)[0m  SELECT COUNT(*) FROM `chapters` WHERE `manga_id` = 17
+  [1m[36mSQL (0.126ms)[0m  [1mSELECT COUNT(*) FROM `pages` WHERE `chapter_id` = 17[0m
+  [1m[35mSQL (0.130ms)[0m  SELECT `id`, `name`, `url`, `format`, `directory`, `js_url_stub` FROM `sites` WHERE `id` = 17 LIMIT 1
+  [1m[36mSQL (0.143ms)[0m  [1mSELECT COUNT(*) FROM `pages` WHERE `chapter_id` = 17[0m
+Rendered chapters/show.html.haml within layouts/read (35.7ms)
+Completed 200 OK in 48ms (Views: 39.5ms | Models: 5.199ms)
+
+
+Started GET "/img/img-a.onemanga.com/mangas/00000001/000052552/01.jpg" for 127.0.0.1 at 2011-03-30 01:18:43 +0200
+  Processing by ChaptersController#test as HTML
+  Parameters: {"id"=>"img-a.onemanga.com/mangas/00000001/000052552/01.jpg"}
+Sent data image.jpg (12.3ms)
+Completed 200 OK in 419ms (Views: 12.2ms | Models: 0.000ms)
+[datamapper] Setting up the "test" environment:
+[datamapper] Setting up :default repository: 'mangapad_test' on mysql
+  [1m[36mSQL (0.065ms)[0m  [1mSET sql_auto_is_null = 0[0m
+  [1m[35mSQL (0.060ms)[0m  SET SESSION sql_mode = 'ANSI,NO_BACKSLASH_ESCAPES,NO_DIR_IN_CREATE,NO_ENGINE_SUBSTITUTION,NO_UNSIGNED_SUBTRACTION,TRADITIONAL'
+  [1m[36mSQL (0.177ms)[0m  [1mSELECT `id`, `name`, `url`, `format`, `directory`, `js_url_stub` FROM `sites` ORDER BY `id`[0m
+  [1m[35mSQL (0.361ms)[0m  DELETE FROM `sites` WHERE `id` = 17
+  [1m[36mSQL (0.176ms)[0m  [1mSELECT `id`, `name`, `name_url`, `latest_chapter`, `status_id`, `last_update`, `rank_om`, `image_id`, `scraped`, `published`, `site_id` FROM `mangas` ORDER BY `id`[0m
+  [1m[35mSQL (0.336ms)[0m  DELETE FROM `mangas` WHERE `id` = 17
+  [1m[36mSQL (0.165ms)[0m  [1mSELECT `id`, `name`, `name_url`, `first_page`, `image_id`, `position`, `manga_id` FROM `chapters` ORDER BY `id`[0m
+  [1m[35mSQL (0.324ms)[0m  DELETE FROM `chapters` WHERE `id` = 17
+  [1m[36mSQL (0.142ms)[0m  [1mSELECT `id`, `chapter_id` FROM `pages` ORDER BY `id`[0m
+  [1m[35mSQL (0.280ms)[0m  DELETE FROM `pages` WHERE `id` = 17
+  [1m[36mSQL (0.275ms)[0m  [1mINSERT INTO `sites` (`name`, `url`, `format`, `directory`, `js_url_stub`) VALUES ('onemanga', 'www.onemanga.com', '"img-a.onemanga.com/mangas/#{manga.image_id}/#{chapter.image_id}/#{name}.jpg"', 'directory/', 'http://content.s-onemanga.com/manga-%d.js')[0m
+  [1m[35mSQL (0.313ms)[0m  INSERT INTO `mangas` (`name`, `name_url`, `published`, `site_id`) VALUES ('Eyeshield 21', 'eyeshield_21', TRUE, 18)
+  [1m[36mSQL (0.306ms)[0m  [1mINSERT INTO `chapters` (`name`, `position`, `manga_id`) VALUES ('1', 1, 18)[0m
+  [1m[35mSQL (0.272ms)[0m  INSERT INTO `pages` (`name`, `chapter_id`) VALUES ('1', 18)
+
+
+Started GET "/mangas/18/chapters/18" for 127.0.0.1 at 2011-03-30 01:18:53 +0200
+  Processing by ChaptersController#show as HTML
+  Parameters: {"manga_id"=>"18", "id"=>"18"}
+  [1m[36mSQL (0.192ms)[0m  [1mSELECT `id`, `name`, `name_url`, `first_page`, `image_id`, `position`, `manga_id` FROM `chapters` WHERE `id` = 18 LIMIT 1[0m
+  [1m[35mSQL (0.300ms)[0m  SELECT `id`, `name`, `name_url`, `latest_chapter`, `status_id`, `last_update`, `rank_om`, `image_id`, `scraped`, `published`, `site_id` FROM `mangas` WHERE `id` = 18 LIMIT 1
+  [1m[36mSQL (0.176ms)[0m  [1mSELECT `id`, `chapter_id` FROM `pages` WHERE `chapter_id` = 18 ORDER BY `id` LIMIT 1[0m
+  [1m[35mSQL (0.144ms)[0m  SELECT `id`, `name` FROM `pages` WHERE `id` = 18 ORDER BY `id`
+  [1m[36mSQL (0.176ms)[0m  [1mSELECT `id`, `name`, `name_url`, `first_page`, `image_id`, `position`, `manga_id` FROM `chapters` WHERE `manga_id` = 18 ORDER BY `id`[0m
+  [1m[35mSQL (0.136ms)[0m  SELECT COUNT(*) FROM `chapters` WHERE `manga_id` = 18
+  [1m[36mSQL (0.122ms)[0m  [1mSELECT COUNT(*) FROM `pages` WHERE `chapter_id` = 18[0m
+  [1m[35mSQL (0.130ms)[0m  SELECT `id`, `name`, `url`, `format`, `directory`, `js_url_stub` FROM `sites` WHERE `id` = 18 LIMIT 1
+  [1m[36mSQL (0.137ms)[0m  [1mSELECT COUNT(*) FROM `pages` WHERE `chapter_id` = 18[0m
+Rendered chapters/show.html.haml within layouts/read (35.6ms)
+Completed 200 OK in 48ms (Views: 39.4ms | Models: 4.765ms)
+
+
+Started GET "/img/img-a.onemanga.com/mangas/00000001/000052552/01.jpg" for 127.0.0.1 at 2011-03-30 01:18:53 +0200
+  Processing by ChaptersController#test as HTML
+  Parameters: {"id"=>"img-a.onemanga.com/mangas/00000001/000052552/01.jpg"}
+Sent data image.jpg (12.4ms)
+Completed 200 OK in 407ms (Views: 12.3ms | Models: 0.000ms)
+
+
+Started GET "/" for 127.0.0.1 at 2011-03-30 01:18:53 +0200
+  Processing by MangasController#index as HTML
+  [1m[35mSQL (0.208ms)[0m  SELECT COUNT(*) FROM `mangas`
+  [1m[36mSQL (0.206ms)[0m  [1mSELECT `id`, `name`, `name_url`, `latest_chapter`, `status_id`, `last_update`, `rank_om`, `image_id`, `scraped`, `published`, `site_id` FROM `mangas` WHERE `published` = TRUE ORDER BY `id` LIMIT 70[0m
+Rendered mangas/_manga.html.haml (1.9ms)
+  [1m[35mSQL (0.105ms)[0m  SELECT COUNT(*) FROM `mangas`
+Completed 200 OK in 84ms (Views: 82.9ms | Models: 0.519ms)

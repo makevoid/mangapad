@@ -1,0 +1,20 @@
+development:
+  adapter: mysql
+  database: mangapad_development
+  username: root
+  password: 
+  host:     localhost
+
+test:
+  database: mangapad_test
+  adapter: mysql
+  username: root
+  password: 
+  host:     localhost
+  
+production:
+  database: mangapad_production
+  adapter: mysql
+  username: root
+  password: final33man
+  host:     localhost

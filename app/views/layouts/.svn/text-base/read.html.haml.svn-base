@@ -1,0 +1,26 @@
+!!! Strict
+%html{ html_attrs("en_EN") }
+%head
+  - subtitle = yield(:title).blank? ? site_slogan : yield(:title).strip
+  %title= site_title + subtitle
+  %meta{ :content => "text/html; charset=utf-8", "http-equiv" => "content-type" }/    
+  %meta{ :content => meta_description, :name => "description"}/
+  %meta{ :content => meta_keywords, :name => "keywords"}/
+  %meta{ :content => meta_author, :name => "author"}/     
+  %meta{:name => 'csrf-token', :content => form_authenticity_token}/
+  %meta{:name => 'csrf-param', :content => 'authenticity_token'}/
+  = yield :head
+  = stylesheet_link_tag "main"#, :cache =>  "cache/all"                                  
+  = javascript_include_tag "jquery", "rails", "master"#, :cache => "cache/all"        
+  :javascript
+    $(function(){
+      #{yield :jquery}
+    });
+  = yield :headtwo
+%body{ :class => "#{controller.controller_name} #{controller.action_name}"}
+  #read
+    = yield
+
+      
+- if Rails.env == "production"
+  = render partial: "layouts/analytics"

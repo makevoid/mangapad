@@ -1,0 +1,48 @@
+%h3 Hello!
+.readbox
+  = image_tag "mangapad_icon2.png", id: "icon2"
+  %p This is an attempt in bringing a great manga reading experience to the people who own a tablet device like an iPad (Android support will come soon). We think the tablet-sized & touch-enabled devices are a great way to rediscover the pleasure to read, especially mangas. Please, consider the work done by mangakas and buy the real mangas in the OriginalPaperFormat™ as soon as they are available in your country.
+  
+  / TODO: Visit my profile and see my favorities:
+
+  %p 
+    %a{ href: "/mangas/our_favourites" } View our favourites mangas!
+  
+
+
+%h3 Submit a manga
+.readbox
+  %p Use #{link_to "this form", [:new_submission]}, we are thinking about a better and automated way though, so stay tuned...
+
+
+%h2 Mangas
+
+.pagination
+  pag:
+  - Manga.lpages.each do |i|
+    %a{ href: "/mangas?lpage=#{i}" }= i
+  -#- Manga.pages.times do |i|
+  -#  %a{ :href => "/mangas?page=#{i}" }= i+1
+%ul#mangas
+  = render @mangas
+.pagination
+  pag:
+  - Manga.lpages.each do |i|
+    %a{ href: "/mangas?lpage=#{i}" }= i
+  
+
+%h3 How does it works
+.readbox
+  %p MangaPad is formed by three parts. A Viewer, an #{link_to "Index", "http://en.wikipedia.org/wiki/Index_(database)"} and a #{link_to "Proxy", "http://en.wikipedia.org/wiki/Proxy_pattern"}. The Viewer is in javascript and it's the part that interfaces directly to your device thanks to html5 and other APIs to achieve animations, touch interaction, etc.
+  /
+    %p The viewer's code is open source and published here:
+    %p= link_to "github.com/makevoid/mangapad_viewer", "http://github.com/makevoid/mangapad_viewer"
+  %p The Index knows where the actual images are (through a link). It serves the images through the proxy with a link http://mangapad.org/img/http://IMAGE_URL. 
+
+  
+%h3 Important
+.readbox
+  %p If you want to block mangapad from proxying your contents there are some simple ways.
+  %ul.simple_ways
+    %li drop us an email, we will add your domain(s) to the blacklist, and your content will not be proxied
+    %li block the ip 213.175.207.190 (note: there is a [remote] possibility that doing that you will block other services connected that server)

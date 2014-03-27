@@ -1,0 +1,20 @@
+xml.instruct!
+xml.urlset "xmlns" => "http://www.sitemaps.org/schemas/sitemap/0.9" do
+  xml.url do
+    xml.loc "http://mangapad.org"
+  end
+  @mangas.each do |manga|
+    xml.url do
+      xml.loc "http://mangapad.org"+manga_path(manga.name_url)
+      xml.lastmod manga.last_update unless manga.last_update.nil?
+    end
+  end
+  # @mangas.each do |manga|
+  #   manga.chapters.each do |chapter|
+  #     xml.url do
+  #       xml.loc "http://mangapad.org"+manga_chapter_path(manga, chapter)
+  #       xml.lastmod manga.last_update unless manga.last_update.nil?
+  #     end
+  #   end
+  # end
+end

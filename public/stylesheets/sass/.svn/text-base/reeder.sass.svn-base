@@ -1,0 +1,49 @@
+
+#konsole
+  color: #FFF
+  background: #444
+  padding: 5px
+  height: 22px
+  height: 72px
+  height: 132px
+  font-size: left
+
+#menu 
+  text-align: center
+  #tab_bar
+    height: 30px
+  a
+    font-size: 1.1em
+    color: #FFF
+    padding: 6px 10px
+  a.left
+    float: left
+  a.right
+    float: right
+  a:hover
+    background: #999
+
+
+#over
+  #imgg
+    width: 100%
+    overflow: hidden
+    position: absolute
+    height: 100%
+    img 
+      width: 100%
+      position: absolute
+    img#first
+      -webkit-transform: translate3d(0px, 0px, 0)
+    //img.second
+      //-webkit-transform: translate3d(100%, 0, 0)
+#over.desktop
+  width: 93%
+  height: auto
+  margin: 0 auto
+  #imgg
+    position: static
+    overflow: visible
+    margin: 15px 0 0
+    img
+      position: static

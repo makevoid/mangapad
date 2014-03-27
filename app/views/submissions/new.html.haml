@@ -1,0 +1,20 @@
+%h2 Submit a Manga
+
+.readbox
+  %p This is where you can submit a manga, we will see your request and get the links into the Index so they will be published automatically when the site is updated. For that we require two links:
+
+= form_for @submission do |f|
+  = f.label "<h3>Manga name:</h3>".html_safe, for: :name
+  = f.text_field :name
+  = f.label "<h3>Chapters list url:</h3>".html_safe, for: :chapters_url
+  = f.text_field :chapters_url
+  .readbox
+    %p the page where new chapters get published, or the where the link to the last viewable page is updated 
+  = f.label "<h3>First page image url:</h3>".html_safe, for: :first_page_url
+  = f.text_field :first_page_url
+  .readbox
+    %p it should end with .jpeg or .png
+  = f.label "<h3>Your email:</h3>".html_safe, for: :email
+  = f.text_field :email  
+    
+  = f.submit "Send", class: :submit

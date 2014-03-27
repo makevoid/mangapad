@@ -1,0 +1,45 @@
+#konsole {
+  color: white;
+  background: #444444;
+  padding: 5px;
+  height: 22px;
+  height: 72px;
+  height: 132px;
+  font-size: left; }
+
+#menu {
+  text-align: center; }
+  #menu #tab_bar {
+    height: 30px; }
+  #menu a {
+    font-size: 1.1em;
+    color: white;
+    padding: 6px 10px; }
+  #menu a.left {
+    float: left; }
+  #menu a.right {
+    float: right; }
+  #menu a:hover {
+    background: #999999; }
+
+#over #imgg {
+  width: 100%;
+  overflow: hidden;
+  position: absolute;
+  height: 100%; }
+  #over #imgg img {
+    width: 100%;
+    position: absolute; }
+  #over #imgg img#first {
+    -webkit-transform: translate3d(0px, 0px, 0); }
+
+#over.desktop {
+  width: 93%;
+  height: auto;
+  margin: 0 auto; }
+  #over.desktop #imgg {
+    position: static;
+    overflow: visible;
+    margin: 15px 0 0; }
+    #over.desktop #imgg img {
+      position: static; }
